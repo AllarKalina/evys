@@ -1,14 +1,13 @@
 ---
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import Layout from '../layouts/Layout.astro';
 import '../styles.css';
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main>
+  <main class="flex justify-center">
     <Navbar client:load />
-    <h1 class="text-blue-500">Welcome to <span>Astro</span></h1>
-    <section class="min-h-screen"></section>
+    <section class="min-h-screen bg-emerald-500"></section>
     <section class="min-h-screen"></section>
   </main>
 </Layout>
