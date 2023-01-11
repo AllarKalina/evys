@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaInstagram } from 'react-icons/fa/index.js';
 import NavItem from './NavItem';
 import type { MenuItem } from './types';
 
