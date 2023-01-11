@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <section
       className={clsx(
-        'bg-emerald-600/90 backdrop-blur flex items-center justify-between fixed max-w-screen-xl',
+        'bg-emerald-600/90 backdrop-blur flex items-center justify-between fixed max-w-screen-xl z-50',
         isMobileMenuOpen && 'top-0 mx-0 px-7 pt-5 w-full',
         !isMobileMenuOpen &&
           'top-3 mx-3 px-4 py-2 rounded-xl w-[calc(100%-1.5rem)] ',
