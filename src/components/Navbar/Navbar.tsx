@@ -14,7 +14,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
+    <section
       className={clsx(
         'bg-emerald-600/90 backdrop-blur flex items-center justify-between fixed max-w-screen-xl',
         isMobileMenuOpen && 'top-0 mx-0 px-7 pt-5 w-full',
@@ -25,11 +25,14 @@ const Navbar = () => {
       <img src="./Logo.png" width={90} height={43} alt="Mobile logo" />
       <MobileMenu
         isMenuOpen={isMobileMenuOpen}
-        onMenuChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        onMenuChange={() => {
+          document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : '';
+          setIsMobileMenuOpen(!isMobileMenuOpen);
+        }}
         menuItems={menuItemArray}
       />
       <DesktopMenu menuItems={menuItemArray} />
-    </nav>
+    </section>
   );
 };
 
