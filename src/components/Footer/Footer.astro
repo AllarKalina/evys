@@ -1,0 +1,94 @@
+---
+import {
+  EnvelopeIcon,
+  MapPinIcon,
+  PhoneIcon,
+} from '@heroicons/react/24/outline';
+
+import { BsFacebook, BsInstagram } from 'react-icons/bs';
+
+const menu = [
+  { name: 'Seltsi info', href: '/' },
+  { name: 'Loomaarsti õpe', href: '/' },
+  { name: 'Blogi', href: '/' },
+  { name: 'Toetajad', href: '/' },
+];
+
+const contact = [
+  { text: '+372 123456', icon: PhoneIcon },
+  { text: 'evys@gmail.com', icon: EnvelopeIcon },
+  { text: 'Kreutzwaldi 62, Tartu', icon: MapPinIcon },
+];
+
+const socials = [
+  { name: 'Facebook', href: '/', icon: BsFacebook },
+  { name: 'Instagram', href: '/', icon: BsInstagram },
+];
+---
+
+<footer class="bg-blue-900" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div class="space-y-8">
+        <img src="./Logo.png" width={90} height={43} alt="Mobile logo" />
+        <p class="text-white">
+          Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe-
+          ja teadustööd.
+        </p>
+        <div class="flex space-x-6">
+          {
+            socials.map((item) => (
+              <a href={item.href} class="text-gray-300 hover:text-gray-500">
+                <span class="sr-only">{item.name}</span>
+                <item.icon className="h-6 w-6" aria-hidden="true" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="mt-16 xl:mt-0">
+        <div>
+          <h3 class="text-lg font-semibold text-white">EVÜS</h3>
+          <ul role="list" class="mt-6 space-y-4">
+            {
+              menu.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-slate-300 hover:text-gray-900"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="mt-10 md:mt-0">
+          <h3 class="text-lg font-semibold text-white">KONTAKT</h3>
+          <ul role="list" class="mt-6 space-y-4">
+            {
+              contact.map((item) => (
+                <li>
+                  <a
+                    href={item.text}
+                    class="text-slate-300 hover:text-gray-900 flex gap-3"
+                  >
+                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                    <span>{item.text}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 border-t border-white pt-8 sm:mt-20 lg:mt-24">
+      <p class="text-sm text-white">
+        &copy; 2023 EVÜS Org. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

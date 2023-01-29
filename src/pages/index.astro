@@ -1,5 +1,7 @@
 ---
 import { Image } from '@astrojs/image/components';
+import { FaChevronRight } from 'react-icons/fa';
+import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
 import Layout from '../layouts/Layout.astro';
 import '../styles.css';
@@ -8,7 +10,7 @@ import '../styles.css';
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <Navbar client:load />
-    <section class="relative min-h-screen w-full overflow-hidden">
+    <section class="relative w-full overflow-hidden mb-12">
       <div class="absolute top-0 left-0 h-3/6 w-full bg-emerald-600 z-0"></div>
       <div class="z-20 relative px-4 pt-[140px] flex flex-col gap-16">
         <h1 class="text-4xl text-white font-semibold leading-tight">
@@ -24,7 +26,7 @@ import '../styles.css';
               aspectRatio="9:10"
               alt="image"
               format="webp"
-              class="object-contain"
+              fit="contain"
             />
           </div>
           <div
@@ -36,7 +38,7 @@ import '../styles.css';
               aspectRatio="9:10"
               alt="image"
               format="webp"
-              class="object-contain"
+              fit="contain"
             />
           </div>
           <div
@@ -48,7 +50,7 @@ import '../styles.css';
               aspectRatio="3:4"
               alt="image"
               format="jpg"
-              class="object-contain"
+              fit="contain"
             />
           </div>
         </div>
@@ -61,7 +63,7 @@ import '../styles.css';
             Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe-
             ja teadustööd.
           </h2>
-          <p class="text-slate-800 mt-2 mb-16">
+          <p class="text-slate-800 mt-2">
             Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
             mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
             tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
@@ -105,6 +107,44 @@ import '../styles.css';
         </div>
       </div>
     </section>
-    <section class="min-h-screen w-full"></section>
+    <section class="relative w-full overflow-hidden my-16">
+      <div class="flex flex-col gap-2 px-4">
+        <div class="flex items-center gap-2">
+          <div class="h-1 w-6 bg-emerald-600 rounded-full"></div>
+          <h6 class="text-emerald-600 font-bold">MEIST</h6>
+        </div>
+        <h2 class="font-bold text-2xl text-slate-800">Kes me oleme?</h2>
+      </div>
+      <p class="text-slate-800 mt-2 px-4">
+        EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid
+        ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja
+        arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd
+        ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste
+        isikutega.
+      </p>
+      <div class="relative flex justify-center mt-8 pb-2 px-4">
+        <div class="rounded-lg overflow-hidden z-10 -rotate-2">
+          <Image
+            src="./Team.jpg"
+            alt="image"
+            format="jpg"
+            width={400}
+            height={300}
+            fit="contain"
+          />
+        </div>
+        <div class="absolute -top-2 -left-2 w-full h-full z-0 px-4">
+          <div class="w-[103%] h-[103%] bg-amber-400/60 rounded-lg rotate-2">
+          </div>
+        </div>
+      </div>
+      <div class="px-4 mt-4">
+        <button class="flex items-center gap-1">
+          <span class="text-emerald-600 font-semibold">Loe meist rohkem</span>
+          <FaChevronRight size="14px" className="text-emerald-600" />
+        </button>
+      </div>
+    </section>
+    <Footer />
   </main>
 </Layout>
