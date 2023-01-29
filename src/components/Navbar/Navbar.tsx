@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItemArray = [
-    { id: 0, title: 'Seltsi Info', href: '/' },
+    { id: 0, title: 'Seltsi Info', href: '/info' },
     { id: 1, title: 'Loomaarsti õpe', href: '/' },
     { id: 2, title: 'Blogi', href: '/' },
     { id: 3, title: 'Toetajad', href: '/' },
