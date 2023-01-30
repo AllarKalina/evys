@@ -22,7 +22,9 @@ const Navbar = () => {
           'top-3 mx-3 px-4 py-2 rounded-xl w-[calc(100%-1.5rem)] ',
       )}
     >
-      <img src="./Logo.png" width={90} height={43} alt="Mobile logo" />
+      <a href="/">
+        <img src="./Logo.png" width={90} height={43} alt="Mobile logo" />
+      </a>
       <MobileMenu
         isMenuOpen={isMobileMenuOpen}
         onMenuChange={() => {

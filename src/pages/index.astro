@@ -1,10 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { FaChevronRight } from 'react-icons/fa/index.js';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
 import Layout from '../layouts/Layout.astro';
-import '../styles.css';
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
@@ -18,7 +17,7 @@ import '../styles.css';
           <h1 class="text-4xl text-white font-semibold leading-tight">
             Eesti Veterinaarmeditsiini Üliõpilaste <br /> Selts
           </h1>
-          <p class="text-slate-200">
+          <p class="text-white">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe sed
             tenetur inventore molestiae in nisi quam, quia aut dolorem eius.
           </p>
@@ -63,14 +62,16 @@ import '../styles.css';
         </div>
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-2">
-            <div class="h-1 w-6 bg-emerald-600 rounded-full"></div>
-            <h6 class="text-emerald-600 font-bold">MEIE MISSIOON</h6>
+            <div class="h-[3px] w-5 bg-emerald-600 rounded-full"></div>
+            <h6 class="text-emerald-600 font-bold text-sm tracking-wide">
+              MEIE MISSIOON
+            </h6>
           </div>
-          <h2 class="font-bold text-2xl text-slate-800">
+          <h2 class="font-bold text-xl text-zinc-700">
             Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe-
             ja teadustööd.
           </h2>
-          <p class="text-slate-800 mt-2">
+          <p class="text-zinc-500 mt-2 text-sm leading-6">
             Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
             mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
             tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
@@ -83,9 +84,11 @@ import '../styles.css';
       <div class="bg-emerald-600">
         <div class="mx-auto max-w-7xl py-16 px-4">
           <div class="flex items-center justify-center gap-3">
-            <div class="h-1 w-6 bg-white rounded-full"></div>
-            <h6 class="text-white font-bold">MEIE TOETAJAD</h6>
-            <div class="h-1 w-6 bg-white rounded-full"></div>
+            <div class="h-[3px] w-5 bg-white rounded-full"></div>
+            <h6 class="text-white font-bold text-sm tracking-wide">
+              MEIE TOETAJAD
+            </h6>
+            <div class="h-[3px] w-5 bg-white rounded-full"></div>
           </div>
           <div class="mt-2 -ml-8 flex flex-wrap justify-between lg:-ml-4">
             <div
@@ -117,12 +120,14 @@ import '../styles.css';
     <section class="relative w-full overflow-hidden py-20">
       <div class="flex flex-col gap-2 px-4">
         <div class="flex items-center gap-2">
-          <div class="h-1 w-6 bg-emerald-600 rounded-full"></div>
-          <h6 class="text-emerald-600 font-bold">MEIST</h6>
+          <div class="h-[3px] w-5 bg-emerald-600 rounded-full"></div>
+          <h6 class="text-emerald-600 font-bold text-sm tracking-wide">
+            MEIST
+          </h6>
         </div>
-        <h2 class="font-bold text-2xl text-slate-800">Kes me oleme?</h2>
+        <h2 class="font-bold text-xl text-zinc-700">Kes me oleme?</h2>
       </div>
-      <p class="text-slate-800 mt-2 px-4">
+      <p class="text-zinc-500 text-sm leading-6 mt-2 px-4">
         EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid
         ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja
         arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd
@@ -141,14 +146,16 @@ import '../styles.css';
           />
         </div>
         <div class="absolute -top-2 -left-2 w-full h-full z-0 px-4">
-          <div class="w-[103%] h-[103%] bg-amber-400/60 rounded-lg rotate-2">
+          <div class="w-[103%] h-[103%] bg-emerald-600/40 rounded-lg rotate-6">
           </div>
         </div>
       </div>
       <div class="px-4 mt-6">
-        <button class="flex items-center gap-1">
-          <span class="text-emerald-600 font-semibold">Loe meist rohkem</span>
-          <FaChevronRight size="14px" className="text-emerald-600" />
+        <button class="flex items-center gap-0.5">
+          <span class="text-emerald-600 font-medium text-sm"
+            >Loe meist rohkem</span
+          >
+          <ChevronRightIcon className="text-emerald-600 w-4 h-4" />
         </button>
       </div>
     </section>

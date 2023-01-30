@@ -28,7 +28,7 @@ const MobileMenu: React.FC<Props> = ({
         <span />
       </button>
       {isMenuOpen && (
-        <nav className="flex-col justify-end gap-8 absolute top-[63px] px-7 pb-20 left-0 bg-emerald-600/90 backdrop-blur h-[calc(100vh-63px)] w-full flex">
+        <nav className="flex-col justify-end gap-8 absolute top-[63px] px-7 pb-40 left-0 bg-emerald-600/95 backdrop-blur h-[calc(100vh-63px)] w-full flex">
           {menuItems.map((item) => (
             <NavItem {...item} className="text-4xl" />
           ))}

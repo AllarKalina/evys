@@ -1,5 +1,4 @@
 ---
-import { Image } from '@astrojs/image/components';
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
 import Layout from '../layouts/Layout.astro';
@@ -8,139 +7,12 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <Navbar client:load />
-    <section class="relative w-full overflow-hidden mb-20">
-      <div class="absolute top-0 left-0 h-[60%] w-full bg-emerald-600 z-0">
-      </div>
-      <div class="z-20 relative px-4 pt-[180px] flex flex-col gap-20">
-        <div class="flex flex-col gap-6">
-          <h1 class="text-4xl text-white font-semibold leading-tight">
-            Eesti Veterinaarmeditsiini Üliõpilaste <br /> Selts
-          </h1>
-          <p class="text-slate-200">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe sed
-            tenetur inventore molestiae in nisi quam, quia aut dolorem eius.
-          </p>
-        </div>
-        <div class="flex shrink-0 gap-5 justify-center">
-          <div
-            class="w-[180px] h-[200px] flex-none overflow-hidden rounded-lg -rotate-2 shadow-lg"
-          >
-            <Image
-              src="./People.webp"
-              width={180}
-              height={200}
-              alt="image"
-              format="webp"
-              fit="contain"
-            />
-          </div>
-          <div
-            class="w-[180px] h-[200px] flex-none overflow-hidden rounded-lg rotate-2 shadow-lg"
-          >
-            <Image
-              src="./People.webp"
-              width={180}
-              height={200}
-              alt="image"
-              format="webp"
-              fit="contain"
-            />
-          </div>
-          <div
-            class="w-[180px] h-[200px] flex-none overflow-hidden rounded-lg rotate-2 shadow-lg"
-          >
-            <Image
-              src="./Party.jpg"
-              width={180}
-              height={200}
-              alt="image"
-              format="jpg"
-              fit="contain"
-            />
-          </div>
-        </div>
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-2">
-            <div class="h-1 w-6 bg-emerald-600 rounded-full"></div>
-            <h6 class="text-emerald-600 font-bold">MEIE MISSIOON</h6>
-          </div>
-          <h2 class="font-bold text-2xl text-slate-800">
-            Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe-
-            ja teadustööd.
-          </h2>
-          <p class="text-slate-800 mt-2">
-            Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
-            mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
-            tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="relative w-full overflow-hidden">
-      {/* Testimonials */}
-      <div class="bg-emerald-600">
-        <div class="mx-auto max-w-7xl py-16 px-4">
-          <div class="flex items-center justify-center gap-3">
-            <div class="h-1 w-6 bg-white rounded-full"></div>
-            <h6 class="text-white font-bold">MEIE TOETAJAD</h6>
-            <div class="h-1 w-6 bg-white rounded-full"></div>
-          </div>
-          <div class="mt-2 -ml-8 flex flex-wrap justify-between lg:-ml-4">
-            <div
-              class="mt-4 ml-8 flex flex-shrink-0 flex-grow lg:ml-4 lg:flex-grow-0"
-            >
-              <Image
-                src="./Valge-01.png"
-                height={60}
-                width={200}
-                alt="image"
-                format="webp"
-              />
-            </div>
-            <div
-              class="mt-4 ml-8 flex flex-shrink-0 flex-grow lg:ml-4 lg:flex-grow-0"
-            >
-              <Image
-                src="./sumboolika_4.png"
-                height={20}
-                width={80}
-                alt="image"
-                format="webp"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <section class="relative w-full overflow-hidden py-20">
-      <div class="flex flex-col gap-2 px-4">
-        <div class="flex items-center gap-2">
-          <div class="h-1 w-6 bg-emerald-600 rounded-full"></div>
-          <h6 class="text-emerald-600 font-bold">MEIST</h6>
-        </div>
-        <h2 class="font-bold text-2xl text-slate-800">Kes me oleme?</h2>
-      </div>
-      <p class="text-slate-800 mt-2 px-4">
-        EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid
-        ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja
-        arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd
-        ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste
-        isikutega.
-      </p>
-      <div class="relative flex justify-center mt-12 pb-2 px-4">
-        <div class="rounded-lg overflow-hidden z-10 -rotate-2">
-          <Image
-            src="./Team.jpg"
-            alt="image"
-            format="jpg"
-            width={400}
-            height={300}
-            fit="contain"
-          />
-        </div>
-        <div class="absolute -top-2 -left-2 w-full h-full z-0 px-4">
-          <div class="w-[103%] h-[103%] bg-amber-400/60 rounded-lg rotate-2">
-          </div>
+      <div class="z-20 relative px-4 pt-[60px] flex flex-col gap-20">
+        <div class="flex flex-col gap-6">
+          <h1 class="text-4xl text-emerald-600 font-semibold leading-tight">
+            Seltsi info
+          </h1>
         </div>
       </div>
     </section>
