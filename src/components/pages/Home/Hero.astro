@@ -1,0 +1,246 @@
+---
+import { Image } from '@astrojs/image/components';
+
+const response = await fetch(
+  'http://localhost:1337/api/galleries?populate=image',
+);
+
+const dataFetch = await response.json();
+const data = dataFetch.data;
+console.log(data[0].attributes.image.data.attributes.formats);
+---
+
+<div
+  class="absolute top-0 -left-[20%] h-[60%] lg:h-1/3 w-[120%] z-0 bg-gradient-to-br from-zinc-300 via-emerald-600 to-zinc-700"
+>
+</div>
+<div
+  class="z-20 relative px-4 pt-[180px] lg:pt-[160px] flex flex-col gap-20 max-w-screen-xl mx-auto"
+>
+  {/* Hero section */}
+  <div class="lg:flex lg:justify-between lg:gap-16">
+    {/* Desktop images */}
+    <article class="lg:flex flex-col hidden gap-12 flex-grow">
+      <div
+        class="w-full max-w-[300px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-400"
+      >
+        <Image
+          src="./People.webp"
+          width={280}
+          aspectRatio="7:9"
+          alt="image"
+          format="webp"
+          fit="contain"
+          class="w-full h-full"
+        />
+      </div>
+      <div
+        class="w-full max-w-[300px] overflow-hidden rounded-tr-lg rounded-bl-lg rotate-1 shadow-xl shadow-zinc-400"
+      >
+        <Image
+          src="./People.webp"
+          width={280}
+          aspectRatio="7:9"
+          alt="image"
+          format="webp"
+          fit="contain"
+          class="w-full h-full"
+        />
+      </div>
+      <div
+        class="w-full max-w-[300px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-400"
+      >
+        <Image
+          src="./People.webp"
+          width={280}
+          aspectRatio="7:9"
+          alt="image"
+          format="webp"
+          fit="contain"
+          class="w-full h-full"
+        />
+      </div>
+    </article>
+    {/* Hero header */}
+    <header class="flex flex-col gap-6 lg:items-end">
+      <h1
+        class="text-4xl text-white font-semibold sm:text-5xl md:text-6xl lg:text-7xl lg:tracking-wider"
+      >
+        Eesti Veterinaarmeditsiini <br class="sm:visible" /> Üliõpilaste
+        <br class="sm:hidden" /> Selts
+      </h1>
+      <article class="hidden lg:flex items-start w-full mt-12">
+        <div class="lg:flex flex-col hidden gap-12">
+          <div
+            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
+          >
+            <Image
+              src="./People.webp"
+              width={280}
+              aspectRatio="7:9"
+              alt="image"
+              format="webp"
+              fit="contain"
+              class="w-full h-full"
+            />
+          </div>
+          <div
+            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
+          >
+            <Image
+              src="./People.webp"
+              width={280}
+              aspectRatio="7:9"
+              alt="image"
+              format="webp"
+              fit="contain"
+              class="w-full h-full"
+            />
+          </div>
+          <div
+            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
+          >
+            <Image
+              src="./People.webp"
+              width={280}
+              aspectRatio="7:9"
+              alt="image"
+              format="webp"
+              fit="contain"
+              class="w-full h-full"
+            />
+          </div>
+        </div>
+        <div class="flex flex-1 h-full justify-end pt-40 pr-16">
+          <div class="flex-col gap-2 max-w-sm hidden lg:flex">
+            <div class="flex items-center gap-2">
+              <div
+                class="h-[3px] w-5 bg-emerald-600 rounded-full lg:h-1 lg:w-6"
+              >
+              </div>
+              <h6
+                class="text-emerald-600 font-bold text-sm tracking-wide lg:text-base"
+              >
+                MEIE MISSIOON
+              </h6>
+            </div>
+            <h2 class="font-bold text-xl text-zinc-700 lg:text-2xl">
+              Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste
+              õppe- ja teadustööd.
+            </h2>
+            <p class="text-zinc-500 mt-2 text-sm leading-6 lg:text-base">
+              Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+              mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+              tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+            </p>
+          </div>
+        </div>
+      </article>
+    </header>
+  </div>
+  {/* Mobile images */}
+  <div class="flex shrink-0 gap-5 justify-center lg:hidden sm:gap-7 md:gap9">
+    {
+      data.map((item: any) => {
+        console.log(item.attributes.image.data.attributes.formats.medium.url);
+        return (
+          <div class="overflow-hidden flex-none rounded-lg -rotate-2 shadow-lg w-[180px] aspect-[4/5]">
+            <Image
+              src={
+                'http://localhost:1337' +
+                item.attributes.image.data.attributes.formats.medium.url
+              }
+              width={item.attributes.image.data.attributes.formats.medium.width}
+              height={
+                item.attributes.image.data.attributes.formats.medium.height
+              }
+              alt="image"
+              format="webp"
+              class="absolute inset-0 h-full w-full object-cover"
+              quality={100}
+            />
+          </div>
+        );
+      })
+    }
+    <!-- <Image
+        src={'http://localhost:1337' +
+          data[0].attributes.image.data.attributes.formats.medium.url}
+        width={data[0].attributes.image.data.attributes.formats.medium.width}
+        height={data[0].attributes.image.data.attributes.formats.medium.height}
+        alt="image"
+        format="webp"
+        class="absolute inset-0 h-full w-full object-cover"
+        quality={100} 
+    <div
+      class="w-[180px] h-[200px] sm:w-[230px] sm:h-[260px] md:w-[250px] md:h-[285px] flex-none overflow-hidden rounded-lg rotate-2 shadow-lg"
+    >
+      <Image
+        src="./Party.jpg"
+        width={180}
+        height={200}
+        alt="image"
+        format="jpg"
+        fit="cover"
+        class="w-full h-full"
+      />
+    </div>
+    <div
+      class="w-[180px] h-[200px] sm:w-[230px] sm:h-[260px] md:w-[250px] md:h-[285px] flex-none overflow-hidden rounded-lg -rotate-2 shadow-lg"
+    >
+      <Image
+        src="./People.webp"
+        width={180}
+        height={200}
+        alt="image"
+        format="webp"
+        fit="cover"
+        class="w-full h-full"
+      />
+    </div>
+    <div
+      class="w-[180px] h-[200px] sm:w-[230px] sm:h-[260px] md:w-[250px] md:h-[285px] flex-none overflow-hidden rounded-lg rotate-2 shadow-lg"
+    >
+      <Image
+        src="./Party.jpg"
+        width={180}
+        height={200}
+        alt="image"
+        format="jpg"
+        fit="cover"
+        class="w-full h-full"
+      />
+    </div>
+    <div
+      class="w-[180px] h-[200px] sm:w-[230px] sm:h-[260px] md:w-[250px] md:h-[285px] flex-none overflow-hidden rounded-lg -rotate-2 shadow-lg"
+    >
+      <Image
+        src="./Party.jpg"
+        width={180}
+        height={200}
+        alt="image"
+        format="jpg"
+        fit="cover"
+        class="w-full h-full"
+      />
+    </div> -->
+  </div>
+  {/* Mobile our mission section */}
+  <div class="flex flex-col gap-2 max-w-sm lg:hidden">
+    <div class="flex items-center gap-2">
+      <div class="h-[3px] w-5 bg-emerald-600 rounded-full"></div>
+      <h6 class="text-emerald-600 font-bold text-sm tracking-wide">
+        MEIE MISSIOON
+      </h6>
+    </div>
+    <h2 class="font-bold text-xl text-zinc-700">
+      Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja
+      teadustööd.
+    </h2>
+    <p class="text-zinc-500 mt-2 text-sm leading-6">
+      Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+      mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+      tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+    </p>
+  </div>
+</div>
