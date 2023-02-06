@@ -76,7 +76,7 @@ const data = dataFetch.data;
     {/* Hero header */}
     <header class="flex flex-col gap-6 lg:items-end">
       <h1
-        class="text-4xl text-white font-semibold sm:text-5xl md:text-6xl lg:text-7xl lg:tracking-wider"
+        class="text-4xl text-white font-semibold sm:text-5xl md:text-6xl xl:text-7xl lg:tracking-wider"
       >
         Eesti Veterinaarmeditsiini <br class="sm:visible" /> Üliõpilaste
         <br class="sm:hidden" /> Selts
@@ -110,7 +110,11 @@ const data = dataFetch.data;
           }
         </div>
         <div class="flex flex-1 h-full justify-center pt-56 xl:pr-16">
-          <Header />
+          <Header
+            subheader="MEIE MISSIOON"
+            header="Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd."
+            text="Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse."
+          />
         </div>
       </article>
     </header>
@@ -142,6 +146,10 @@ const data = dataFetch.data;
   </div>
   {/* Mobile our mission section */}
   <div class="lg:hidden">
-    <Header />
+    <Header
+      subheader="MEIE MISSIOON"
+      header="Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd."
+      text="Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse."
+    />
   </div>
 </div>

@@ -1,8 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
+import About from '../components/pages/Home/About.astro';
 import Hero from '../components/pages/Home/Hero.astro';
 import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
@@ -53,50 +53,7 @@ const { pathname } = Astro.url;
       </div>
     </div>
     <SectionWrapper>
-      <>
-        <div class="flex flex-col gap-2 px-4">
-          <div class="flex items-center gap-2">
-            <div class="h-[3px] w-5 bg-emerald-600 rounded-full"></div>
-            <h6 class="text-emerald-600 font-bold text-sm tracking-wide">
-              MEIST
-            </h6>
-          </div>
-          <h2 class="font-bold text-xl text-zinc-700">Kes me oleme?</h2>
-        </div>
-        <p class="text-zinc-500 text-sm leading-6 mt-2 px-4">
-          EVÜS on alates 2013. aasta kevadest Tartus tegutsev
-          loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse
-          eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala
-          üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste
-          füüsiliste ja juriidiliste isikutega.
-        </p>
-        <div class="relative flex justify-center mt-12 pb-2 px-4">
-          <div class="rounded-lg overflow-hidden z-10 -rotate-2">
-            <Image
-              src="./Team.jpg"
-              alt="image"
-              format="jpg"
-              width={400}
-              height={300}
-              fit="contain"
-            />
-          </div>
-          <div class="absolute top-0 left-0 w-full h-full z-0 px-4">
-            <div
-              class="w-[100%] h-[100%] bg-emerald-600/40 rounded-lg rotate-3"
-            >
-            </div>
-          </div>
-        </div>
-        <div class="px-4 mt-6">
-          <a href="/info">
-            <button class="flex items-center gap-0.5">
-              <span class="text-emerald-600 font-medium">Loe meist rohkem</span>
-              <ChevronRightIcon className="text-emerald-600 w-5 h-5" />
-            </button>
-          </a>
-        </div>
-      </>
+      <About />
     </SectionWrapper>
     <Footer />
   </main>
