@@ -1,0 +1,119 @@
+---
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import Header from '../../UI/Header.astro';
+
+const posts = [
+  {
+    title: 'Boost your conversion rate',
+    href: '#',
+    category: { name: 'Article', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+    date: 'Mar 16, 2022',
+    datetime: '2022-03-16',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '6 min',
+  },
+  {
+    title: 'How to use search engine optimization to drive sales',
+    href: '#',
+    category: { name: 'Video', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
+    date: 'Mar 10, 2022',
+    datetime: '2022-03-10',
+    imageUrl:
+      'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '4 min',
+  },
+  {
+    title: 'Improve your customer experience',
+    href: '#',
+    category: { name: 'Case Study', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+    date: 'Feb 12, 2022',
+    datetime: '2022-02-12',
+    imageUrl:
+      'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '11 min',
+  },
+];
+---
+
+<div
+  class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-11rem]"
+>
+  <svg
+    class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-5rem)] sm:h-[42.375rem]"
+    viewBox="0 0 1155 678"
+  >
+    <path
+      fill="url(#fda4af-d39d-499b-bd42-aeea3e93f5ff)"
+      fill-opacity=".3"
+      d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
+    ></path>
+    <defs>
+      <linearGradient
+        id="fda4af-d39d-499b-bd42-aeea3e93f5ff"
+        x1="1155.49"
+        x2="-78.208"
+        y1=".177"
+        y2="474.645"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#059669"></stop>
+        <stop offset={1} stop-color="#fda4af"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+<div class="relative px-4 max-w-screen-xl mx-auto">
+  <Header
+    subheader="BLOGI"
+    header="Loe ja tutvu meie tegevustega"
+    text="Mingi suvaline teks mis on tegelikult hästi lahe. Mingi suvaline teks mis on tegelikult hästi lahe."
+  />
+  <div
+    class="mx-auto mt-12 grid max-w-sm gap-6 lg:gap-12 lg:max-w-none lg:grid-cols-3"
+  >
+    {
+      posts.map((post) => (
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+          <div class="flex-shrink-0">
+            <img class="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+          </div>
+          <div class="flex flex-1 flex-col justify-between bg-white p-6">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-emerald-600">
+                <a href={post.category.href} class="hover:underline">
+                  {post.category.name}
+                </a>
+              </p>
+              <a href={post.href} class="mt-3 block">
+                <p class="text-xl font-semibold text-zinc-900">{post.title}</p>
+                <p class="mt-3 text-sm lg:text-base text-zinc-500">
+                  {post.description}
+                </p>
+              </a>
+            </div>
+            <div class="flex space-x-1 text-sm text-zinc-500 mt-6">
+              <time datetime={post.datetime}>{post.date}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{post.readingTime} read</span>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <a href="/blog">
+    <button
+      class="mt-12 flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
+    >
+      <span class="text-inherit font-medium">Vaata kõiki</span>
+      <ChevronRightIcon className="text-inherit w-5 h-5" />
+    </button>
+  </a>
+</div>

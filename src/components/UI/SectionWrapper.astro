@@ -1,1 +1,11 @@
-<section class="relative w-full overflow-hidden py-20"><slot /></section>
+---
+import clsx from 'clsx';
+
+const { className } = Astro.props;
+---
+
+<section
+  class={clsx('relative w-full overflow-hidden py-20 lg:py-36', className)}
+>
+  <slot />
+</section>

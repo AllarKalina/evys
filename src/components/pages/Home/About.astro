@@ -4,57 +4,62 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Header from '../../UI/Header.astro';
 ---
 
-<div
-  class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row md:gap-12 lg:gap-24"
->
-  <div>
-    <Header
-      subheader="MEIST"
-      header="Kes me oleme?"
-      text="EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste isikutega."
-    />
-    <div class="hidden md:block mt-6">
+<div class="max-w-screen-xl mx-auto px-4">
+  <div class="relative flex flex-col md:flex-row md:gap-12 lg:gap-24">
+    <div
+      class="absolute w-3/4 -top-[10%] -left-[3%] h-[120%] bg-emerald-600/10 rounded-xl z-0"
+    >
+    </div>
+    <div class="relative z-10 flex flex-col">
+      <Header
+        subheader="MEIST"
+        header="Kes me oleme?"
+        text="EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste isikutega."
+      />
+      <div class="hidden md:block mt-auto">
+        <a href="/info">
+          <button
+            class="flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
+          >
+            <span class="text-inherit font-medium">Loe meist rohkem</span>
+            <ChevronRightIcon className="text-inherit w-5 h-5" />
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="relative flex justify-start mt-12 pb-2 px-4 md:mt-0">
+      <div class="relative h-fit">
+        <div
+          class="relative rounded-lg overflow-hidden z-20 -rotate-1 shadow-lg"
+        >
+          <Image
+            src="./Team.jpg"
+            alt="image"
+            format="jpg"
+            width={600}
+            height={420}
+            fit="contain"
+          />
+        </div>
+        <div
+          class="absolute top-0 left-0 w-full h-full z-0 px-4 flex justify-start items-center"
+        >
+          <div
+            class="w-full h-full bg-emerald-600/50 rounded-lg rotate-1 backdrop-blur"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 mt-6 md:hidden">
       <a href="/info">
         <button
-          class="flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-700 transition-all"
+          class="flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
         >
           <span class="text-inherit font-medium">Loe meist rohkem</span>
           <ChevronRightIcon className="text-inherit w-5 h-5" />
         </button>
       </a>
     </div>
-  </div>
-
-  <div class="relative flex justify-start mt-12 pb-2 px-4 md:mt-0">
-    <div class="relative h-fit">
-      <div
-        class="relative rounded-lg overflow-hidden z-20 -rotate-1 shadow-xl shadow-zinc-700/30"
-      >
-        <Image
-          src="./Team.jpg"
-          alt="image"
-          format="jpg"
-          width={600}
-          height={420}
-          fit="contain"
-        />
-      </div>
-      <div
-        class="absolute top-0 left-0 w-full h-full z-0 px-4 flex justify-start items-center"
-      >
-        <div
-          class="w-full h-full bg-emerald-600/50 rounded-lg rotate-3 backdrop-blur"
-        >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="px-4 mt-6 md:hidden">
-    <a href="/info">
-      <button class="flex items-center gap-0.5">
-        <span class="text-emerald-600 font-medium">Loe meist rohkem</span>
-        <ChevronRightIcon className="text-emerald-600 w-5 h-5" />
-      </button>
-    </a>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { Image } from '@astrojs/image/components';
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
 import About from '../components/pages/Home/About.astro';
+import Blog from '../components/pages/Home/Blog.astro';
 import Hero from '../components/pages/Home/Hero.astro';
 import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
@@ -54,6 +55,9 @@ const { pathname } = Astro.url;
     </div>
     <SectionWrapper>
       <About />
+    </SectionWrapper>
+    <SectionWrapper className="bg-emerald-50/40 backdrop-blur">
+      <Blog />
     </SectionWrapper>
     <Footer />
   </main>

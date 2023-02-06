@@ -13,7 +13,7 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
   const menuItemArray = [
     { id: 0, title: 'Seltsi Info', href: '/info' },
     { id: 1, title: 'Loomaarsti õpe', href: '/' },
-    { id: 2, title: 'Blogi', href: '/' },
+    { id: 2, title: 'Blogi', href: '/blog' },
     { id: 3, title: 'Toetajad', href: '/' },
   ];
 
