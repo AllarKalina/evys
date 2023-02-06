@@ -3,7 +3,11 @@ import { useState } from 'react';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
-const Navbar = () => {
+interface Props {
+  currentPath: string;
+}
+
+const Navbar: React.FC<Props> = ({ currentPath }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItemArray = [
@@ -32,8 +36,9 @@ const Navbar = () => {
           setIsMobileMenuOpen(!isMobileMenuOpen);
         }}
         menuItems={menuItemArray}
+        currentPath={currentPath}
       />
-      <DesktopMenu menuItems={menuItemArray} />
+      <DesktopMenu menuItems={menuItemArray} currentPath={currentPath} />
     </section>
   );
 };

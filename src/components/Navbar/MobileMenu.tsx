@@ -6,12 +6,14 @@ interface Props {
   isMenuOpen: boolean;
   onMenuChange: () => void;
   menuItems: MenuItem[];
+  currentPath: string;
 }
 
 const MobileMenu: React.FC<Props> = ({
   isMenuOpen,
   onMenuChange,
   menuItems,
+  currentPath,
 }) => {
   return (
     <>
@@ -28,9 +30,13 @@ const MobileMenu: React.FC<Props> = ({
         <span />
       </button>
       {isMenuOpen && (
-        <nav className="flex-col justify-end gap-8 absolute top-[63px] px-7 pb-40 left-0 bg-emerald-600/95 backdrop-blur h-[calc(100vh-63px)] w-full flex">
+        <nav className="flex-col justify-end gap-8 absolute top-[63px] px-7 pb-40 left-0 bg-emerald-600/80 backdrop-blur h-[calc(100vh-63px)] w-full flex">
           {menuItems.map((item) => (
-            <NavItem {...item} className="text-4xl" />
+            <NavItem
+              {...item}
+              className="text-4xl"
+              active={item.href === currentPath}
+            />
           ))}
         </nav>
       )}

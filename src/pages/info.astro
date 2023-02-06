@@ -29,51 +29,65 @@ const people = [
   },
   // More people...
 ];
+
+const { pathname } = Astro.url;
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
-    <Navbar client:load />
+    <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
-      <div class="pt-[60px] px-4 flex flex-col gap-3">
-        <h1 class="text-5xl text-emerald-600 font-semibold leading-tight">
+      <div class="pt-[60px] px-4 flex flex-col gap-3 max-w-screen-lg mx-auto">
+        <h1
+          class="text-5xl text-emerald-600 font-semibold leading-tight lg:text-6xl"
+        >
           Seltsi info
         </h1>
-        <h3 class="text-zinc-600">
+        <h3 class="text-zinc-600 lg:text-lg lg:max-w-md mt-1">
           Kogu seltsiga seonduv informatsioon. Tartus tegutsev
           loomaarstitudengeid ühendav mittetulundusühing.
         </h3>
-        <div class="h-0.5 w-full bg-zinc-300 rounded-full my-8"></div>
-        <h2 class="text-xl text-emerald-600 font-semibold leading-tight">
-          EVÜS organisatsioon
+        <div class="h-0.5 w-full bg-zinc-300 rounded-full my-8 lg:w-3/5"></div>
+        <h2
+          class="text-xl text-emerald-600 font-semibold leading-tight lg:text-3xl"
+        >
+          EVÜS
         </h2>
-        <p class="text-zinc-600 text-sm leading-6 mt-3">
-          On alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid
+        <p class="text-zinc-600 text-sm leading-6 mt-3 lg:text-lg">
+          on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid
           ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada
           ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja
           teadustööd ning luua sidemeid teiste erialaste füüsiliste ja
           juriidiliste isikutega.
         </p>
-        <h3 class="text-emerald-600 font-semibold leading-tight mt-3">
+        <h3
+          class="text-emerald-600 font-semibold leading-tight mt-3 lg:text-xl"
+        >
           Tudengile
         </h3>
-        <p class="text-zinc-600 text-sm leading-6">
+        <p class="text-zinc-600 text-sm leading-6 lg:text-lg">
           Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
           mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
           tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
         </p>
-        <h3 class="text-emerald-600 font-semibold leading-tight mt-3">
+        <h3
+          class="text-emerald-600 font-semibold leading-tight mt-3 lg:text-xl"
+        >
           Visioon
         </h3>
-        <p class="text-zinc-600 text-sm leading-6">
+        <p class="text-zinc-600 text-sm leading-6 lg:text-lg">
           Eestis on maailma parima ettevalmistusega veterinaarid, kes töötavad
           koostööalti kogukonnana tervete ja õnnelike loomade ning inimeste
           nimel!
         </p>
-        <h3 class="text-emerald-600 font-semibold leading-tight mt-3">
+        <h3
+          class="text-emerald-600 font-semibold leading-tight mt-3 lg:text-xl"
+        >
           Missioon
         </h3>
-        <ul class="text-zinc-600 text-sm leading-6 list-disc list-inside">
+        <ul
+          class="text-zinc-600 text-sm leading-6 list-disc list-inside lg:text-lg"
+        >
           <li class="my-2">
             Täiendada akadeemilist õpet põnevate väljunditega.
           </li>
@@ -85,7 +99,7 @@ const people = [
             Tõsta inimeste teadlikust veterinaaria rolli kohta ühiskonnas.
           </li>
           <li class="my-2">
-            Arendada erialaülest koostööd nii Eestis kui välismaal
+            Arendada erialaülest koostööd nii Eestis kui välismaal.
           </li>
         </ul>
         <div
@@ -185,28 +199,15 @@ const people = [
               method="POST"
               class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             >
-              <div>
+              <div class="sm:col-span-2">
                 <label class="block text-xs font-medium text-zinc-600">
-                  Eesnimi
+                  Nimi
                 </label>
                 <div class="mt-1">
                   <input
                     type="text"
                     name="first-name"
                     id="first-name"
-                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs font-medium text-zinc-600">
-                  Perekonna nimi
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
                     class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   />
                 </div>
@@ -240,7 +241,7 @@ const people = [
               <div class="sm:col-span-2 mt-6">
                 <button
                   type="submit"
-                  class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                 >
                   Saada kiri
                 </button>

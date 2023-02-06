@@ -1,5 +1,6 @@
 ---
 import { Image } from '@astrojs/image/components';
+import Header from '../../UI/Header.astro';
 
 const response = await fetch(
   'http://localhost:1337/api/galleries?populate=image',
@@ -14,51 +15,63 @@ const data = dataFetch.data;
 >
 </div>
 <div
-  class="z-20 relative px-4 pt-[180px] lg:pt-[160px] flex flex-col gap-20 max-w-screen-xl mx-auto"
+  class="z-20 relative px-4 pt-[160px] lg:pt-[160px] flex flex-col gap-20 max-w-screen-xl mx-auto"
 >
+  <div class="absolute top-1/3 -right-24 lg:top-20 lg:-left-8">
+    <svg width={200} height={200} fill="none" viewBox="0 0 200 200">
+      <defs>
+        <pattern
+          id="837c3e70-6c3a-44e6-8854-cc48c737b659"
+          x={0}
+          y={0}
+          width={20}
+          height={20}
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            x={0}
+            y={0}
+            width={4}
+            height={4}
+            class="text-zinc-200/80"
+            fill="currentColor"></rect>
+        </pattern>
+      </defs>
+      <rect
+        width={200}
+        height={200}
+        fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
+    </svg>
+  </div>
   {/* Hero section */}
   <div class="lg:flex lg:justify-between lg:gap-16">
     {/* Desktop images */}
     <article class="lg:flex flex-col hidden gap-12 flex-grow">
-      <div
-        class="w-full max-w-[300px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-400"
-      >
-        <Image
-          src="./People.webp"
-          width={280}
-          aspectRatio="7:9"
-          alt="image"
-          format="webp"
-          fit="contain"
-          class="w-full h-full"
-        />
-      </div>
-      <div
-        class="w-full max-w-[300px] overflow-hidden rounded-tr-lg rounded-bl-lg rotate-1 shadow-xl shadow-zinc-400"
-      >
-        <Image
-          src="./People.webp"
-          width={280}
-          aspectRatio="7:9"
-          alt="image"
-          format="webp"
-          fit="contain"
-          class="w-full h-full"
-        />
-      </div>
-      <div
-        class="w-full max-w-[300px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-400"
-      >
-        <Image
-          src="./People.webp"
-          width={280}
-          aspectRatio="7:9"
-          alt="image"
-          format="webp"
-          fit="contain"
-          class="w-full h-full"
-        />
-      </div>
+      {
+        data.slice(2).map((item: any) => {
+          return (
+            <div class="w-[260px] h-[330px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-700/30">
+              <Image
+                src={
+                  'http://localhost:1337' +
+                  item.attributes.image.data.attributes.formats.large.url
+                }
+                width={
+                  item.attributes.image.data.attributes.formats.large.width
+                }
+                height={
+                  item.attributes.image.data.attributes.formats.large.height
+                }
+                aspectRatio="6:9"
+                alt="image"
+                format="webp"
+                fit="contain"
+                class="w-full h-full"
+              />
+            </div>
+          );
+        })
+      }
     </article>
     {/* Hero header */}
     <header class="flex flex-col gap-6 lg:items-end">
@@ -70,69 +83,34 @@ const data = dataFetch.data;
       </h1>
       <article class="hidden lg:flex items-start w-full mt-12">
         <div class="lg:flex flex-col hidden gap-12">
-          <div
-            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
-          >
-            <Image
-              src="./People.webp"
-              width={280}
-              aspectRatio="7:9"
-              alt="image"
-              format="webp"
-              fit="contain"
-              class="w-full h-full"
-            />
-          </div>
-          <div
-            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
-          >
-            <Image
-              src="./People.webp"
-              width={280}
-              aspectRatio="7:9"
-              alt="image"
-              format="webp"
-              fit="contain"
-              class="w-full h-full"
-            />
-          </div>
-          <div
-            class="w-full max-w-[280px] overflow-hidden rounded-lg -rotate-1 shadow-lg"
-          >
-            <Image
-              src="./People.webp"
-              width={280}
-              aspectRatio="7:9"
-              alt="image"
-              format="webp"
-              fit="contain"
-              class="w-full h-full"
-            />
-          </div>
+          {
+            data.slice(2, 6).map((item: any) => {
+              return (
+                <div class="w-[260px] h-[330px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-xl shadow-zinc-700/30">
+                  <Image
+                    src={
+                      'http://localhost:1337' +
+                      item.attributes.image.data.attributes.formats.large.url
+                    }
+                    width={
+                      item.attributes.image.data.attributes.formats.large.width
+                    }
+                    height={
+                      item.attributes.image.data.attributes.formats.large.height
+                    }
+                    aspectRatio="6:9"
+                    alt="image"
+                    format="webp"
+                    fit="contain"
+                    class="w-full h-full"
+                  />
+                </div>
+              );
+            })
+          }
         </div>
-        <div class="flex flex-1 h-full justify-end pt-40 pr-16">
-          <div class="flex-col gap-2 max-w-sm hidden lg:flex">
-            <div class="flex items-center gap-2">
-              <div
-                class="h-[3px] w-5 bg-emerald-600 rounded-full lg:h-1 lg:w-6"
-              >
-              </div>
-              <h6
-                class="text-emerald-600 font-bold text-sm tracking-wide lg:text-base"
-              >
-                MEIE MISSIOON
-              </h6>
-            </div>
-            <h2 class="font-bold text-xl text-zinc-700 lg:text-2xl">
-              Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste
-              õppe- ja teadustööd.
-            </h2>
-            <p class="text-zinc-500 mt-2 text-sm leading-6 lg:text-base">
-              Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
-              mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
-              tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
-            </p>
-          </div>
+        <div class="flex flex-1 h-full justify-center pt-56 xl:pr-16">
+          <Header />
         </div>
       </article>
     </header>
@@ -141,7 +119,6 @@ const data = dataFetch.data;
   <div class="flex shrink-0 gap-5 justify-center lg:hidden sm:gap-7 md:gap9">
     {
       data.map((item: any) => {
-        console.log(item.attributes.image.data.attributes.formats.medium.url);
         return (
           <div class="overflow-hidden flex-none rounded-lg -rotate-2 shadow-lg w-[180px] aspect-[4/5]">
             <Image
@@ -164,21 +141,7 @@ const data = dataFetch.data;
     }
   </div>
   {/* Mobile our mission section */}
-  <div class="flex flex-col gap-2 max-w-sm lg:hidden">
-    <div class="flex items-center gap-2">
-      <div class="h-[3px] w-5 bg-emerald-600 rounded-full"></div>
-      <h6 class="text-emerald-600 font-bold text-sm tracking-wide">
-        MEIE MISSIOON
-      </h6>
-    </div>
-    <h2 class="font-bold text-xl text-zinc-700">
-      Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja
-      teadustööd.
-    </h2>
-    <p class="text-zinc-500 mt-2 text-sm leading-6">
-      Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
-      mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
-      tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
-    </p>
+  <div class="lg:hidden">
+    <Header />
   </div>
 </div>
