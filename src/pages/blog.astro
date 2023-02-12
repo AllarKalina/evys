@@ -1,7 +1,5 @@
 ---
 import Navbar from '../components/Navbar/Navbar';
-import Hero from '../components/pages/Home/Hero.astro';
-import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
 
 const { pathname } = Astro.url;
@@ -10,8 +8,5 @@ const { pathname } = Astro.url;
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <Navbar client:load currentPath={pathname} />
-    <SectionWrapper>
-      <Hero />
-    </SectionWrapper>
   </main>
 </Layout>

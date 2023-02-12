@@ -1,6 +1,9 @@
 ---
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Header from '../../UI/Header.astro';
+import DefaultBlogCard from './DefaultBlogCard.astro';
+import FullHeightBlogCard from './FullHeightBlogCard.astro';
+import FullWidthBlogCard from './FullWidthBlogCard.astro';
 
 const posts = [
   {
@@ -39,6 +42,18 @@ const posts = [
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
     readingTime: '11 min',
   },
+  {
+    title: 'Boost your conversion rate',
+    href: '#',
+    category: { name: 'Article', href: '#' },
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+    date: 'Mar 16, 2022',
+    datetime: '2022-03-16',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+    readingTime: '6 min',
+  },
 ];
 ---
 
@@ -73,47 +88,25 @@ const posts = [
   <Header
     subheader="BLOGI"
     header="Loe ja tutvu meie tegevustega"
-    text="Mingi suvaline teks mis on tegelikult hästi lahe. Mingi suvaline teks mis on tegelikult hästi lahe."
+    headerClassName="lg:text-5xl"
   />
-  <div
-    class="mx-auto mt-12 grid max-w-sm gap-6 lg:gap-12 lg:max-w-none lg:grid-cols-3"
-  >
-    {
-      posts.map((post) => (
-        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-          <div class="flex-shrink-0">
-            <img class="h-48 w-full object-cover" src={post.imageUrl} alt="" />
-          </div>
-          <div class="flex flex-1 flex-col justify-between bg-white p-6">
-            <div class="flex-1">
-              <p class="text-sm font-medium text-emerald-600">
-                <a href={post.category.href} class="hover:underline">
-                  {post.category.name}
-                </a>
-              </p>
-              <a href={post.href} class="mt-3 block">
-                <p class="text-xl font-semibold text-zinc-900">{post.title}</p>
-                <p class="mt-3 text-sm lg:text-base text-zinc-500">
-                  {post.description}
-                </p>
-              </a>
-            </div>
-            <div class="flex space-x-1 text-sm text-zinc-500 mt-6">
-              <time datetime={post.datetime}>{post.date}</time>
-              <span aria-hidden="true">&middot;</span>
-              <span>{post.readingTime} read</span>
-            </div>
-          </div>
-        </div>
-      ))
-    }
-  </div>
   <a href="/blog">
     <button
       class="mt-12 flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
     >
-      <span class="text-inherit font-medium">Vaata kõiki</span>
-      <ChevronRightIcon className="text-inherit w-5 h-5" />
+      <span class="text-inherit text-lg font-semibold">Vaata kõiki</span>
+      <ChevronRightIcon className="text-inherit w-6 h-6" />
     </button>
   </a>
+  <div
+    class="mx-auto mt-12 grid max-w-sm gap-6 lg:gap-12 lg:max-w-none lg:grid-cols-3 lg:grid-rows-2"
+  >
+    {
+      posts.map((post, idx) => {
+        if (idx === 0) return <FullHeightBlogCard post={post} />;
+        if (idx === 1) return <FullWidthBlogCard post={post} />;
+        return <DefaultBlogCard post={post} />;
+      })
+    }
+  </div>
 </div>
