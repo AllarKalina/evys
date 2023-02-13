@@ -41,7 +41,10 @@ const socials = [
         <div class="flex space-x-6">
           {
             socials.map((item) => (
-              <a href={item.href} class="text-gray-300 hover:text-gray-500">
+              <a
+                href={item.href}
+                class="text-zinc-200 hover:text-white transition-colors"
+              >
                 <span class="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>
@@ -53,12 +56,15 @@ const socials = [
         class="mt-16 lg:mt-0 col-span-2 flex flex-col lg:flex-row lg:w-full lg:justify-around"
       >
         <div>
-          <h3 class="text-lg font-medium text-zinc-200">EVÜS</h3>
+          <h3 class="text-lg font-medium text-white">EVÜS</h3>
           <ul role="list" class="mt-6 space-y-4">
             {
               menu.map((item) => (
                 <li>
-                  <a href={item.href} class="text-zinc-300 hover:text-zinc-700">
+                  <a
+                    href={item.href}
+                    class="text-zinc-300 hover:text-white transition-colors"
+                  >
                     {item.name}
                   </a>
                 </li>
@@ -67,14 +73,14 @@ const socials = [
           </ul>
         </div>
         <div class="mt-10 lg:mt-0">
-          <h3 class="text-lg font-medium text-zinc-200">KONTAKT</h3>
+          <h3 class="text-lg font-medium text-white">KONTAKT</h3>
           <ul role="list" class="mt-6 space-y-4">
             {
               contact.map((item) => (
                 <li>
                   <a
                     href={item.text}
-                    class="text-zinc-300 hover:text-zinc-700 flex gap-3"
+                    class="text-zinc-200 hover:text-white flex gap-3 transition-colors"
                   >
                     <item.icon className="h-6 w-6" aria-hidden="true" />
                     <span>{item.text}</span>
@@ -86,8 +92,8 @@ const socials = [
         </div>
       </div>
     </div>
-    <div class="mt-16 border-t border-white pt-8 sm:mt-20 lg:mt-24">
-      <p class="text-sm text-white">
+    <div class="mt-16 border-t border-zinc-200 pt-8 sm:mt-20 lg:mt-24">
+      <p class="text-sm text-zinc-200">
         &copy; 2023 EVÜS Org. All rights reserved.
       </p>
     </div>

@@ -58,7 +58,7 @@ const posts = [
 ---
 
 <div
-  class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-11rem]"
+  class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-5rem]"
 >
   <svg
     class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-5rem)] sm:h-[42.375rem]"
@@ -90,16 +90,23 @@ const posts = [
     header="Loe ja tutvu meie tegevustega"
     headerClassName="lg:text-5xl"
   />
-  <a href="/blog">
+  <a href="/blog" class="hidden lg:block">
     <button
-      class="mt-12 flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
+      class="mt-2 flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-700 transition-all"
     >
       <span class="text-inherit text-lg font-semibold">Vaata kõiki</span>
       <ChevronRightIcon className="text-inherit w-6 h-6" />
     </button>
   </a>
+  <div class="mx-auto mt-12 grid max-w-sm gap-6 lg:hidden">
+    {
+      posts.slice(0, 3).map((post) => {
+        return <FullHeightBlogCard post={post} />;
+      })
+    }
+  </div>
   <div
-    class="mx-auto mt-12 grid max-w-sm gap-6 lg:gap-12 lg:max-w-none lg:grid-cols-3 lg:grid-rows-2"
+    class="hidden mx-auto mt-12 max-w-sm gap-6 lg:grid lg:gap-12 lg:max-w-none lg:grid-cols-3 lg:grid-rows-2"
   >
     {
       posts.map((post, idx) => {

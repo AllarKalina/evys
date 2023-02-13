@@ -5,49 +5,74 @@ import Header from '../../UI/Header.astro';
 ---
 
 <div class="max-w-screen-xl mx-auto px-4">
-  <div class="relative flex flex-col md:flex-row md:gap-12 lg:gap-24">
-    <div
-      class="absolute w-3/4 -top-[10%] -left-[3%] h-[120%] bg-emerald-600/10 rounded-xl z-0"
-    >
-    </div>
+  <div class="absolute w-3/4 inset-0 h-full rounded-xl z-0 blur-3xl"></div>
+  <div class="relative flex flex-col md:flex-row md:justify-between">
     <div class="relative z-10 flex flex-col">
       <Header
         subheader="MEIST"
         header="Kes me oleme?"
+        headerClassName="lg:text-5xl"
         text="EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste isikutega."
       />
       <div class="hidden md:block mt-auto">
         <a href="/info">
           <button
-            class="flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-500 transition-all"
+            class="flex items-center gap-0.5 hover:gap-2 text-emerald-600 hover:text-emerald-700 transition-all"
           >
-            <span class="text-inherit font-medium">Loe meist rohkem</span>
+            <span class="text-inherit text-lg font-semibold"
+              >Loe meist rohkem</span
+            >
             <ChevronRightIcon className="text-inherit w-5 h-5" />
           </button>
         </a>
       </div>
     </div>
-    <div class="relative flex justify-start mt-12 pb-2 px-4 md:mt-0">
-      <div class="relative h-fit">
+    <div class="relative grid grid-cols-2 grid-rows-2 mt-12 pb-2 px-4 md:mt-0">
+      <div
+        class="absolute h-96 rounded-full w-96 -top-8 left-[35%] bg-emerald-600/5 backdrop-blur"
+      >
+      </div>
+      <div class="flex justify-end">
         <div
-          class="relative rounded-lg overflow-hidden z-20 -rotate-1 shadow-lg"
+          class="rounded-lg overflow-hidden z-20 shadow-lg w-1/2 h-fit rotate-1 mr-6"
         >
           <Image
             src="./Team.jpg"
             alt="image"
             format="jpg"
-            width={600}
-            height={420}
-            fit="contain"
+            width={400}
+            height={300}
+            fit="cover"
           />
         </div>
+      </div>
+      <div class="flex justify-center items-center row-span-2">
         <div
-          class="absolute top-0 left-0 w-full h-full z-0 px-4 flex justify-start items-center"
+          class="relative rounded-lg overflow-hidden z-20 shadow-lg h-3/4 w-3/4 -rotate-1"
         >
-          <div
-            class="w-full h-full bg-emerald-600/50 rounded-lg rotate-1 backdrop-blur"
-          >
-          </div>
+          <Image
+            src="./Team.jpg"
+            alt="image"
+            format="jpg"
+            width={400}
+            height={300}
+            fit="cover"
+            class="h-full"
+          />
+        </div>
+      </div>
+      <div class="flex justify-end -mt-6">
+        <div
+          class="relative rounded-lg overflow-hidden z-20 shadow-lg w-5/6 -rotate-1"
+        >
+          <Image
+            src="./Team.jpg"
+            alt="image"
+            format="jpg"
+            width={400}
+            height={300}
+            fit="cover"
+          />
         </div>
       </div>
     </div>
