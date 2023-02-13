@@ -12,7 +12,7 @@ const NavItem: React.FC<Props> = ({ title, href, className, active }) => {
     <a
       href={href}
       className={clsx(
-        'text-white font-semibold hover:text-rose-600 transition-colors',
+        'text-white font-semibold hover:text-rose-600 transition-colors tracking-wide text-sm',
         active && 'text-rose-600',
         className,
       )}
