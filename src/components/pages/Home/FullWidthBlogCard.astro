@@ -13,12 +13,12 @@ const { post } = Astro.props;
         </a>
       </p>
       <a href={post.href} class="mt-3 block">
-        <p class="text-4xl font-semibold text-zinc-900">
+        <p class="text-2xl font-semibold text-zinc-900">
           {post.title}
         </p>
       </a>
     </div>
-    <div class="flex space-x-1 text-sm text-zinc-500 mt-6">
+    <div class="flex space-x-1 text-md text-zinc-500 mt-6">
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>

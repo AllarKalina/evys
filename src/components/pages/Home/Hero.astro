@@ -46,7 +46,9 @@ const data = dataFetch.data;
   {/* Hero section */}
   <div class="lg:flex lg:justify-between lg:gap-16">
     {/* Desktop images */}
-    <article class="lg:flex flex-col hidden gap-12 flex-grow">
+    <article
+      class="lg:flex flex-col hidden gap-12 flex-grow md:items-end lg:items-start"
+    >
       {
         data.slice(2).map((item: any) => {
           return (
@@ -81,7 +83,7 @@ const data = dataFetch.data;
         Eesti Veterinaarmeditsiini <br class="sm:visible" /> Üliõpilaste
         <br class="sm:hidden" /> Selts
       </h1>
-      <article class="hidden lg:flex items-start w-full mt-12">
+      <article class="hidden lg:flex items-start w-full mt-12 lg:gap-12">
         <div class="lg:flex flex-col hidden gap-12">
           {
             data.slice(2, 4).map((item: any) => {

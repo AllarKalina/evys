@@ -88,7 +88,7 @@ const posts = [
   <Header
     subheader="BLOGI"
     header="Loe ja tutvu meie tegevustega"
-    headerClassName="lg:text-5xl"
+    headerClassName="lg:text-5xl leading-tight"
   />
   <a href="/blog" class="hidden lg:block">
     <button
@@ -98,12 +98,20 @@ const posts = [
       <ChevronRightIcon className="text-inherit w-6 h-6" />
     </button>
   </a>
-  <div class="mx-auto mt-12 grid max-w-sm gap-6 lg:hidden">
+  <div class="mt-12 grid md:grid-cols-2 max-w-sm md:max-w-2xl gap-6 lg:hidden">
     {
       posts.slice(0, 3).map((post) => {
         return <FullHeightBlogCard post={post} />;
       })
     }
+  </div>
+  <div class="mt-12 lg:hidden">
+    <a href="/blog" class="lg:hidden">
+      <button class="flex items-center gap-0.5 hover:gap-2 text-emerald-600">
+        <span class="text-inherit font-medium">Vaata kõiki</span>
+        <ChevronRightIcon className="text-inherit w-6 h-6" />
+      </button>
+    </a>
   </div>
   <div
     class="hidden mx-auto mt-12 max-w-sm gap-6 lg:grid lg:gap-12 lg:max-w-none lg:grid-cols-3 lg:grid-rows-2"
