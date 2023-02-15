@@ -1,0 +1,92 @@
+---
+import Footer from '../../components/Footer/Footer.astro';
+import Navbar from '../../components/Navbar/Navbar';
+import SideNav from '../../components/pages/Info/SideNav';
+import SectionWrapper from '../../components/UI/SectionWrapper.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const { pathname } = Astro.url;
+---
+
+<Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
+  <main class="flex flex-col items-center">
+    <Navbar client:load currentPath={pathname} />
+    <SectionWrapper>
+      <div class="px-4 flex flex-col gap-3 max-w-3xl mx-auto 2xl:max-w-5xl">
+        <h1
+          class="text-5xl text-zinc-700 font-semibold leading-tight lg:text-5xl"
+        >
+          Seltsist
+        </h1>
+        <h2 class="mt-12 text-xl text-emerald-600 font-semibold leading-6">
+          Kes me oleme?
+        </h2>
+        <p class="text-zinc-600 text-sm leading-6 lg:text-base">
+          EVÜS on alates 2013. aasta kevadest Tartus tegutsev
+          loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse
+          eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala
+          üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste
+          füüsiliste ja juriidiliste isikutega. Pakkudes loomaarstiks õppivatele
+          tudengitele erinevaid võimalusi mitmekülgseks arenguks,
+          eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa
+          aidata nende oskuste täienemisse.
+        </p>
+        <h3 class="mt-3 text-xl text-emerald-600 font-semibold leading-6">
+          Mis on meie missioon?
+        </h3>
+        <ul
+          class="text-zinc-600 text-sm leading-6 list-disc list-inside lg:text-base"
+        >
+          <li class="my-2">
+            Täiendada akadeemilist õpet põnevate väljunditega.
+          </li>
+          <li class="my-2">
+            Edendada loomatervishoidu, pidamiskultuuri ja heaolu ning ühtlasi
+            seista hea rahvatervise eest.
+          </li>
+          <li class="my-2">
+            Tõsta inimeste teadlikust veterinaaria rolli kohta ühiskonnas.
+          </li>
+          <li class="my-2">
+            Arendada erialaülest koostööd nii Eestis kui välismaal.
+          </li>
+        </ul>
+        <h3 class="mt-3 text-xl text-emerald-600 font-semibold leading-6">
+          Milline on meie visioon?
+        </h3>
+        <p class="text-zinc-600 text-sm leading-6 lg:text-base">
+          Eestis on maailma parima ettevalmistusega veterinaarid, kes töötavad
+          koostööalti kogukonnana tervete ja õnnelike loomade ning inimeste
+          nimel!
+        </p>
+        <h3 class="mt-3 text-xl text-emerald-600 font-semibold leading-6">
+          Mida me teeme?
+        </h3>
+        <p class="text-zinc-600 text-sm leading-6 lg:text-base">
+          Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+          mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+          tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+          Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+          mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+          tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+          Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+          mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+          tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+        </p>
+        <h3 class="mt-3 text-xl text-emerald-600 font-semibold leading-6">
+          Mida me pakume veterinaaria tudengile?
+        </h3>
+        <p class="text-zinc-600 text-sm leading-6 lg:text-base">
+          Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi
+          mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks
+          tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse.
+          Eestis on maailma parima ettevalmistusega veterinaarid, kes töötavad
+          koostööalti kogukonnana tervete ja õnnelike loomade ning inimeste
+          nimel!
+        </p>
+      </div>
+      <SideNav client:load currentPath={pathname} />
+    </SectionWrapper>
+    <Footer />
+  </main>
+</Layout>

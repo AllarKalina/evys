@@ -47,8 +47,8 @@ const Teams = () => {
                   className={clsx(
                     'relative -mt-px flex flex-none flex-col items-start pt-4 pb-6 text-left',
                     team.id === activeTeamIndex && 'border-t',
-                    team.id === 0 && 'border-blue-500',
-                    team.id === 1 && 'border-yellow-500',
+                    team.id === 0 && 'border-cyan-500',
+                    team.id === 1 && 'border-amber-500',
                     team.id === 2 && 'border-emerald-500',
                     team.id === 3 && 'border-rose-500',
                   )}
@@ -58,8 +58,8 @@ const Teams = () => {
                       'text-base font-semibold leading-6',
                       team.id === activeTeamIndex
                         ? clsx(
-                            team.id === 0 && 'text-blue-600',
-                            team.id === 1 && 'text-yellow-600',
+                            team.id === 0 && 'text-cyan-600',
+                            team.id === 1 && 'text-amber-600',
                             team.id === 2 && 'text-emerald-600',
                             team.id === 3 && 'text-rose-600',
                           )

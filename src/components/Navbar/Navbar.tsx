@@ -11,7 +11,7 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItemArray = [
-    { id: 0, title: 'Seltsi Info', href: '/info' },
+    { id: 0, title: 'Seltsist', href: '/info' },
     { id: 1, title: 'Loomaarsti õpe', href: '/' },
     { id: 2, title: 'Blogi', href: '/blog' },
     { id: 3, title: 'Toetajad', href: '/' },
@@ -27,7 +27,7 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
       )}
     >
       <a href="/">
-        <img src="./Logo.png" width={90} height={43} alt="Mobile logo" />
+        <img src="/images/Logo.png" width={90} height={43} alt="Mobile logo" />
       </a>
       <MobileMenu
         isMenuOpen={isMobileMenuOpen}
