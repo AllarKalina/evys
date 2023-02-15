@@ -8,7 +8,7 @@ const SideNav: React.FC<Props> = ({ currentPath }) => {
   const MENU_ITEMS = [
     {
       id: 0,
-      title: 'EVÜS',
+      title: 'Seltsist',
       href: '/info',
       isActive: currentPath === '/info',
     },

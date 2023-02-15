@@ -16,10 +16,10 @@ const MobileMenu: React.FC<Props> = ({
   currentPath,
 }) => {
   return (
-    <>
+    <div className="flex items-center md:hidden">
       <button
         id="nav-icon3"
-        className={clsx(isMenuOpen && 'open', 'm-2 min-[768px]:hidden')}
+        className={clsx(isMenuOpen && 'open', 'm-2')}
         onClick={() => onMenuChange()}
       >
         <span>
@@ -40,7 +40,7 @@ const MobileMenu: React.FC<Props> = ({
           ))}
         </nav>
       )}
-    </>
+    </div>
   );
 };
 

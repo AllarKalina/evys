@@ -12,13 +12,15 @@ const { pathname } = Astro.url;
   <main class="flex flex-col items-center">
     <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
-      <div class="px-4 flex flex-col gap-3 max-w-3xl mx-auto 2xl:max-w-5xl">
+      <div
+        class="pt-6 lg:pt-0 px-4 flex flex-col gap-3 max-w-3xl mx-auto 2xl:max-w-5xl"
+      >
         <h1
           class="text-5xl text-zinc-700 font-semibold leading-tight lg:text-5xl"
         >
           Seltsist
         </h1>
-        <h2 class="mt-12 text-xl text-emerald-600 font-semibold leading-6">
+        <h2 class="mt-6 text-xl text-emerald-600 font-semibold leading-6">
           Kes me oleme?
         </h2>
         <p class="text-zinc-600 text-sm leading-6 lg:text-base">
