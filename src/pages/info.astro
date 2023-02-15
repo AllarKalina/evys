@@ -1,7 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
+import clsx from 'clsx';
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
+import Teams from '../components/pages/Info/Teams';
 import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
 
@@ -14,20 +16,33 @@ const people = [
     linkedinUrl: '#',
   },
   {
+    name: 'Anette Loog',
+    role: 'Haridusjuht',
+    imageUrl: './Anette.webp',
+    twitterUrl: '#',
+    linkedinUrl: '#',
+  },
+  {
     name: 'Kelly Hiietamm',
-    role: 'Turunduse juhatus',
+    role: 'Turundus- ja kommunikatsioonijuht',
     imageUrl: './Kelly.webp',
     twitterUrl: '#',
     linkedinUrl: '#',
   },
   {
-    name: 'Anette Loog',
-    role: 'Hariduse juhatus',
-    imageUrl: './Anette.webp',
+    name: 'Liisa Tiin Sei',
+    role: 'Partnerlus- ja sponsorlusjuht',
+    imageUrl: './Liisa.webp',
     twitterUrl: '#',
     linkedinUrl: '#',
   },
-  // More people...
+  {
+    name: 'Säde Järvekülg',
+    role: 'Personalijuht',
+    imageUrl: './Säde.webp',
+    twitterUrl: '#',
+    linkedinUrl: '#',
+  },
 ];
 
 const { pathname } = Astro.url;
@@ -43,11 +58,8 @@ const { pathname } = Astro.url;
         >
           Seltsi info
         </h1>
-        <h3 class="text-zinc-600 lg:text-lg lg:max-w-md mt-1">
-          Kogu seltsiga seonduv informatsioon. Tartus tegutsev
-          loomaarstitudengeid ühendav mittetulundusühing.
-        </h3>
-        <div class="h-0.5 w-full bg-zinc-300 rounded-full my-8 lg:w-3/5"></div>
+        <div class="h-0.5 w-full bg-zinc-300 rounded-full mb-8 mt-2 lg:w-3/5">
+        </div>
         <h2
           class="text-xl text-emerald-600 font-semibold leading-tight lg:text-3xl"
         >
@@ -116,10 +128,12 @@ const { pathname } = Astro.url;
           />
         </div>
         {/* Team */}
-        <h2 class="text-xl text-emerald-600 font-semibold leading-tight mt-8">
+        <h2
+          class="text-xl text-emerald-600 font-semibold leading-tight lg:text-3xl mt-12"
+        >
           Juhtatus ja meeskonnad
         </h2>
-        <p class="text-zinc-600 text-sm leading-6 mt-3">
+        <p class="text-zinc-600 text-sm lg:text-lg leading-6 mt-3">
           Ornare sagittis, suspendisse in hendrerit quis. Sed dui aliquet lectus
           sit pretium egestas vel mattis neque.
         </p>
@@ -128,7 +142,7 @@ const { pathname } = Astro.url;
           class="space-y-9 mt-3 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
         >
           {
-            people.map((person) => (
+            people.map((person, idx) => (
               <li>
                 <div class="space-y-3">
                   <div class="w-full h-56 overflow-hidden rounded-lg">
@@ -140,9 +154,19 @@ const { pathname } = Astro.url;
                   </div>
 
                   <div class="space-y-3">
-                    <div class="space-y-1 text-lg font-medium leading-6 text-zinc-700">
-                      <h3>{person.name}</h3>
-                      <p class="text-emerald-600">{person.role}</p>
+                    <div class="space-y-1 font-semibold leading-6 text-zinc-700">
+                      <h3 class="text-lg lg:text-xl">{person.name}</h3>
+                      <p
+                        class={clsx(
+                          'text-md lg:text-lg',
+                          (idx === 0 || idx === 3) && 'text-emerald-600 ',
+                          idx === 1 && 'text-blue-600',
+                          idx === 2 && 'text-yellow-600',
+                          idx === 4 && 'text-rose-600',
+                        )}
+                      >
+                        {person.role}
+                      </p>
                     </div>
                     <ul role="list" class="flex space-x-5">
                       <li>
@@ -184,71 +208,7 @@ const { pathname } = Astro.url;
             ))
           }
         </ul>
-        {/* Forms */}
-        <div class="relative max-w-xl">
-          <h2 class="text-emerald-600 font-semibold leading-tight mt-8">
-            Liitumine
-          </h2>
-          <p class="text-zinc-600 text-sm leading-6 mt-3">
-            Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat
-            massa dictumst amet. Sapien tortor lacus arcu.
-          </p>
-          <div class="mt-6">
-            <form
-              action="#"
-              method="POST"
-              class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-            >
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-medium text-zinc-600">
-                  Nimi
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-medium text-gray-700">
-                  Email
-                </label>
-                <div class="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-              </div>
-              <div class="sm:col-span-2">
-                <label class="block text-xs font-medium text-gray-700">
-                  Sõnum
-                </label>
-                <div class="mt-1">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="sm:col-span-2 mt-6">
-                <button
-                  type="submit"
-                  class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-emerald-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                >
-                  Saada kiri
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <Teams client:visible />
       </div>
     </SectionWrapper>
     <Footer />
