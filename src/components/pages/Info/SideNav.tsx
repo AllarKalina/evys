@@ -21,8 +21,8 @@ const SideNav: React.FC<Props> = ({ currentPath }) => {
     {
       id: 0,
       title: 'Dokumendid',
-      href: '/',
-      isActive: currentPath === '/in',
+      href: '/info/documents',
+      isActive: currentPath === '/info/documents',
     },
   ];
 
