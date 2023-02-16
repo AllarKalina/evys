@@ -64,11 +64,10 @@ const { pathname } = Astro.url;
           Juhatuse liikmed 2022/2023
         </h2>
         <p class="text-zinc-600 text-sm leading-6 lg:text-base mt-3">
-          EVÜS on alates 2013. aasta kevadest Tartus tegutsev
-          loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse
-          eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala
-          üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste
-          füüsiliste ja juriidiliste isikutega.
+          Seltsil on viieliikmeline juhatus, mis koosneb esimehest ja neljast
+          juhatuse liikmest, kellest viimased vastutavad oma toimkonna tegevuse
+          eest. Juhatuse ja meeskonddade ülesannete kohta saate täpsemalt lugeda
+          seltsi põhikirjast, kodukorrast või toimkondade lingi alt.
         </p>
         <ul
           role="list"
@@ -107,7 +106,12 @@ const { pathname } = Astro.url;
             ))
           }
         </ul>
-        <Teams client:visible />
+        <h2 class="mt-12 text-xl text-emerald-600 font-semibold leading-6">
+          Meeskonnad
+        </h2>
+        <div class="lg:overflow-hidden">
+          <Teams client:visible />
+        </div>
       </div>
       <SideNav client:load currentPath={pathname} />
     </SectionWrapper>

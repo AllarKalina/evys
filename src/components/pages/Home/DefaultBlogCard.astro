@@ -21,7 +21,7 @@ const { post } = Astro.props;
         {post.title}
       </p>
     </a>
-    <div class="text-md text-white items-end flex space-x-1">
+    <div class="text-sm lg:text-md text-white items-end flex space-x-1">
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>
