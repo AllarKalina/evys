@@ -13,7 +13,7 @@ const response = await fetch(
     body: JSON.stringify({
       query: `
       query {
-        galleries {
+        galleries (sort: "order") {
           data {
             id 
             attributes {
