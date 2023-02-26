@@ -32,7 +32,7 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
         'bg-emerald-600/80 backdrop-blur flex justify-between fixed max-w-screen-xl z-50',
         isMobileMenuOpen && 'top-0 mx-0 px-7 pt-5 w-full',
         !isMobileMenuOpen &&
-          'top-3 mx-3 px-4 py-2 lg:py-3 rounded-xl w-[calc(100%-1.5rem)] ',
+          'top-3 mx-3 px-4 py-2 md:mx-6 lg:py-3 rounded-xl w-[calc(100%-1.5rem)] md:w-[calc(100%-3rem)] ',
       )}
     >
       <a href="/">

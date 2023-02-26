@@ -22,20 +22,20 @@ const DesktopMenu: React.FC<Props> = ({ menuItems, currentPath }) => {
         })}
         {/* Width is equal to logo width to keep menu items centered */}
       </nav>
-      <div className="max-[768px]:hidden w-[90px] flex justify-between items-center pl-3">
+      <div className="max-[768px]:hidden w-[90px] flex justify-between items-center pl-4">
         <a
           target="_blank"
           href="https://www.instagram.com/evus_vetmed/"
           rel="noreferrer"
         >
-          <FaInstagram className="w-7 h-7 fill-white cursor-pointer transition-all hover:fill-rose-600 hover:scale-110" />
+          <FaInstagram className="w-6 h-6 fill-white cursor-pointer transition-all hover:fill-rose-600 hover:scale-110" />
         </a>
         <a
           target="_blank"
           href="https://www.facebook.com/vetselts"
           rel="noreferrer"
         >
-          <FaFacebook className="w-7 h-7 fill-white cursor-pointer transition-all hover:fill-rose-600 hover:scale-105" />
+          <FaFacebook className="w-6 h-6 fill-white cursor-pointer transition-all hover:fill-rose-600 hover:scale-105" />
         </a>
       </div>
     </>

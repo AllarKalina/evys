@@ -1,10 +1,6 @@
 ---
 import Header from '../../UI/Header.astro';
 
-const baseUrl = import.meta.env.PROD
-  ? 'evys-api-production.up.railway.app'
-  : 'localhost:1337';
-
 const response = await fetch(
   'https://evys-api-production.up.railway.app/graphql',
   {
@@ -42,7 +38,7 @@ const data = json.data.galleries.data;
 >
 </div>
 <div
-  class="z-20 relative px-4 pt-[160px] lg:pt-[160px] flex flex-col gap-20 max-w-screen-xl mx-auto"
+  class="z-20 relative px-4 pt-[140px] md:px-8 lg:pt-[100px] flex flex-col gap-20 max-w-screen-xl mx-auto"
 >
   <div class="absolute top-1/3 -right-24 lg:top-20 lg:-left-8">
     <svg width={200} height={200} fill="none" viewBox="0 0 200 200">
@@ -71,11 +67,9 @@ const data = json.data.galleries.data;
     </svg>
   </div>
   {/* Hero section */}
-  <div class="lg:flex lg:justify-between lg:gap-16">
+  <div class="lg:flex lg:gap-16 xl:justify-between">
     {/* Desktop images */}
-    <article
-      class="lg:flex flex-col hidden gap-12 flex-grow md:items-end xl:items-start"
-    >
+    <article class="lg:flex flex-col hidden gap-12 flex-grow-0">
       {
         data.slice(0, 3).map((item: any) => {
           return (
@@ -91,9 +85,9 @@ const data = json.data.galleries.data;
       }
     </article>
     {/* Hero header */}
-    <header class="flex flex-col gap-6 lg:items-end">
+    <header class="flex flex-col gap-6">
       <h1
-        class="text-4xl text-white font-semibold sm:text-5xl md:text-6xl xl:text-7xl xl:leading-tight lg:tracking-wider"
+        class="text-3xl tracking-wide text-white font-semibold sm:text-5xl sm:leading-tight leading-tight lg:leading-tight xl:text-7xl xl:leading-tight"
       >
         Eesti Veterinaarmeditsiini <br class="sm:visible" /> Üliõpilaste
         <br class="sm:hidden" /> Selts
