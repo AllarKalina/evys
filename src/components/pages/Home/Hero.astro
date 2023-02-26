@@ -1,15 +1,40 @@
 ---
-import { Image } from '@astrojs/image/components';
 import Header from '../../UI/Header.astro';
 
 const baseUrl = import.meta.env.PROD
-  ? 'evys-api-production.up.railway.app/api'
-  : 'localhost:1337/api';
+  ? 'evys-api-production.up.railway.app'
+  : 'localhost:1337';
 
-const response = await fetch(`http://${baseUrl}/galleries?populate=image`);
+const response = await fetch(
+  'https://evys-api-production.up.railway.app/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query {
+        galleries {
+          data {
+            id 
+            attributes {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+    }),
+  },
+);
 
-const dataFetch = await response.json();
-const data = dataFetch.data;
+const json = await response.json();
+const data = json.data.galleries.data;
 ---
 
 <div
@@ -52,24 +77,12 @@ const data = dataFetch.data;
       class="lg:flex flex-col hidden gap-12 flex-grow md:items-end xl:items-start"
     >
       {
-        data.slice(2).map((item: any) => {
+        data.slice(0, 3).map((item: any) => {
           return (
             <div class="w-[260px] h-[330px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-lg">
-              <Image
-                src={
-                  'http://localhost:1337' +
-                  item.attributes.image.data.attributes.formats.large.url
-                }
-                width={
-                  item.attributes.image.data.attributes.formats.large.width
-                }
-                height={
-                  item.attributes.image.data.attributes.formats.large.height
-                }
-                aspectRatio="6:9"
+              <img
+                src={item.attributes.image.data.attributes.url}
                 alt="image"
-                format="webp"
-                fit="contain"
                 class="w-full h-full"
               />
             </div>
@@ -88,24 +101,12 @@ const data = dataFetch.data;
       <article class="hidden lg:flex items-start w-full mt-12 lg:gap-12">
         <div class="lg:flex flex-col hidden gap-12">
           {
-            data.slice(2, 4).map((item: any) => {
+            data.slice(3).map((item: any) => {
               return (
                 <div class="w-[260px] h-[330px] overflow-hidden rounded-tl-lg rounded-br-lg -rotate-1 shadow-lg">
-                  <Image
-                    src={
-                      'http://localhost:1337' +
-                      item.attributes.image.data.attributes.formats.large.url
-                    }
-                    width={
-                      item.attributes.image.data.attributes.formats.large.width
-                    }
-                    height={
-                      item.attributes.image.data.attributes.formats.large.height
-                    }
-                    aspectRatio="6:9"
+                  <img
+                    src={item.attributes.image.data.attributes.url}
                     alt="image"
-                    format="webp"
-                    fit="contain"
                     class="w-full h-full"
                   />
                 </div>
@@ -126,13 +127,13 @@ const data = dataFetch.data;
   </div>
   {/* Mobile images */}
   <div class="flex shrink-0 gap-5 justify-center lg:hidden sm:gap-7 md:gap9">
-    {
+    <!-- {
       data.map((item: any) => {
         return (
           <div class="overflow-hidden flex-none rounded-lg -rotate-2 shadow-lg w-[180px] aspect-[4/5]">
             <Image
               src={
-                'http://localhost:1337' +
+                `http://evys-api-production.up.railway.app` +
                 item.attributes.image.data.attributes.formats.medium.url
               }
               width={item.attributes.image.data.attributes.formats.medium.width}
@@ -147,7 +148,7 @@ const data = dataFetch.data;
           </div>
         );
       })
-    }
+    } -->
   </div>
   {/* Mobile our mission section */}
   <div class="lg:hidden">
