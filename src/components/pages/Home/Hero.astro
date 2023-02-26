@@ -3,7 +3,7 @@ import { Image } from '@astrojs/image/components';
 import Header from '../../UI/Header.astro';
 
 const baseUrl = import.meta.env.PROD
-  ? import.meta.env.FETCH_BASE_URL
+  ? 'evys-api-production.up.railway.app/api'
   : 'localhost:1337/api';
 
 const response = await fetch(`http://${baseUrl}/galleries?populate=image`);
