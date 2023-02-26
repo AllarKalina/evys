@@ -2,9 +2,11 @@
 import { Image } from '@astrojs/image/components';
 import Header from '../../UI/Header.astro';
 
-const response = await fetch(
-  'http://localhost:1337/api/galleries?populate=image',
-);
+const baseUrl = import.meta.env.PROD
+  ? import.meta.env.FETCH_BASE_URL
+  : 'localhost:1337/api';
+
+const response = await fetch(`http://${baseUrl}/galleries?populate=image`);
 
 const dataFetch = await response.json();
 const data = dataFetch.data;
@@ -116,6 +118,7 @@ const data = dataFetch.data;
             subheader="MEIE MISSIOON"
             header="Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd."
             text="Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse."
+            headerClassName="lg:text-2xl"
           />
         </div>
       </article>
