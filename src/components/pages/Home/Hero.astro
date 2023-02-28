@@ -1,7 +1,7 @@
 ---
 import Header from '../../UI/Header.astro';
 
-const response = await fetch(
+const galleryResponse = await fetch(
   'https://evys-api-production.up.railway.app/graphql',
   {
     method: 'POST',
@@ -29,8 +29,46 @@ const response = await fetch(
   },
 );
 
-const json = await response.json();
+const contentResponse = await fetch(
+  'https://evys-api-production.up.railway.app/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query {
+        homePageTexts {
+          data {
+            attributes {
+              title
+              subTitle
+              description
+              location
+            }
+          }
+        }
+      }
+    `,
+    }),
+  },
+);
+
+const json = await galleryResponse.json();
 const data = json.data.galleries.data;
+
+const json1 = await contentResponse.json();
+const data1 = json1.data.homePageTexts.data;
+
+const heroTexts = data1.find(
+  (content: any) => content.attributes.location === 'hero',
+).attributes;
+
+const typedHeroText: { title: string; subTitle: string; description: string } =
+  {
+    title: heroTexts.title,
+    subTitle: heroTexts.subTitle,
+    description: heroTexts.description,
+  };
 ---
 
 <div
@@ -38,9 +76,9 @@ const data = json.data.galleries.data;
 >
 </div>
 <div
-  class="z-20 relative px-4 pt-[140px] md:px-8 lg:pt-[100px] flex flex-col gap-20 max-w-screen-xl mx-auto"
+  class="z-20 relative px-4 pt-[100px] md:px-8 lg:pt-[100px] flex flex-col gap-20 max-w-screen-xl mx-auto"
 >
-  <div class="absolute top-1/3 -right-24 lg:top-20 lg:-left-8">
+  <div class="absolute top-1/3 -right-24 lg:top-12 lg:-left-8">
     <svg width={200} height={200} fill="none" viewBox="0 0 200 200">
       <defs>
         <pattern
@@ -101,7 +139,7 @@ const data = json.data.galleries.data;
                   <img
                     src={item.attributes.image.data.attributes.url}
                     alt="image"
-                    class="w-full h-full"
+                    class="w-full h-full object-cover"
                   />
                 </div>
               );
@@ -110,9 +148,9 @@ const data = json.data.galleries.data;
         </div>
         <div class="flex flex-1 justify-center pt-48">
           <Header
-            subheader="MEIE MISSIOON"
-            header="Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd."
-            text="Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse."
+            subTitle={typedHeroText.subTitle.toUpperCase()}
+            header={typedHeroText.title}
+            text={typedHeroText.description}
             headerClassName="lg:text-2xl"
           />
         </div>
@@ -121,35 +159,26 @@ const data = json.data.galleries.data;
   </div>
   {/* Mobile images */}
   <div class="flex shrink-0 gap-5 justify-center lg:hidden sm:gap-7 md:gap9">
-    <!-- {
+    {
       data.map((item: any) => {
         return (
           <div class="overflow-hidden flex-none rounded-lg -rotate-2 shadow-lg w-[180px] aspect-[4/5]">
-            <Image
-              src={
-                `http://evys-api-production.up.railway.app` +
-                item.attributes.image.data.attributes.formats.medium.url
-              }
-              width={item.attributes.image.data.attributes.formats.medium.width}
-              height={
-                item.attributes.image.data.attributes.formats.medium.height
-              }
+            <img
+              src={item.attributes.image.data.attributes.url}
               alt="image"
-              format="webp"
-              class="absolute inset-0 h-full w-full object-cover"
-              quality={100}
+              class="w-full h-full object-cover"
             />
           </div>
         );
       })
-    } -->
+    }
   </div>
   {/* Mobile our mission section */}
   <div class="lg:hidden">
     <Header
-      subheader="MEIE MISSIOON"
-      header="Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd."
-      text="Pakkudes loomaarstiks õppivatele tudengitele erinevaid võimalusi mitmekülgseks arenguks, eneseteostuseks ja meeleolukateks tudengiaastateks, loodame kaasa aidata nende oskuste täienemisse."
+      subTitle={typedHeroText.subTitle.toUpperCase()}
+      header={typedHeroText.title}
+      text={typedHeroText.description}
     />
   </div>
 </div>

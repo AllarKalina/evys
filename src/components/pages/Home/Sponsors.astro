@@ -1,0 +1,63 @@
+---
+const sponsorResponse = await fetch(
+  'https://evys-api-production.up.railway.app/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+        query {
+          sponsors {
+            data {
+              attributes {
+                logo {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    }),
+  },
+);
+
+const json2 = await sponsorResponse.json();
+const data2 = json2.data.sponsors.data;
+const typedSponsors: { url: string }[] = data2.map((sponsor: any) => {
+  return sponsor.attributes.logo.data.attributes.url;
+});
+
+console.log(typedSponsors);
+---
+
+<div class="bg-emerald-600 w-full">
+  <div class="mx-auto max-w-lg py-16 px-4">
+    <div class="flex items-center justify-center gap-5 flex-col">
+      <h6 class="text-white font-semibold text-lg tracking-wide">
+        Meid toetavad
+      </h6>
+      <div class="h-[3px] w-24 bg-white rounded-full"></div>
+    </div>
+    <div class="mt-2 -ml-8 flex flex-wrap justify-between lg:-ml-4">
+      {
+        typedSponsors.map((sponsor) => {
+          console.log(sponsor);
+          return (
+            <div class="relative mt-4 ml-8 w-[100px] h-[50px] lg:w-[230px] lg:h-[100px] flex flex-shrink-0 flex-grow lg:ml-4 lg:flex-grow-0">
+              <img
+                src={sponsor.url}
+                alt="image"
+                class="absolute top-1/2 left-1/2 min-w-full min-h-full transform -translate-x-1/2 -translate-y-1/2"
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>

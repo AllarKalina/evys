@@ -1,13 +1,13 @@
 ---
 import clsx from 'clsx';
 
-const { subheader, header, text, wrapperClassName, headerClassName } =
+const { subTitle, header, text, wrapperClassName, headerClassName } =
   Astro.props;
 ---
 
-<div class={clsx('flex flex-col gap-2 lg:gap-4  max-w-sm', wrapperClassName)}>
+<div class={clsx('flex flex-col gap-2 lg:gap-4  max-w-md', wrapperClassName)}>
   <h6 class="text-emerald-600 font-bold text-sm tracking-wide lg:text-base">
-    {subheader}
+    {subTitle}
   </h6>
   <h2 class={clsx('font-bold text-xl text-zinc-700 ', headerClassName)}>
     {header}
