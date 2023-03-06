@@ -1,18 +1,64 @@
 ---
-import { Image } from '@astrojs/image/components';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Header from '../../UI/Header.astro';
+
+const aboutUsResponse = await fetch(
+  'https://evys-api-production.up.railway.app/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+      query {
+        aboutUsImages {
+          data {
+            attributes {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              location
+            }
+          }
+        }
+      }
+    `,
+    }),
+  },
+);
+
+const json = await aboutUsResponse.json();
+const data = json.data.aboutUsImages.data;
+
+const smallLandscapeImage = data.find(
+  (item: any) => item.attributes.location === 'small_landscape',
+);
+
+const largeLandscapeImage = data.find(
+  (item: any) => item.attributes.location === 'large_landscape',
+);
+
+const portraitImage = data.find(
+  (item: any) => item.attributes.location === 'portrait',
+);
+
+console.log(data);
+
+console.log(smallLandscapeImage.attributes.image.data.attributes.url);
 ---
 
-<div class="max-w-screen-xl mx-auto px-4">
+<div class="max-w-screen-xl mx-auto px-4 md:px-8">
   <div class="absolute w-3/4 inset-0 h-full rounded-xl z-0 blur-3xl"></div>
   <div class="relative flex flex-col md:flex-row md:justify-between md:gap-12">
     <div class="relative z-10 flex flex-col">
       <Header
-        subheader="MEIST"
+        subTitle="MEIST"
         header="Kes me oleme?"
         headerClassName="lg:text-5xl whitespace-nowrap"
-        text="EVÜS on alates 2013. aasta kevadest Tartus tegutsev loomaarstitudengeid ühendav mittetulundusühing. Seltsi tegevuse eesmärgiks on tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe- ja teadustööd ning luua sidemeid teiste erialaste füüsiliste ja juriidiliste isikutega."
+        text="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale. Lisaks tudengite ülikoolielu rikastamisele on Seltsi eesmärk tutvustada veterinaarmeditsiini eriala ja loomaarsti elukutset üldhariduskoolide õpilastele. "
       />
       <div class="hidden md:block mt-6">
         <a href="/info">
@@ -60,13 +106,10 @@ import Header from '../../UI/Header.astro';
         <div
           class="rounded-lg overflow-hidden z-20 shadow-lg w-1/2 h-fit rotate-1 mr-6"
         >
-          <Image
-            src="./Team.jpg"
+          <img
+            src={smallLandscapeImage.attributes.image.data.attributes.url}
             alt="image"
-            format="jpg"
-            width={400}
-            height={300}
-            fit="cover"
+            class="object-cover"
           />
         </div>
       </div>
@@ -74,14 +117,10 @@ import Header from '../../UI/Header.astro';
         <div
           class="relative rounded-lg overflow-hidden z-20 shadow-lg h-3/4 w-fit lg:w-3/4 lg:-rotate-1"
         >
-          <Image
-            src="./Team.jpg"
+          <img
+            src={portraitImage.attributes.image.data.attributes.url}
             alt="image"
-            format="jpg"
-            width={400}
-            height={300}
-            fit="cover"
-            class="h-full"
+            class="h-full object-cover"
           />
         </div>
         <div
@@ -102,7 +141,7 @@ import Header from '../../UI/Header.astro';
                   y={0}
                   width={4}
                   height={4}
-                  class="text-emerald-600/40"
+                  class="text-emerald-600/50"
                   fill="currentColor"></rect>
               </pattern>
             </defs>
@@ -117,13 +156,10 @@ import Header from '../../UI/Header.astro';
         <div
           class="relative rounded-lg overflow-hidden z-20 shadow-lg w-5/6 -rotate-1 h-fit"
         >
-          <Image
-            src="./Team.jpg"
+          <img
+            src={largeLandscapeImage.attributes.image.data.attributes.url}
             alt="image"
-            format="jpg"
-            width={400}
-            height={300}
-            fit="cover"
+            class="object-cover"
           />
         </div>
       </div>
