@@ -31,9 +31,9 @@ const data2 = json2.data.sponsors.data;
 ---
 
 <div
-  class="relative bg-gradient-to-r from-emerald-600 to-cyan-700 w-full overflow-hidden"
+  class="relative bg-gradient-to-r from-emerald-600 to-cyan-700 w-full overflow-hidden shadow shadow-cyan-700 border-y border-cyan-600"
 >
-  <div class="absolute -top-52 -right-52 h-96 w-96 blur-2xl">
+  <div class="absolute -top-52 -right-64 h-96 w-96 blur-2xl">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <path
         fill="#0891b2"
@@ -43,19 +43,18 @@ const data2 = json2.data.sponsors.data;
   </div>
   <div class="mx-auto max-w-lg py-16 px-4">
     <div class="flex items-center justify-center gap-5 flex-col">
-      <h6 class="text-white font-semibold text-lg tracking-wide">
-        Meid toetavad
-      </h6>
+      <h6 class="text-white font-bold text-lg tracking-wide">Meid toetavad</h6>
       <div class="h-[3px] w-24 bg-white rounded-full"></div>
     </div>
     <div
-      class="grid grid-rows-2 gap-2 lg:gap-3 mt-6 lg:grid-cols-2 lg:grid-rows-1"
+      class="grid grid-rows-2 gap-3 lg:gap-5 mt-7 lg:grid-cols-2 lg:grid-rows-1"
     >
       {
         data2.map((sponsor: any) => {
           return (
             <div class="flex w-full justify-center">
-              <div class="bg-slate-200/30 backdrop-blur p-4 rounded-lg relative h-full flex items-center justify-center w-1/2 lg:w-full">
+              <div class="relative bg-slate-200/30 border border-slate-200/40 backdrop-blur p-4 rounded-lg h-full flex items-center justify-center w-[60%] lg:w-full">
+                <div class="noise" />
                 <img
                   src={sponsor.attributes.logo.data.attributes.url}
                   alt="image"

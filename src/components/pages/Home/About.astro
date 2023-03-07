@@ -44,10 +44,6 @@ const largeLandscapeImage = data.find(
 const portraitImage = data.find(
   (item: any) => item.attributes.location === 'portrait',
 );
-
-console.log(data);
-
-console.log(smallLandscapeImage.attributes.image.data.attributes.url);
 ---
 
 <div class="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -55,10 +51,10 @@ console.log(smallLandscapeImage.attributes.image.data.attributes.url);
   <div class="relative flex flex-col md:flex-row md:justify-between md:gap-12">
     <div class="relative z-10 flex flex-col">
       <Header
-        subTitle="MEIST"
+        subTitle="Meist"
         header="Kes me oleme?"
-        headerClassName="lg:text-5xl whitespace-nowrap"
-        text="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale. Lisaks tudengite ülikoolielu rikastamisele on Seltsi eesmärk tutvustada veterinaarmeditsiini eriala ja loomaarsti elukutset üldhariduskoolide õpilastele. "
+        headerClassName="!text-3xl lg:text-5xl"
+        text="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
       />
       <div class="hidden md:block mt-6">
         <a href="/info">

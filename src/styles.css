@@ -76,3 +76,34 @@
   width: 0%;
   left: 50%;
 }
+
+.bg-grid {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, #f6f6f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f6f6f6 1px, transparent 1px);
+  background-position: top center;
+  image-rendering: pixelated;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    10%,
+    white,
+    90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    10%,
+    white,
+    90%,
+    transparent
+  );
+}
+
+.noise {
+  background: url(/public/images/noise.png);
+  inset: 0;
+  position: absolute;
+  opacity: 0.15;
+}

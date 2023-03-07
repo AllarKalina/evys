@@ -5,15 +5,20 @@ const { subTitle, header, text, wrapperClassName, headerClassName } =
   Astro.props;
 ---
 
-<div class={clsx('flex flex-col gap-2 lg:gap-4  max-w-md', wrapperClassName)}>
-  <h6 class="text-emerald-600 font-bold text-sm tracking-wide lg:text-base">
+<div class={clsx('flex flex-col gap-2 max-w-md', wrapperClassName)}>
+  <h6 class="text-emerald-600 font-semibold text-sm lg:text-base">
     {subTitle}
   </h6>
-  <h2 class={clsx('font-bold text-xl text-zinc-700 ', headerClassName)}>
+  <h2
+    class={clsx(
+      'font-bold text-xl text-zinc-700 tracking-tight mt-2',
+      headerClassName,
+    )}
+  >
     {header}
   </h2>
-  <div class="h-[3px] w-56 bg-emerald-600 rounded-full my-3"></div>
-  <p class="text-zinc-600 text-sm leading-6 lg:leading-7 lg:text-base">
+  <div class="h-[2px] w-56 bg-emerald-600 rounded-full my-3"></div>
+  <p class="text-zinc-600 leading-relaxed">
     {text}
   </p>
 </div>
