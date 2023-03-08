@@ -14,11 +14,13 @@ const { pathname } = Astro.url;
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <Navbar client:load currentPath={pathname} />
-    <SectionWrapper>
+    <SectionWrapper className="bg-emerald-50/40 backdrop-blur">
       <Hero />
     </SectionWrapper>
     <Sponsors />
-    <SectionWrapper className="bg-emerald-50/40 backdrop-blur">
+    <SectionWrapper
+      className="bg-emerald-50/40 backdrop-blur border-b border-slate-200 shadow shadow-slate-200"
+    >
       <About />
     </SectionWrapper>
     <SectionWrapper className="bg-emerald-50/40 backdrop-blur">

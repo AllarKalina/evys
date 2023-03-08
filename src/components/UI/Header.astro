@@ -1,12 +1,25 @@
 ---
 import clsx from 'clsx';
 
-const { subTitle, header, text, wrapperClassName, headerClassName } =
-  Astro.props;
+const {
+  subTitle,
+  header,
+  text,
+  wrapperClassName,
+  headerClassName,
+  color = 'green',
+} = Astro.props;
 ---
 
 <div class={clsx('flex flex-col gap-2 max-w-md', wrapperClassName)}>
-  <h6 class="text-emerald-600 font-semibold text-sm lg:text-base">
+  <h6
+    class={clsx(
+      'text-emerald-600 font-semibold text-sm lg:text-base',
+      color === 'green' && 'text-emerald-600',
+      color === 'cyan' && 'text-cyan-600',
+      color === 'rose' && 'text-rose-600',
+    )}
+  >
     {subTitle}
   </h6>
   <h2
@@ -17,8 +30,7 @@ const { subTitle, header, text, wrapperClassName, headerClassName } =
   >
     {header}
   </h2>
-  <div class="h-[2px] w-56 bg-emerald-600 rounded-full my-3"></div>
-  <p class="text-zinc-600 leading-relaxed">
+  <p class="text-zinc-600 leading-relaxed mt-2">
     {text}
   </p>
 </div>

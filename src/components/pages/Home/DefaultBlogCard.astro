@@ -6,12 +6,12 @@ const { post } = Astro.props;
   class="relative flex flex-col overflow-hidden rounded-lg shadow-lg hover:scale-[102%] transition-all cursor-pointer"
 >
   <div class="relative flex-shrink-0 h-full">
-    <div class="absolute bg-zinc-900/50 backdrop-blur-sm inset-0 h-full w-full">
+    <div class="absolute bg-zinc-900/60 backdrop-blur-sm inset-0 h-full w-full">
     </div>
     <img class="h-full w-full object-cover" src={post.imageUrl} alt="" />
   </div>
   <div class="absolute flex flex-col justify-between p-6 h-full">
-    <p class="text-md font-semibold text-emerald-500">
+    <p class="font-semibold text-emerald-500">
       <a href={post.category.href} class="hover:underline">
         {post.category.name}
       </a>
@@ -21,7 +21,7 @@ const { post } = Astro.props;
         {post.title}
       </p>
     </a>
-    <div class="text-sm lg:text-md text-white items-end flex space-x-1">
+    <div class="text-sm font-medium text-white items-end flex space-x-1">
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>

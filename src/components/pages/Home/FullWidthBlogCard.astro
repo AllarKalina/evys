@@ -7,7 +7,7 @@ const { post } = Astro.props;
 >
   <div class="flex flex-1 flex-col justify-between bg-white p-6">
     <div class="flex-1">
-      <p class="text-md font-medium text-emerald-600">
+      <p class="font-semibold text-cyan-600">
         <a href={post.category.href} class="hover:underline">
           {post.category.name}
         </a>
@@ -18,7 +18,7 @@ const { post } = Astro.props;
         </p>
       </a>
     </div>
-    <div class="flex space-x-1 text-sm lg:text-md text-zinc-500 mt-6">
+    <div class="flex space-x-1 text-sm font-medium text-zinc-500 mt-6">
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>
