@@ -102,7 +102,7 @@
 }
 
 .noise {
-  background: url(/public/images/noise.png);
+  background: url(/images/noise.png);
   inset: 0;
   position: absolute;
   opacity: 0.15;
