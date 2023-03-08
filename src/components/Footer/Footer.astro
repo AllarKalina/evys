@@ -33,7 +33,7 @@ const socials = [
       <div class="space-y-8">
         <img src="/images/Logo.png" width={90} height={43} alt="Mobile logo" />
         <p class="text-zinc-200">
-          Tutvustada ja arendada veterinaarmeditsiini eriala üliõpilaste õppe-
+          Tutvustame ja arendame veterinaarmeditsiini eriala üliõpilaste õppe-
           ja teadustööd.
         </p>
         <div class="flex space-x-6">
@@ -51,11 +51,11 @@ const socials = [
         </div>
       </div>
       <div
-        class="mt-16 lg:mt-0 col-span-2 flex flex-col lg:flex-row lg:w-full lg:justify-around"
+        class="mt-10 lg:mt-0 col-span-2 flex flex-col lg:flex-row lg:w-full lg:justify-around"
       >
         <div>
           <h3 class="text-lg font-medium text-white">EVÜS</h3>
-          <ul role="list" class="mt-6 space-y-4">
+          <ul role="list" class="mt-4 space-y-3">
             {
               menu.map((item) => (
                 <li>
@@ -72,15 +72,15 @@ const socials = [
         </div>
         <div class="mt-10 lg:mt-0">
           <h3 class="text-lg font-medium text-white">KONTAKT</h3>
-          <ul role="list" class="mt-6 space-y-4">
+          <ul role="list" class="mt-4 space-y-3">
             {
               contact.map((item) => (
                 <li>
                   <a
                     href={item.text}
-                    class="text-zinc-200 hover:text-white flex gap-3 transition-colors"
+                    class="text-zinc-200 hover:text-white flex gap-3 transition-colors items-center"
                   >
-                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                    <item.icon className="h-5 w-5" aria-hidden="true" />
                     <span>{item.text}</span>
                   </a>
                 </li>
@@ -90,7 +90,7 @@ const socials = [
         </div>
       </div>
     </div>
-    <div class="mt-16 border-t border-zinc-200 pt-8 sm:mt-20 lg:mt-24">
+    <div class="mt-10 border-t border-zinc-200 pt-8 sm:mt-16">
       <p class="text-sm text-zinc-200">
         &copy; 2023 EVÜS Org. All rights reserved.
       </p>
