@@ -10,13 +10,13 @@ const { post } = Astro.props;
   </div>
   <div class="flex flex-1 flex-col justify-between bg-white p-6">
     <div class="flex-1">
-      <p class="font-semibold text-rose-600">
+      <p class="font-semibold text-rose-600 lg:text-lg">
         <a href={post.category.href} class="hover:underline">
           {post.category.name}
         </a>
       </p>
       <a href={post.href} class="mt-3 block">
-        <p class="text-xl lg:text-2xl font-semibold text-zinc-900">
+        <p class="text-xl lg:text-3xl font-bold text-zinc-900">
           {post.title}
         </p>
         <p class="mt-3 text-zinc-600 leading-relaxed">
@@ -24,7 +24,9 @@ const { post } = Astro.props;
         </p>
       </a>
     </div>
-    <div class="flex space-x-1 text-sm font-medium text-zinc-500 mt-6">
+    <div
+      class="flex space-x-1 text-sm font-medium text-zinc-500 mt-6 lg:text-base"
+    >
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>

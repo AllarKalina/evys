@@ -5,7 +5,10 @@ const { className } = Astro.props;
 ---
 
 <section
-  class={clsx('relative w-full overflow-hidden py-20 lg:py-32', className)}
+  class={clsx(
+    'relative w-full overflow-hidden py-20 lg:py-32 xl:py-40',
+    className,
+  )}
 >
   <slot />
 </section>

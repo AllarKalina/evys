@@ -18,7 +18,9 @@ const { post } = Astro.props;
         </p>
       </a>
     </div>
-    <div class="flex space-x-1 text-sm font-medium text-zinc-500 mt-6">
+    <div
+      class="flex space-x-1 text-sm font-medium text-zinc-500 mt-6 lg:text-base"
+    >
       <time datetime={post.datetime}>{post.date}</time>
       <span aria-hidden="true">&middot;</span>
       <span>{post.readingTime} read</span>

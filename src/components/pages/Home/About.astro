@@ -48,8 +48,10 @@ const portraitImage = data.find(
 
 <div class="max-w-screen-xl mx-auto px-4 md:px-8">
   <div class="absolute w-3/4 inset-0 h-full rounded-xl z-0 blur-3xl"></div>
-  <div class="relative flex flex-col md:flex-row md:justify-between md:gap-6">
-    <div class="relative z-10 flex flex-col lg:w-1/2">
+  <div
+    class="relative flex flex-col md:flex-row md:justify-between md:gap-6 lg:gap-12"
+  >
+    <div class="relative z-10 flex flex-col">
       <Header
         color="cyan"
         subTitle="Meist"
@@ -71,7 +73,7 @@ const portraitImage = data.find(
       </div>
     </div>
     <div
-      class="relative lg:w-1/2 lg:grid lg:grid-cols-2 lg:grid-rows-2 mt-12 md:mt-0"
+      class="relative lg:grid lg:grid-cols-2 lg:grid-rows-2 mt-12 md:mt-0 lg:w-3/4"
     >
       <div class="absolute -top-60 left-0 w-full h-full blur-3xl">
         <svg
@@ -112,7 +114,7 @@ const portraitImage = data.find(
       </div>
       <div class="relative flex lg:justify-center items-center row-span-2">
         <div
-          class="relative rounded-lg overflow-hidden z-20 shadow-lg w-full h-fit max-h-96 max-w-md md:max-h-none"
+          class="relative rounded-lg overflow-hidden z-20 shadow-lg h-full w-fit max-h-96 max-w-md md:max-h-full"
         >
           <img
             src={portraitImage.attributes.image.data.attributes.url}

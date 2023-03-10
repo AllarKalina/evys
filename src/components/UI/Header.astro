@@ -1,5 +1,8 @@
 ---
 import clsx from 'clsx';
+import AccentHeader from './Text/AccentHeader.astro';
+import BigSectionHeader from './Text/BigSectionHeader.astro';
+import Paragraph from './Text/Paragraph.astro';
 
 const {
   subTitle,
@@ -11,26 +14,18 @@ const {
 } = Astro.props;
 ---
 
-<div class={clsx('flex flex-col gap-2 max-w-md', wrapperClassName)}>
-  <h6
-    class={clsx(
-      'text-emerald-600 font-semibold text-sm lg:text-base',
-      color === 'green' && 'text-emerald-600',
-      color === 'cyan' && 'text-cyan-600',
-      color === 'rose' && 'text-rose-600',
-    )}
-  >
+<div class={clsx('max-w-md lg:max-w-lg', wrapperClassName)}>
+  <AccentHeader color={color}>
     {subTitle}
-  </h6>
-  <h2
-    class={clsx(
-      'font-bold text-xl text-zinc-700 tracking-tight mt-2',
-      headerClassName,
-    )}
-  >
-    {header}
-  </h2>
-  <p class="text-zinc-600 leading-relaxed mt-2">
-    {text}
-  </p>
+  </AccentHeader>
+  <div class="mt-4">
+    <BigSectionHeader>
+      {header}
+    </BigSectionHeader>
+  </div>
+  <div class="mt-2">
+    <Paragraph>
+      {text}
+    </Paragraph>
+  </div>
 </div>
