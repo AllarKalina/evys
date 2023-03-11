@@ -4,13 +4,13 @@ import clsx from 'clsx';
 const { color = 'green' } = Astro.props;
 ---
 
-<span
+<p
   class={clsx(
-    'font-semibold text-sm lg:text-lg',
+    'text-base font-semibold leading-7',
     color === 'green' && 'text-emerald-600',
     color === 'cyan' && 'text-cyan-600',
     color === 'rose' && 'text-rose-600',
   )}
 >
   <slot />
-</span>
+</p>
