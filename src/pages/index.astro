@@ -3,10 +3,11 @@ import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
 import About from '../components/pages/Home/About.astro';
 import Blog from '../components/pages/Home/Blog.astro';
-import Hero from '../components/pages/Home/Hero.astro';
-import Sponsors from '../components/pages/Home/Sponsors.astro';
 import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
+import HeroIllustration from '../modules/HomePage/HeroIllustration.astro';
+import HeroSection from '../modules/HomePage/HeroSection.astro';
+import SponsorSection from '../modules/HomePage/SponsorSection.astro';
 
 const { pathname } = Astro.url;
 ---
@@ -15,9 +16,10 @@ const { pathname } = Astro.url;
   <main class="flex flex-col items-center">
     <Navbar client:load currentPath={pathname} />
     <SectionWrapper className="bg-emerald-50/40 backdrop-blur overflow-hidden">
-      <Hero />
+      <HeroIllustration />
+      <HeroSection />
     </SectionWrapper>
-    <Sponsors />
+    <SponsorSection />
     <SectionWrapper
       className="bg-emerald-50/40 backdrop-blur border-b border-slate-200 shadow shadow-slate-200"
     >

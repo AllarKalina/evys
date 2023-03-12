@@ -1,0 +1,60 @@
+---
+import SponsorItem from './SponsorItem';
+
+const sponsorResponse = await fetch(
+  'https://evys-api-production.up.railway.app/graphql',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+        query {
+          sponsors {
+            data {
+              attributes {
+                logo {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    }),
+  },
+);
+
+const json2 = await sponsorResponse.json();
+const data2 = json2.data.sponsors.data;
+---
+
+<main
+  class="relative bg-gradient-to-r from-emerald-600 to-cyan-700 w-full overflow-hidden shadow shadow-cyan-700 border-y border-cyan-600"
+>
+  <section class="mx-auto max-w-lg py-20 px-4 xl:py-32">
+    <header class="flex items-center justify-center gap-4 flex-col">
+      <h6 class="text-white font-bold text-lg tracking-wide lg:text-xl">
+        Meid toetavad
+      </h6>
+      <figure class="h-[3px] w-24 bg-white rounded-full"></figure>
+    </header>
+    <ul
+      class="grid grid-rows-2 gap-4 lg:gap-8 mt-8 lg:grid-cols-2 lg:grid-rows-1"
+    >
+      {
+        data2.map((sponsor: any) => {
+          return (
+            <SponsorItem
+              client:visible
+              imageUrl={sponsor.attributes.logo.data.attributes.url}
+            />
+          );
+        })
+      }
+    </ul>
+  </section>
+</main>

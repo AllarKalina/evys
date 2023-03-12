@@ -1,5 +1,7 @@
 ---
-import Header from '../../UI/Header.astro';
+import Header from '../../components/UI/Header.astro';
+import Mission from './Mission';
+import MobileImages from './MobileImages';
 
 const galleryResponse = await fetch(
   'https://evys-api-production.up.railway.app/graphql',
@@ -54,10 +56,14 @@ const contentResponse = await fetch(
 );
 
 const json = await galleryResponse.json();
-const data = json.data.galleries.data;
+const data: Array<any> = json.data.galleries.data;
 
 const json1 = await contentResponse.json();
 const data1 = json1.data.homePageTexts.data;
+
+const imageUrls = data.map(
+  (item: any) => item.attributes.image.data.attributes.url as string,
+);
 
 const heroTexts = data1.find(
   (content: any) => content.attributes.location === 'hero',
@@ -71,45 +77,11 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
   };
 ---
 
-<div
-  class="absolute -top-[5%] -left-[15%] h-[60%] lg:h-[42.5%] w-[120%] z-0 bg-gradient-to-br from-emerald-600 via-emerald-600 to-cyan-700"
+<main
+  class="z-20 relative px-4 pt-[100px] md:px-8 lg:pt-[100px] flex flex-col gap-20 max-w-screen-xl mx-auto"
 >
-</div>
-<div
-  class="bg-grid absolute bottom-0 h-[40%] lg:bottom-6 lg:h-[60%] left-0 w-full z-0"
->
-</div>
-<div
-  class="z-20 relative px-4 pt-[100px] md:px-8 lg:pt-[100px] flex flex-col gap-16 max-w-screen-xl mx-auto"
->
-  <div class="absolute -z-10 top-1/3 -right-24 lg:top-12 lg:-left-8 opacity-70">
-    <svg width={200} height={200} fill="none" viewBox="0 0 200 200">
-      <defs>
-        <pattern
-          id="837c3e70-6c3a-44e6-8854-cc48c737b659"
-          x={0}
-          y={0}
-          width={20}
-          height={20}
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x={0}
-            y={0}
-            width={4}
-            height={4}
-            class="text-zinc-100"
-            fill="currentColor"></rect>
-        </pattern>
-      </defs>
-      <rect
-        width={200}
-        height={200}
-        fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)"></rect>
-    </svg>
-  </div>
   {/* Hero section */}
-  <div class="lg:flex lg:gap-16 xl:justify-between">
+  <section class="lg:flex lg:gap-16 xl:justify-between">
     {/* Desktop images */}
     <article class="lg:flex flex-col hidden gap-12 flex-grow-0">
       {
@@ -159,31 +131,17 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
         </div>
       </article>
     </header>
-  </div>
+  </section>
   {/* Mobile images */}
-  <div
-    class="flex shrink-0 gap-5 justify-center mt-6 lg:hidden sm:gap-7 md:gap-9"
-  >
-    {
-      data.map((item: any) => {
-        return (
-          <div class="overflow-hidden flex-none rounded-lg -rotate-2 shadow-xl w-[180px] aspect-[4/5]">
-            <img
-              src={item.attributes.image.data.attributes.url}
-              alt="image"
-              class="w-full h-full object-cover"
-            />
-          </div>
-        );
-      })
-    }
-  </div>
-  {/* Mobile our mission section */}
-  <div class="lg:hidden">
-    <Header
+  <section class="mt-6 lg:hidden">
+    <MobileImages client:load imageUrls={imageUrls} />
+  </section>
+  {/* Mobile mission section */}
+  <section class="lg:hidden">
+    <Mission
+      client:load
       subTitle={typedHeroText.subTitle}
-      header={typedHeroText.title}
-      text={typedHeroText.description}
+      text={typedHeroText.title + typedHeroText.description}
     />
-  </div>
-</div>
+  </section>
+</main>
