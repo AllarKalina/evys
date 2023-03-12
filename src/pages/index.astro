@@ -1,10 +1,10 @@
 ---
 import Footer from '../components/Footer/Footer.astro';
 import Navbar from '../components/Navbar/Navbar';
-import About from '../components/pages/Home/About.astro';
 import Blog from '../components/pages/Home/Blog.astro';
 import SectionWrapper from '../components/UI/SectionWrapper.astro';
 import Layout from '../layouts/Layout.astro';
+import AboutSection from '../modules/HomePage/AboutSection.astro';
 import HeroIllustration from '../modules/HomePage/HeroIllustration.astro';
 import HeroSection from '../modules/HomePage/HeroSection.astro';
 import SponsorSection from '../modules/HomePage/SponsorSection.astro';
@@ -23,7 +23,7 @@ const { pathname } = Astro.url;
     <SectionWrapper
       className="bg-emerald-50/40 backdrop-blur border-b border-slate-200 shadow shadow-slate-200"
     >
-      <About />
+      <AboutSection />
     </SectionWrapper>
     <SectionWrapper className="bg-emerald-50/40 backdrop-blur">
       <Blog />

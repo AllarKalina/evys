@@ -1,11 +1,19 @@
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
 interface Props {
   subTitle: string;
+  header: string;
   text: string;
+  color?: string;
 }
 
-const Mission: React.FC<Props> = ({ subTitle, text }) => {
+const Mission: React.FC<Props> = ({
+  subTitle,
+  header,
+  text,
+  color = 'green',
+}) => {
   return (
     <motion.div
       initial={{ x: -16, opacity: 0 }}
@@ -14,12 +22,19 @@ const Mission: React.FC<Props> = ({ subTitle, text }) => {
       viewport={{ once: true }}
     >
       <div className="max-w-md lg:max-w-lg">
-        <p className="text-base font-semibold leading-7 text-emerald-600">
+        <p
+          className={clsx(
+            'text-base font-semibold leading-7 text-emerald-600',
+            color === 'green' && 'text-emerald-600',
+            color === 'cyan' && 'text-cyan-600',
+            color === 'rose' && 'text-rose-600',
+          )}
+        >
           {subTitle}
         </p>
         <div className="mt-2">
           <h2 className="text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl">
-            Võimendada veterinaarmeditsiini tudengeid
+            {header}
           </h2>
         </div>
         <div className="mt-4">
