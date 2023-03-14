@@ -21,25 +21,23 @@ const Mission: React.FC<Props> = ({
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
     >
-      <div className="max-w-md lg:max-w-lg">
-        <p
-          className={clsx(
-            'text-base font-semibold leading-7 text-emerald-600',
-            color === 'green' && 'text-emerald-600',
-            color === 'cyan' && 'text-cyan-600',
-            color === 'rose' && 'text-rose-600',
-          )}
-        >
-          {subTitle}
-        </p>
-        <div className="mt-2">
-          <h2 className="text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl">
-            {header}
-          </h2>
-        </div>
-        <div className="mt-4">
-          <p className="text-base lg:text-lg text-zinc-600">{text}</p>
-        </div>
+      <p
+        className={clsx(
+          'text-base font-semibold leading-7 text-emerald-600',
+          color === 'green' && 'text-emerald-600',
+          color === 'cyan' && 'text-cyan-600',
+          color === 'rose' && 'text-rose-600',
+        )}
+      >
+        {subTitle}
+      </p>
+      <div className="mt-2">
+        <h2 className="text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl">
+          {header}
+        </h2>
+      </div>
+      <div className="mt-4">
+        <p className="leading-7 text-base lg:text-lg text-zinc-600">{text}</p>
       </div>
     </motion.div>
   );

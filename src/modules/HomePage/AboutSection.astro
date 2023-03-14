@@ -50,7 +50,7 @@ const portraitImage = data.find(
   class="max-w-screen-xl mx-auto px-4 md:px-8 overflow-visible grid grid-cols-1 lg:gap-8 xl:gap-2 lg:grid-cols-5"
 >
   {/* Left column */}
-  <section class="col-span-1 lg:col-span-2">
+  <section class="col-span-1 max-w-md lg:col-span-2">
     <header class="sticky top-24">
       <Mission
         client:visible
@@ -62,22 +62,20 @@ const portraitImage = data.find(
     </header>
   </section>
   {/* Right column */}
-  <section class="col-span-1 lg:col-span-3 mt-24 lg:mt-48">
-    <ul role="list" class="-mt-12 space-y-12 divide-y divide-zinc-200">
+  <section class="col-span-1 lg:col-span-3 mt-12 lg:mt-48">
+    <ul role="list" class="pt-8 flex flex-col gap-12">
       <AboutItem
         client:visible
-        color="green"
-        accentHeader="Seltsist"
-        header="Kes me oleme"
+        color="cyan"
+        header="Seltsist"
         buttonText="Loe seltsist"
         description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
         imageUrl={portraitImage.attributes.image.data.attributes.url}
       />
       <AboutItem
         client:visible
-        color="cyan"
-        accentHeader="Juhatus ja meeskonnad"
-        header="Tegevused ja vastutused"
+        color="green"
+        header="Juhatus ja meeskonnad"
         buttonText="Tutvu meeskondadega"
         description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
         imageUrl={smallLandscapeImage.attributes.image.data.attributes.url}
@@ -85,9 +83,8 @@ const portraitImage = data.find(
       <AboutItem
         client:visible
         color="rose"
-        accentHeader="Seltsist"
-        header="Kes me oleme"
-        buttonText="Uuri dokumente"
+        header="Dokumendid"
+        buttonText="Vaata dokumente"
         description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
         imageUrl={largeLandscapeImage.attributes.image.data.attributes.url}
       />

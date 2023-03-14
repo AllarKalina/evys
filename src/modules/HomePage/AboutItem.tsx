@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 interface Props {
   imageUrl: string;
-  accentHeader: string;
   header: string;
   description: string;
   buttonText: string;
@@ -13,7 +12,6 @@ interface Props {
 
 const AboutItem: React.FC<Props> = ({
   imageUrl,
-  accentHeader,
   header,
   description,
   buttonText,
@@ -25,25 +23,25 @@ const AboutItem: React.FC<Props> = ({
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
-      className="flex flex-col pt-12 gap-10"
+      className="flex flex-col gap-6 relative"
     >
-      <div className="flex flex-col gap-10 sm:flex-row">
+      <div className="relative z-10 flex flex-col gap-10 sm:flex-row">
         <div className="max-w-xl flex-auto">
-          <p
+          <div
             className={clsx(
-              'text-base font-semibold leading-7',
-              color === 'green' && 'text-emerald-600',
-              color === 'cyan' && 'text-cyan-600',
-              color === 'rose' && 'text-rose-600',
+              'h-1 w-12 rounded-full',
+              color === 'green' && 'bg-emerald-600',
+              color === 'cyan' && 'bg-cyan-600',
+              color === 'rose' && 'bg-rose-600',
             )}
-          >
-            {accentHeader}
-          </p>
-          <h3 className="text-2xl font-bold leading-8 tracking-tight text-zinc-700 mt-1">
+          />
+          <h3 className="text-3xl font-bold tracking-tight text-zinc-700 mt-3">
             {header}
           </h3>
           <div className="mt-4">
-            <p className="text-base lg:text-lg text-zinc-600">{description}</p>
+            <p className="leading-7 text-base lg:text-lg text-zinc-600">
+              {description}
+            </p>
           </div>
         </div>
         <motion.img
@@ -56,7 +54,17 @@ const AboutItem: React.FC<Props> = ({
           alt=""
         />
       </div>
-      <a href="/info">
+      <motion.a
+        href="/info"
+        initial={{ x: -16, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{
+          ease: [0.74, 0.07, 0.38, 0.99],
+          duration: 0.72,
+        }}
+        viewport={{ once: true }}
+        className="w-fit"
+      >
         <button
           className={clsx(
             'flex items-center gap-0.5 hover:gap-2 transition-all',
@@ -70,7 +78,20 @@ const AboutItem: React.FC<Props> = ({
           </span>
           <ChevronRightIcon className="text-inherit w-5 h-5 stroke-2" />
         </button>
-      </a>
+      </motion.a>
+
+      {/* <motion.div
+        initial={{ x: -16, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
+        viewport={{ once: true }}
+        className={clsx(
+          'absolute z-0 bottom-12 left-1/2 !transform -translate-x-1/2 w-72 h-72 rotate-45 border-b-[6px] border-r-[6px] border-t-[6px] rounded-lg',
+          color === 'green' && 'border-emerald-600/10',
+          color === 'cyan' && 'border-cyan-600/10',
+          color === 'rose' && 'border-rose-600/10',
+        )}
+      /> */}
     </motion.li>
   );
 };
