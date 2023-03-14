@@ -41,6 +41,8 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
 
   const isInfo = currentPath.split("/")[1] === "info";
 
+  console.log(currentPath);
+
   const pages = currentPath
     .split("/")
     .slice(1)
