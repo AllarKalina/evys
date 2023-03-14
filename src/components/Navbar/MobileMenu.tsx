@@ -1,6 +1,6 @@
-import clsx from 'clsx';
-import NavItem from './NavItem';
-import type { MenuItem } from './types';
+import clsx from "clsx";
+import NavItem from "./NavItem";
+import type { MenuItem } from "./types";
 
 interface Props {
   isMenuOpen: boolean;
@@ -16,21 +16,21 @@ const MobileMenu: React.FC<Props> = ({
   currentPath,
 }) => {
   return (
-    <div className="flex items-center md:hidden">
+    <div className="bg-wwhite flex items-center md:hidden">
       <button
         id="nav-icon3"
-        className={clsx(isMenuOpen && 'open', 'm-2')}
+        className={clsx(isMenuOpen && "open", "m-2")}
         onClick={() => onMenuChange()}
       >
         <span>
-          <div className="bg-white w-[85%] h-full rounded-xl mr-[1px]" />
+          <div className="mr-[1px] h-full w-[85%] rounded-xl bg-white" />
         </span>
         <span />
         <span />
         <span />
       </button>
       {isMenuOpen && (
-        <nav className="flex-col justify-end gap-8 absolute top-[63px] px-7 pb-40 left-0 bg-emerald-600/80 backdrop-blur-sm h-[calc(100vh-63px)] w-full flex">
+        <nav className="absolute top-[71px] left-0 flex h-[calc(100vh-63px)] w-full flex-col justify-end gap-8 bg-emerald-600 px-7 pb-40">
           {menuItems.map((item) => (
             <NavItem
               {...item}

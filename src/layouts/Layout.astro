@@ -1,5 +1,5 @@
 ---
-import '../styles.css';
+import "../styles.css";
 
 export interface Props {
   title: string;
@@ -25,14 +25,14 @@ const { title } = Astro.props;
 
 <style is:global>
   html {
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11' !important;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
   }
 </style>
 
 <script>
-  import { inject } from '@vercel/analytics';
-  import reportWebVitals from '../scripts/reportWebVitals';
-  import { sendToVercelAnalytics } from '../scripts/vitals';
+  import { inject } from "@vercel/analytics";
+  import reportWebVitals from "../scripts/reportWebVitals";
+  import { sendToVercelAnalytics } from "../scripts/vitals";
 
   inject();
   reportWebVitals(sendToVercelAnalytics);

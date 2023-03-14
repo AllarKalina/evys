@@ -1,5 +1,5 @@
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import clsx from 'clsx';
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import clsx from "clsx";
 
 interface Props {
   title: string;
@@ -25,21 +25,21 @@ const NavItem: React.FC<Props> = ({
       <a
         href={href}
         className={clsx(
-          'text-white group relative font-semibold hover:text-zinc-300 transition-colors tracking-wide text-sm flex flex-col md:flex-row md:h-full md:items-center gap-0.5',
-          active && 'text-zinc-300',
-          className,
+          "group relative flex flex-col gap-0.5 text-sm font-semibold tracking-wide text-white transition-colors hover:text-zinc-300 md:h-full md:flex-row md:items-center",
+          active && "underline underline-offset-8",
+          className
         )}
       >
         <span>{title}</span>
         {subItems !== undefined && (
           <>
-            <ChevronDownIcon className="text-inherit w-5 h-5 hidden md:block" />
-            <ul className="absolute top-10 hidden md:group-hover:block bg-zinc-100 rounded-lg py-2 border border-emerald-600/50">
+            <ChevronDownIcon className="hidden h-5 w-5 text-inherit md:block" />
+            <ul className="absolute top-10 hidden rounded-lg border border-emerald-600/50 bg-zinc-100 py-2 md:group-hover:block">
               {subItems.map((item) => {
                 return (
                   <li>
                     <a
-                      className="text-emerald-600 hover:text-emerald-700 hover:bg-zinc-200 py-2 px-4 block whitespace-nowrap"
+                      className="block whitespace-nowrap py-2 px-4 text-emerald-600 hover:bg-zinc-200 hover:text-emerald-700"
                       href={item.href}
                     >
                       {item.title}
@@ -52,12 +52,12 @@ const NavItem: React.FC<Props> = ({
         )}
       </a>
       {subItems !== undefined && (
-        <ul className="md:hidden pl-6 -my-4">
+        <ul className="-my-4 pl-6 md:hidden">
           {subItems.map((item) => {
             return (
               <li>
                 <a
-                  className="rounded-lg text-white font-semibold py-2 px-4 block whitespace-nowrap text-lg tracking-wide"
+                  className="block whitespace-nowrap rounded-lg py-2 px-4 text-lg font-semibold tracking-wide text-white"
                   href={item.href}
                 >
                   {item.title}

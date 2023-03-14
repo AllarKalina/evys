@@ -1,29 +1,29 @@
 ---
-import Footer from '../../components/Footer/Footer.astro';
-import Navbar from '../../components/Navbar/Navbar';
-import SideNav from '../../components/pages/Info/SideNav';
-import SectionWrapper from '../../components/UI/SectionWrapper.astro';
-import Layout from '../../layouts/Layout.astro';
+import Footer from "../../components/Footer/Footer.astro";
+import Navbar from "../../components/Navbar/Navbar";
+import SideNav from "../../components/pages/Info/SideNav";
+import SectionWrapper from "../../components/UI/SectionWrapper.astro";
+import Layout from "../../layouts/Layout.astro";
 
 const { pathname } = Astro.url;
 
 const DOCUMENTS = [
-  { id: 0, name: 'EVÜS kodukord', href: '#' },
-  { id: 1, name: 'EVÜS põhikiri', href: '#' },
-  { id: 2, name: 'EVÜS liitumisavaldus', href: '#' },
-  { id: 3, name: 'Volitus hääleõiguse edasiandmiseks', href: '#' },
+  { id: 0, name: "EVÜS kodukord", href: "#" },
+  { id: 1, name: "EVÜS põhikiri", href: "#" },
+  { id: 2, name: "EVÜS liitumisavaldus", href: "#" },
+  { id: 3, name: "Volitus hääleõiguse edasiandmiseks", href: "#" },
 ];
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main class="flex flex-col items-center min-h-screen">
+  <main class="flex min-h-screen flex-col items-center">
     <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
       <div
-        class="pt-6 lg:pt-0 px-4 flex flex-col gap-3 max-w-3xl mx-auto 2xl:max-w-5xl"
+        class="mx-auto flex max-w-3xl flex-col gap-3 px-4 pt-6 lg:pt-0 2xl:max-w-5xl"
       >
         <h1
-          class="text-5xl text-zinc-700 font-semibold leading-tight lg:text-5xl mb-6"
+          class="mb-6 text-5xl font-semibold leading-tight text-zinc-700 lg:text-5xl"
         >
           Dokumentdid
         </h1>
@@ -33,7 +33,7 @@ const DOCUMENTS = [
             return (
               <a
                 href={document.href}
-                class="mb-3 text-emerald-600 text-sm leading-6 lg:text-base underline hover:text-emerald-700"
+                class="mb-3 text-sm leading-6 text-emerald-600 underline hover:text-emerald-700 lg:text-base"
               >
                 {document.name}
               </a>

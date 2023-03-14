@@ -1,47 +1,47 @@
 ---
-import clsx from 'clsx';
-import Footer from '../../components/Footer/Footer.astro';
-import Navbar from '../../components/Navbar/Navbar';
-import SideNav from '../../components/pages/Info/SideNav';
-import Teams from '../../components/pages/Info/Teams';
-import SectionWrapper from '../../components/UI/SectionWrapper.astro';
-import Layout from '../../layouts/Layout.astro';
+import clsx from "clsx";
+import Footer from "../../components/Footer/Footer.astro";
+import Navbar from "../../components/Navbar/Navbar";
+import SideNav from "../../components/pages/Info/SideNav";
+import Teams from "../../components/pages/Info/Teams";
+import SectionWrapper from "../../components/UI/SectionWrapper.astro";
+import Layout from "../../layouts/Layout.astro";
 
 const people = [
   {
-    name: 'Elis-Anett Urbmets',
-    role: 'Juhatuse esimees',
-    imageUrl: '/images/Elis.webp',
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Elis-Anett Urbmets",
+    role: "Juhatuse esimees",
+    imageUrl: "/images/Elis.webp",
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Anette Loog',
-    role: 'Haridusjuht',
-    imageUrl: '/images/Anette.webp',
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Anette Loog",
+    role: "Haridusjuht",
+    imageUrl: "/images/Anette.webp",
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Kelly Hiietamm',
-    role: 'Turundus- ja kommunikatsioonijuht',
-    imageUrl: '/images/Kelly.webp',
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Kelly Hiietamm",
+    role: "Turundus- ja kommunikatsioonijuht",
+    imageUrl: "/images/Kelly.webp",
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Liisa Tiin Sei',
-    role: 'Partnerlus- ja sponsorlusjuht',
-    imageUrl: '/images/Liisa.webp',
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Liisa Tiin Sei",
+    role: "Partnerlus- ja sponsorlusjuht",
+    imageUrl: "/images/Liisa.webp",
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
   {
-    name: 'Säde Järvekülg',
-    role: 'Personalijuht',
-    imageUrl: '/images/Säde.webp',
-    twitterUrl: '#',
-    linkedinUrl: '#',
+    name: "Säde Järvekülg",
+    role: "Personalijuht",
+    imageUrl: "/images/Säde.webp",
+    twitterUrl: "#",
+    linkedinUrl: "#",
   },
 ];
 
@@ -53,17 +53,17 @@ const { pathname } = Astro.url;
     <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
       <div
-        class="pt-6 lg:pt-0 px-4 flex flex-col gap-3 max-w-3xl mx-auto 2xl:max-w-5xl"
+        class="mx-auto flex max-w-3xl flex-col gap-3 px-4 pt-6 lg:pt-0 2xl:max-w-5xl"
       >
         <h1
-          class="text-5xl text-zinc-700 font-semibold leading-tight lg:text-5xl"
+          class="text-5xl font-semibold leading-tight text-zinc-700 lg:text-5xl"
         >
           Juhatus ja meeskonnad
         </h1>
-        <h2 class="mt-6 text-xl text-emerald-600 font-semibold leading-6">
+        <h2 class="mt-6 text-xl font-semibold leading-6 text-emerald-600">
           Juhatuse liikmed 2022/2023
         </h2>
-        <p class="text-zinc-600 text-sm leading-6 lg:text-base mt-3">
+        <p class="mt-3 text-sm leading-6 text-zinc-600 lg:text-base">
           Seltsil on viieliikmeline juhatus, mis koosneb esimehest ja neljast
           juhatuse liikmest, kellest viimased vastutavad oma toimkonna tegevuse
           eest. Juhatuse ja meeskonddade ülesannete kohta saate täpsemalt lugeda
@@ -71,13 +71,13 @@ const { pathname } = Astro.url;
         </p>
         <ul
           role="list"
-          class="space-y-9 mt-3 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
+          class="mt-3 space-y-9 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
         >
           {
             people.map((person, idx) => (
               <li>
                 <div class="space-y-3">
-                  <div class="w-full h-56 overflow-hidden rounded-lg">
+                  <div class="h-56 w-full overflow-hidden rounded-lg">
                     <img
                       class="object-cover shadow-lg"
                       src={person.imageUrl}
@@ -90,11 +90,11 @@ const { pathname } = Astro.url;
                       <h3 class="text-lg lg:text-xl">{person.name}</h3>
                       <p
                         class={clsx(
-                          'text-md lg:text-lg lg:tracking-wide',
-                          (idx === 0 || idx === 3) && 'text-emerald-600 ',
-                          idx === 1 && 'text-cyan-600',
-                          idx === 2 && 'text-amber-600',
-                          idx === 4 && 'text-rose-600',
+                          "text-md lg:text-lg lg:tracking-wide",
+                          (idx === 0 || idx === 3) && "text-emerald-600 ",
+                          idx === 1 && "text-cyan-600",
+                          idx === 2 && "text-amber-600",
+                          idx === 4 && "text-rose-600"
                         )}
                       >
                         {person.role}
@@ -106,7 +106,7 @@ const { pathname } = Astro.url;
             ))
           }
         </ul>
-        <h2 class="mt-12 text-xl text-emerald-600 font-semibold leading-6">
+        <h2 class="mt-12 text-xl font-semibold leading-6 text-emerald-600">
           Meeskonnad
         </h2>
         <div class="lg:overflow-hidden">
