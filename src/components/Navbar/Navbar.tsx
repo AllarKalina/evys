@@ -57,13 +57,13 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
   return (
     <section
       className={clsx(
-        "fixed z-50 flex max-w-screen-xl justify-between bg-emerald-600/80 backdrop-blur",
+        "fixed z-50 flex max-w-screen-xl justify-between",
         isMobileMenuOpen && "top-0 mx-0 w-full bg-emerald-600 px-7 pt-7",
         !isMobileMenuOpen &&
-          "top-3 mx-3 w-[calc(100%-1.5rem)] rounded-xl p-4 md:mx-6 md:w-[calc(100%-3rem)] lg:py-3 "
+          "top-3 mx-3 w-[calc(100%-1.5rem)] rounded-xl bg-emerald-600/80 p-4 backdrop-blur md:mx-6 md:w-[calc(100%-3rem)] lg:py-3"
       )}
     >
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col md:w-fit">
         <div className="flex w-full justify-between">
           <a href="/">
             <img

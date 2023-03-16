@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import clsx from "clsx";
+import { motion } from "framer-motion";
 
 interface Props {
   subTitle: string;
@@ -12,7 +12,7 @@ const Mission: React.FC<Props> = ({
   subTitle,
   header,
   text,
-  color = 'green',
+  color = "green",
 }) => {
   return (
     <motion.div
@@ -23,21 +23,21 @@ const Mission: React.FC<Props> = ({
     >
       <p
         className={clsx(
-          'text-base font-semibold leading-7 text-emerald-600',
-          color === 'green' && 'text-emerald-600',
-          color === 'cyan' && 'text-cyan-600',
-          color === 'rose' && 'text-rose-600',
+          "text-base font-semibold leading-7 text-emerald-600",
+          color === "green" && "text-emerald-600",
+          color === "cyan" && "text-cyan-600",
+          color === "rose" && "text-rose-600"
         )}
       >
         {subTitle}
       </p>
       <div className="mt-2">
-        <h2 className="text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl">
+        <h2 className="text-4xl font-bold tracking-tight text-zinc-700 xl:text-5xl">
           {header}
         </h2>
       </div>
       <div className="mt-4">
-        <p className="leading-7 text-base lg:text-lg text-zinc-600">{text}</p>
+        <p className="text-base leading-7 text-zinc-600 lg:text-lg">{text}</p>
       </div>
     </motion.div>
   );

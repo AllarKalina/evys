@@ -1,6 +1,6 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import clsx from "clsx";
+import { motion } from "framer-motion";
 
 interface Props {
   imageUrl: string;
@@ -15,7 +15,7 @@ const AboutItem: React.FC<Props> = ({
   header,
   description,
   buttonText,
-  color = 'green',
+  color = "green",
 }) => {
   return (
     <motion.li
@@ -23,23 +23,23 @@ const AboutItem: React.FC<Props> = ({
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
-      className="flex flex-col gap-6 relative"
+      className="relative flex flex-col gap-6"
     >
       <div className="relative z-10 flex flex-col gap-10 sm:flex-row">
         <div className="max-w-xl flex-auto">
           <div
             className={clsx(
-              'h-1 w-12 rounded-full',
-              color === 'green' && 'bg-emerald-600',
-              color === 'cyan' && 'bg-cyan-600',
-              color === 'rose' && 'bg-rose-600',
+              "h-1 w-12 rounded-full",
+              color === "green" && "bg-emerald-600",
+              color === "cyan" && "bg-cyan-600",
+              color === "rose" && "bg-rose-600"
             )}
           />
-          <h3 className="text-3xl font-bold tracking-tight text-zinc-700 mt-3">
+          <h3 className="mt-3 text-3xl font-bold tracking-tight text-zinc-700">
             {header}
           </h3>
           <div className="mt-4">
-            <p className="leading-7 text-base lg:text-lg text-zinc-600">
+            <p className="text-base leading-7 text-zinc-600 lg:text-lg">
               {description}
             </p>
           </div>
@@ -67,16 +67,16 @@ const AboutItem: React.FC<Props> = ({
       >
         <button
           className={clsx(
-            'flex items-center gap-0.5 hover:gap-2 transition-all',
-            color === 'green' && 'text-emerald-600 hover:text-emerald-700',
-            color === 'cyan' && 'text-cyan-600 hover:text-cyan-700',
-            color === 'rose' && 'text-rose-600 hover:text-rose-700',
+            "flex items-center gap-0.5 transition-all hover:gap-2",
+            color === "green" && "text-emerald-600 hover:text-emerald-700",
+            color === "cyan" && "text-cyan-600 hover:text-cyan-700",
+            color === "rose" && "text-rose-600 hover:text-rose-700"
           )}
         >
-          <span className="font-semibold text-base lg:text-lg">
+          <span className="text-base font-semibold lg:text-lg">
             {buttonText}
           </span>
-          <ChevronRightIcon className="text-inherit w-5 h-5 stroke-2" />
+          <ChevronRightIcon className="h-5 w-5 stroke-2 text-inherit" />
         </button>
       </motion.a>
 

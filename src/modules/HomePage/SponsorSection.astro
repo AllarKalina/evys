@@ -1,11 +1,11 @@
 ---
-import SponsorItem from './SponsorItem';
+import SponsorItem from "./SponsorItem";
 
 const sponsorResponse = await fetch(
-  'https://evys-api-production.up.railway.app/graphql',
+  "https://evys-api-production.up.railway.app/graphql",
   {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
         query {
@@ -25,7 +25,7 @@ const sponsorResponse = await fetch(
         }
       `,
     }),
-  },
+  }
 );
 
 const json2 = await sponsorResponse.json();
@@ -33,17 +33,17 @@ const data2 = json2.data.sponsors.data;
 ---
 
 <main
-  class="relative bg-gradient-to-r from-emerald-600 to-cyan-700 w-full overflow-hidden shadow shadow-cyan-700 border-y border-cyan-600"
+  class="relative z-20 w-full border-y border-cyan-600 bg-gradient-to-r from-emerald-600 to-cyan-700 shadow-lg shadow-cyan-700/50"
 >
-  <section class="mx-auto max-w-lg py-20 px-4 xl:py-32">
-    <header class="flex items-center justify-center gap-4 flex-col">
-      <h6 class="text-white font-bold text-lg tracking-wide lg:text-xl">
+  <section class="mx-auto max-w-lg py-20 px-4 xl:py-24">
+    <header class="flex flex-col items-center justify-center gap-4">
+      <h6 class="text-lg font-bold tracking-wide text-white lg:text-xl">
         Meid toetavad
       </h6>
-      <figure class="h-[3px] w-24 bg-white rounded-full"></figure>
+      <figure class="h-[3px] w-24 rounded-full bg-white"></figure>
     </header>
     <ul
-      class="grid grid-rows-2 gap-4 lg:gap-8 mt-8 lg:grid-cols-2 lg:grid-rows-1"
+      class="mt-8 grid grid-rows-2 gap-4 lg:grid-cols-2 lg:grid-rows-1 lg:gap-8"
     >
       {
         data2.map((sponsor: any) => {
