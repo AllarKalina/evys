@@ -1,0 +1,61 @@
+---
+import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
+import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
+import SectionWrapper from "../../components/UI/SectionWrapper.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
+  <main class="flex flex-col items-center">
+    <SectionWrapper>
+      <div
+        class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <AnimatedHeader client:load delay={0.24}>Kuusepuud</AnimatedHeader>
+        <AnimatedBlock client:load delay={0.42}>
+          <h2
+            class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
+          >
+            Heategevuslik jõulupuude projekt
+          </h2>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Kuusepuude projekt on Eesti Veterinaarmeditsiini Üliõpilaste Seltsi
+            liikmete eestvedamisel iga-aastaselt toimuv heategevuslik projekt,
+            mille eesmärk on juhtida tähelepanu varjupaikades olevatele
+            loomadele, kes on otsimas uut kodu. 11 Eesti linnas on kuusepuud
+            koos varjupaiga loomade piltide ja kirjeldustega on üleval
+            Tallinnas, Tartus, Pärnus, Viljandis, Valgas, Võrus, Rakveres,
+            Haapsalus, Kuressaares, Viimsis ja Sauel. Projekt toimub koostöös
+            Varjupaikade MTÜ, MTÜ Tartu Koduta Loomade Varjupaiga, MTÜ Saaremaa
+            Lemmikloomade Turvakodu ja Rakvere koduloomade varjupaigaga.
+          </p>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Esimest korda toimus projekt 2016. aastal, kui varjupaiga loomade
+            piltidega kaunistatud kuusepuu ehtis Tartu Raekoja platsi. Tänaseks
+            on meiega liitunud 11 linna – kuusepuud on detsembris üleval
+            Tallinnas, Tartus, Pärnus, Viljandis, Valgas, Võrus, Rakveres,
+            Haapsalus, Kuressaares, Viimsis ja Sauel.
+          </p>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Linnades olevad kuusepuud on ehitud varjupaiga loomade piltidega, et
+            juhtida tähelepanu varjupaikades, hoiukodudes ja turvakodudes
+            olevatele kassidele ja koertele, kes on otsimas uut kodu. Oluline on
+            selle juures märkida, et looma võtmine ei tohi olla kergekäeline
+            otsus, mistõttu on projekti eesmärk ka tõsta inimeste teadlikkust
+            ning mitte innustada mõtlematult varjupaigast looma võtma. Selleks
+            on iga kuusepuu juurde püstitatud ka tutvustav stend koos projekti
+            infoga.
+          </p>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Projekt toimub koostöös Varjupaikade MTÜ, MTÜ Tartu Koduta Loomade
+            Varjupaiga, MTÜ Saaremaa Lemmikloomade Turvakodu ja Rakvere
+            koduloomade varjupaigaga. Detsembris avaneb projekti raames ka
+            võimalus anda oma rahaline panus koduta loomade heaks läbi Ma
+            Armastan Aidata keskkonna. Projekti toetavad PhotoPoint, Gardest ja
+            Hill’s.
+          </p>
+        </AnimatedBlock>
+      </div>
+    </SectionWrapper>
+  </main>
+</Layout>

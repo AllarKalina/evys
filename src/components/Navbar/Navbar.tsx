@@ -18,7 +18,8 @@ const Navbar = () => {
       subItems: [
         { id: 4, title: "Seltsist", href: "/info" },
         { id: 5, title: "Juhatus ja meeskonnad", href: "/info/teams" },
-        { id: 6, title: "Dokumendid", href: "/info/documents" },
+        { id: 6, title: "Kuusepuud", href: "/info/work" },
+        { id: 7, title: "Dokumendid", href: "/info/documents" },
       ],
     },
     { id: 1, title: "Loomaarsti õpe", href: "/veterinary" },

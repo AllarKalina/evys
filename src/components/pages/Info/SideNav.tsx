@@ -18,6 +18,11 @@ const SideNav = () => {
     },
     {
       id: 2,
+      title: "Kuusepuud",
+      href: "/info/work",
+    },
+    {
+      id: 3,
       title: "Dokumendid",
       href: "/info/documents",
     },
