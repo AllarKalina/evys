@@ -1,6 +1,4 @@
 ---
-import Footer from "../components/Footer/Footer.astro";
-import Navbar from "../components/Navbar/Navbar";
 import DefaultBlogCard from "../components/pages/Home/DefaultBlogCard.astro";
 import SectionWrapper from "../components/UI/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
@@ -61,7 +59,6 @@ const posts = [
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
-    <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
       <div
         class="mx-auto flex max-w-3xl flex-col justify-between px-4 pt-6 lg:flex-row lg:pt-0 2xl:max-w-5xl"
@@ -128,6 +125,5 @@ const posts = [
         </div>
       </div>
     </SectionWrapper>
-    <Footer />
   </main>
 </Layout>

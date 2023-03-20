@@ -1,18 +1,20 @@
+import { useStore } from "@nanostores/react";
 import { FaFacebook, FaInstagram } from "react-icons/fa/index.js";
+import { urlPathname } from "../../stores/urlStore";
 import NavItem from "./NavItem";
 import type { MenuItem } from "./types";
 
 interface Props {
   menuItems: MenuItem[];
-  currentPath: string;
 }
 
-const DesktopMenu: React.FC<Props> = ({ menuItems, currentPath }) => {
-  console.log(currentPath);
+const DesktopMenu: React.FC<Props> = ({ menuItems }) => {
+  const $urlPathname = useStore(urlPathname);
+
   return (
     <>
       <nav
-        data-turbo={currentPath === "/" ? "false" : "true"}
+        data-turbo={$urlPathname === "/" ? "false" : "true"}
         className="flex gap-8 max-[768px]:hidden lg:gap-12 xl:gap-16"
       >
         {menuItems.map((item) => {
@@ -20,7 +22,13 @@ const DesktopMenu: React.FC<Props> = ({ menuItems, currentPath }) => {
             <NavItem
               key={item.id}
               {...item}
-              active={item.href === currentPath}
+              active={
+                item.subItems
+                  ? !!item.subItems.find(
+                      (subitem) => subitem.href === $urlPathname
+                    )
+                  : item.href === $urlPathname
+              }
             />
           );
         })}

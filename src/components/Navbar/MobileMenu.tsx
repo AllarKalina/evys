@@ -1,4 +1,6 @@
+import { useStore } from "@nanostores/react";
 import clsx from "clsx";
+import { urlPathname } from "../../stores/urlStore";
 import NavItem from "./NavItem";
 import type { MenuItem } from "./types";
 
@@ -6,17 +8,17 @@ interface Props {
   isMenuOpen: boolean;
   onMenuChange: () => void;
   menuItems: MenuItem[];
-  currentPath: string;
 }
 
 const MobileMenu: React.FC<Props> = ({
   isMenuOpen,
   onMenuChange,
   menuItems,
-  currentPath,
 }) => {
+  const $urlPathname = useStore(urlPathname);
+
   return (
-    <div className="bg-wwhite flex items-center md:hidden">
+    <div className="flex items-center bg-white md:hidden">
       <button
         id="nav-icon3"
         className={clsx(isMenuOpen && "open", "m-2")}
@@ -38,7 +40,7 @@ const MobileMenu: React.FC<Props> = ({
             <NavItem
               {...item}
               className="text-4xl"
-              active={item.href === currentPath}
+              active={item.href === "j"}
             />
           ))}
         </nav>

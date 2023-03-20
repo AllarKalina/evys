@@ -1,14 +1,13 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
+import { useStore } from "@nanostores/react";
 import clsx from "clsx";
 import { useState } from "react";
+import { urlPathname } from "../../stores/urlStore";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 
-interface Props {
-  currentPath: string;
-}
-
-const Navbar: React.FC<Props> = ({ currentPath }) => {
+const Navbar = () => {
+  const $urlPathname = useStore(urlPathname);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItemArray = [
@@ -22,9 +21,9 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
         { id: 6, title: "Dokumendid", href: "/info/documents" },
       ],
     },
-    { id: 1, title: "Loomaarsti õpe", href: "/" },
+    { id: 1, title: "Loomaarsti õpe", href: "/veterinary" },
     { id: 2, title: "Blogi", href: "/blog" },
-    { id: 3, title: "Toetajad", href: "/" },
+    { id: 3, title: "Toetajad", href: "/sponsors" },
   ];
 
   const formatPageName = (page: string) => {
@@ -41,9 +40,11 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
     }
   };
 
-  const isInfo = currentPath.split("/")[1] === "info";
+  console.log($urlPathname);
 
-  const pages = currentPath
+  const isInfo = $urlPathname.split("/")[1] === "info";
+
+  const pages = $urlPathname
     .split("/")
     .slice(1)
     .map((value, idx) => {
@@ -80,7 +81,6 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
               setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
             menuItems={menuItemArray}
-            currentPath={currentPath}
           />
         </div>
         {isInfo && !isMobileMenuOpen && (
@@ -94,7 +94,11 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
                 >
                   <li>
                     <div>
-                      <a href="/" className="text-white hover:text-zinc-300">
+                      <a
+                        href="/"
+                        data-turbo="false"
+                        className="text-white hover:text-zinc-300"
+                      >
                         <HomeIcon
                           className="h-5 w-5 flex-shrink-0"
                           aria-hidden="true"
@@ -126,7 +130,7 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
           </>
         )}
       </div>
-      <DesktopMenu menuItems={menuItemArray} currentPath={currentPath} />
+      <DesktopMenu menuItems={menuItemArray} />
     </section>
   );
 };

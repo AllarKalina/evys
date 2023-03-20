@@ -15,12 +15,8 @@ const beforeRender = (event) => {
 
   event.preventDefault();
 
-  console.log(location);
-
   // no Shared Element Transition API support in browser
-
   if (!document.startViewTransition) {
-    console.log("ei toeta");
     event.detail.resume();
     return;
   }

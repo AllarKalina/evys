@@ -4,18 +4,13 @@ import Navbar from "../components/Navbar/Navbar";
 import SideNav from "../components/pages/Info/SideNav";
 import "../styles.css";
 
-export interface Props {
-  title: string;
-}
-
 const { title } = Astro.props;
 const url = Astro.url;
-
 const isInfo = url.pathname.split("/")[1] == "info";
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="h-full scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -24,9 +19,9 @@ const isInfo = url.pathname.split("/")[1] == "info";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="relative antialiased">
+  <body class="relative h-full antialiased">
     <div data-turbo-permanent id="header">
-      <Navbar client:load currentPath={url.pathname} />
+      <Navbar client:load />
     </div>
     <slot />
     {
@@ -34,9 +29,9 @@ const isInfo = url.pathname.split("/")[1] == "info";
         <div
           id="side"
           data-turbo-permanent
-          class="absolute top-[6.5rem] left-0 h-[90%] w-[300px]"
+          class="absolute top-64 left-0 h-full w-[300px]"
         >
-          <SideNav client:load currentPath={url.pathname} />
+          <SideNav client:load />
         </div>
       )
     }
