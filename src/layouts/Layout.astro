@@ -1,4 +1,7 @@
 ---
+import Footer from "../components/Footer/Footer.astro";
+import Navbar from "../components/Navbar/Navbar";
+import SideNav from "../components/pages/Info/SideNav";
 import "../styles.css";
 
 export interface Props {
@@ -6,6 +9,9 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const url = Astro.url;
+
+const isInfo = url.pathname.split("/")[1] == "info";
 ---
 
 <!DOCTYPE html>
@@ -18,8 +24,25 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="antialiased">
+  <body class="relative antialiased">
+    <div data-turbo-permanent id="header">
+      <Navbar client:load currentPath={url.pathname} />
+    </div>
     <slot />
+    {
+      isInfo && (
+        <div
+          id="side"
+          data-turbo-permanent
+          class="absolute top-[6.5rem] left-0 h-[90%] w-[300px]"
+        >
+          <SideNav client:load currentPath={url.pathname} />
+        </div>
+      )
+    }
+    <div data-turbo-permanent id="footer">
+      <Footer />
+    </div>
   </body>
 </html>
 
@@ -30,10 +53,5 @@ const { title } = Astro.props;
 </style>
 
 <script>
-  import { inject } from "@vercel/analytics";
-  import reportWebVitals from "../scripts/reportWebVitals";
-  import { sendToVercelAnalytics } from "../scripts/vitals";
-
-  inject();
-  reportWebVitals(sendToVercelAnalytics);
+  import "../scripts/router.js";
 </script>

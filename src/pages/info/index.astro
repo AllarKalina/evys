@@ -1,124 +1,102 @@
 ---
-import Footer from "../../components/Footer/Footer.astro";
-import Navbar from "../../components/Navbar/Navbar";
-import SideNav from "../../components/pages/Info/SideNav";
+import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
+import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
-
-const { pathname } = Astro.url;
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
-    <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
       <div
-        class="absolute top-44 h-[1200px] w-full bg-no-repeat"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, #10b98120 0%, #dfb43400 100%)",
-        }}
+        class="relative mx-auto max-w-3xl px-4 pt-24 sm:pt-12 md:pt-0 2xl:max-w-5xl"
       >
-        <svg
-          x="0px"
-          y="0px"
-          viewBox="0 0 240 24"
-          enable-background="new 0 0 240 24"
-          xml:space="preserve"
-          preserveAspectRatio="none"
-          ><path
-            fill="#ffffff"
-            d="M0,24l0.01-0.24V0H240v24c0,0-48.115-23.471-120.039-23.48C48.018,0.52,0,24,0,24L0,24z"
-          ></path></svg
-        >
+        <AnimatedHeader client:load delay={0.24}>Seltsist</AnimatedHeader>
+        <AnimatedBlock client:load delay={0.42}>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus
+            2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad
+            Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid,
+            õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate
+            kursuste üliõpilased teineteisele lähemale. Lisaks tudengite
+            ülikoolielu rikastamisele on Seltsi eesmärk tutvustada
+            veterinaarmeditsiini eriala ja loomaarsti elukutset
+            üldhariduskoolide õpilastele.
+          </p>
+          <h2
+            class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
+          >
+            Meie visioon ja missioon
+          </h2>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Eestis on maailma parima ettevalmistusega veterinaarid, kes töötavad
+            koostööalti kogukonnana tervete ja õnnelike loomade ning inimeste
+            nimel!
+          </p>
+          <ul
+            class="list-inside list-disc text-sm leading-6 text-zinc-600 lg:text-base"
+          >
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Täiendame akadeemilist õpet põnevate väljunditega - loengud,
+              töötoad, väljasõidud.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Edendada loomatervishoidu, pidamiskultuuri ja heaolu ning ühtlasi
+              seista hea rahvatervise eest.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Tõsta inimeste teadlikust veterinaaria rolli kohta ühiskonnas.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Arendada erialaülest koostööd nii Eestis kui välismaal.
+            </li>
+          </ul>
+          <h2
+            class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
+          >
+            Meie tegevused
+          </h2>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            EVÜS tegutseb igapäevaselt neljas meeskonnas: personalitiim,
+            haridustiim, turundus- ja kommunikatsioonitiim, partnerlustiim.
+            Traditsiooniliselt toimuvad liikmetele igal aastal kirurgiaring ning
+            lammaste poegimisabi kursus. Meie liikmed on osalenud
+            Veterinaarmeditsiini konverentsi korraldamises vabatahtlikena
+            mitmeid aastaid. Oleme aktiivselt osa võtnud haridusmessidest ja
+            korraldanud õpitubasid üldhariduskoolide õpilastele. Alates 2016.
+            aastast on detsembris toimunud üle Eesti heategevuslik jõulupuude
+            projekt koostöös loomade varjupaikadega, mille eesmärk on juhtida
+            inimeste tähelepanu varjupaikades olevatele loomadele.
+          </p>
+          <h2
+            class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
+          >
+            Liikmeks olemise hüved
+          </h2>
+          <ul
+            class="list-inside list-disc text-sm leading-6 text-zinc-600 lg:text-base"
+          >
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Tasuta osalemine erialastel loengutel, töötubades ja
+              väljasõitudel.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Võimalus kasutada seltsiruumi koolipäeva vältel.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Toredad ühisüritused – tutvused kõikidelt kursustelt.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Võimalus tegeleda enesearenguga osaledes erinevatel
+              haridusmessidel ja töötubade läbiviimisel.
+            </li>
+            <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
+              Ühine Facebooki grupp seltsi sisese info vahetamiseks ja
+              tööpakkumiste, praktikakohtade vahendamiseks.
+            </li>
+          </ul>
+        </AnimatedBlock>
       </div>
-      <div class="mx-auto max-w-3xl px-4 pt-40 lg:pt-0 2xl:max-w-5xl">
-        <h1 class="text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl">
-          Seltsist
-        </h1>
-        <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-          Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus
-          2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti
-          tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid
-          ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste
-          üliõpilased teineteisele lähemale. Lisaks tudengite ülikoolielu
-          rikastamisele on Seltsi eesmärk tutvustada veterinaarmeditsiini eriala
-          ja loomaarsti elukutset üldhariduskoolide õpilastele.
-        </p>
-        <h2
-          class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
-        >
-          Meie visioon ja missioon
-        </h2>
-        <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-          Eestis on maailma parima ettevalmistusega veterinaarid, kes töötavad
-          koostööalti kogukonnana tervete ja õnnelike loomade ning inimeste
-          nimel!
-        </p>
-        <ul
-          class="list-inside list-disc text-sm leading-6 text-zinc-600 lg:text-base"
-        >
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Täiendame akadeemilist õpet põnevate väljunditega - loengud,
-            töötoad, väljasõidud.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Edendada loomatervishoidu, pidamiskultuuri ja heaolu ning ühtlasi
-            seista hea rahvatervise eest.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Tõsta inimeste teadlikust veterinaaria rolli kohta ühiskonnas.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Arendada erialaülest koostööd nii Eestis kui välismaal.
-          </li>
-        </ul>
-        <h2
-          class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
-        >
-          Meie tegevused
-        </h2>
-        <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-          EVÜS tegutseb igapäevaselt neljas meeskonnas: personalitiim,
-          haridustiim, turundus- ja kommunikatsioonitiim, partnerlustiim.
-          Traditsiooniliselt toimuvad liikmetele igal aastal kirurgiaring ning
-          lammaste poegimisabi kursus. Meie liikmed on osalenud
-          Veterinaarmeditsiini konverentsi korraldamises vabatahtlikena mitmeid
-          aastaid. Oleme aktiivselt osa võtnud haridusmessidest ja korraldanud
-          õpitubasid üldhariduskoolide õpilastele. Alates 2016. aastast on
-          detsembris toimunud üle Eesti heategevuslik jõulupuude projekt
-          koostöös loomade varjupaikadega, mille eesmärk on juhtida inimeste
-          tähelepanu varjupaikades olevatele loomadele.
-        </p>
-        <h2
-          class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
-        >
-          Liikmeks olemise hüved
-        </h2>
-        <ul
-          class="list-inside list-disc text-sm leading-6 text-zinc-600 lg:text-base"
-        >
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Tasuta osalemine erialastel loengutel, töötubades ja väljasõitudel.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Võimalus kasutada seltsiruumi koolipäeva vältel.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Toredad ühisüritused – tutvused kõikidelt kursustelt.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Võimalus tegeleda enesearenguga osaledes erinevatel haridusmessidel
-            ja töötubade läbiviimisel.
-          </li>
-          <li class="mb-1 text-base leading-7 text-zinc-600 lg:text-lg">
-            Ühine Facebooki grupp seltsi sisese info vahetamiseks ja
-            tööpakkumiste, praktikakohtade vahendamiseks.
-          </li>
-        </ul>
-      </div>
-      <SideNav client:load currentPath={pathname} />
     </SectionWrapper>
-    <Footer />
   </main>
 </Layout>

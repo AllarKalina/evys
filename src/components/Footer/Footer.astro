@@ -1,27 +1,30 @@
 ---
-import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
-import { BsFacebook, BsInstagram } from 'react-icons/bs/index.js';
+import { BsFacebook, BsInstagram } from "react-icons/bs/index.js";
 
 const menu = [
-  { name: 'Seltsi info', href: '/info' },
-  { name: 'Loomaarsti õpe', href: '/' },
-  { name: 'Blogi', href: '/blog' },
-  { name: 'Toetajad', href: '/' },
+  { name: "Seltsi info", href: "/info" },
+  { name: "Loomaarsti õpe", href: "/" },
+  { name: "Blogi", href: "/blog" },
+  { name: "Toetajad", href: "/" },
 ];
 
 const contact = [
-  { text: 'mtu.evus@gmail.com', icon: EnvelopeIcon },
-  { text: 'Kreutzwaldi 62, Tartu', icon: MapPinIcon },
+  { text: "mtu.evus@gmail.com", icon: EnvelopeIcon },
+  { text: "Kreutzwaldi 62, Tartu", icon: MapPinIcon },
 ];
 
 const socials = [
-  { name: 'Facebook', href: '/', icon: BsFacebook },
-  { name: 'Instagram', href: '/', icon: BsInstagram },
+  { name: "Facebook", href: "/", icon: BsFacebook },
+  { name: "Instagram", href: "/", icon: BsInstagram },
 ];
 ---
 
-<footer class="bg-blue-900 w-full mt-auto" aria-labelledby="footer-heading">
+<footer
+  class="footer mt-auto w-full bg-blue-900"
+  aria-labelledby="footer-heading"
+>
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="mx-auto max-w-screen-xl px-6 py-16 lg:px-8">
     <div class="lg:grid lg:grid-cols-4 lg:gap-8">
@@ -36,7 +39,7 @@ const socials = [
             socials.map((item) => (
               <a
                 href={item.href}
-                class="text-zinc-200 hover:text-white transition-colors"
+                class="text-zinc-200 transition-colors hover:text-white"
               >
                 <span class="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -46,7 +49,7 @@ const socials = [
         </div>
       </div>
       <div
-        class="mt-10 lg:mt-0 col-span-2 flex flex-col lg:flex-row lg:w-full lg:justify-around"
+        class="col-span-2 mt-10 flex flex-col lg:mt-0 lg:w-full lg:flex-row lg:justify-around"
       >
         <div>
           <h3 class="text-lg font-medium text-white">EVÜS</h3>
@@ -56,7 +59,7 @@ const socials = [
                 <li>
                   <a
                     href={item.href}
-                    class="text-zinc-300 hover:text-white transition-colors"
+                    class="text-zinc-300 transition-colors hover:text-white"
                   >
                     {item.name}
                   </a>
@@ -73,7 +76,7 @@ const socials = [
                 <li>
                   <a
                     href={item.text}
-                    class="text-zinc-200 hover:text-white flex gap-3 transition-colors items-center"
+                    class="flex items-center gap-3 text-zinc-200 transition-colors hover:text-white"
                   >
                     <item.icon className="h-5 w-5" aria-hidden="true" />
                     <span>{item.text}</span>

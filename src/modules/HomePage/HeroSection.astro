@@ -1,4 +1,5 @@
 ---
+import HeroImageItem from "./HeroImageItem";
 import Mission from "./Mission";
 import MobileImages from "./MobileImages";
 
@@ -82,20 +83,20 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
   {/* Hero section */}
   <section class="lg:flex lg:gap-16 xl:justify-between">
     {/* Desktop images */}
-    <article class="hidden flex-grow-0 flex-col gap-16 lg:flex">
-      {
-        data.slice(0, 3).map((item: any) => {
-          return (
-            <div class="h-[350px] w-[260px] overflow-hidden rounded-tl-lg rounded-br-lg object-cover shadow-lg">
-              <img
-                src={item.attributes.image.data.attributes.url}
-                alt="image"
-                class="h-full w-full"
+    <article class="hidden lg:block">
+      <ul class="flex flex-grow-0 flex-col gap-16">
+        {
+          data.slice(0, 3).map((item: any, idx) => {
+            return (
+              <HeroImageItem
+                client:load
+                delay={idx < 2 ? idx * 0.36 : 0}
+                imageUrl={item.attributes.image.data.attributes.url}
               />
-            </div>
-          );
-        })
-      }
+            );
+          })
+        }
+      </ul>
     </article>
     {/* Hero header */}
     <header class="flex flex-col gap-6">
@@ -106,21 +107,19 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
         <br class="sm:hidden" /> Selts
       </h1>
       <article class="mt-12 hidden w-full items-start lg:flex lg:gap-16">
-        <div class="hidden flex-col gap-16 lg:flex">
+        <ul class="hidden flex-col gap-16 lg:flex">
           {
-            data.slice(3).map((item: any) => {
+            data.slice(3).map((item: any, idx) => {
               return (
-                <div class="h-[330px] w-[260px] overflow-hidden rounded-tl-lg rounded-br-lg shadow-lg">
-                  <img
-                    src={item.attributes.image.data.attributes.url}
-                    alt="image"
-                    class="h-full w-full object-cover"
-                  />
-                </div>
+                <HeroImageItem
+                  client:load
+                  delay={idx === 0 ? 0.18 : 0}
+                  imageUrl={item.attributes.image.data.attributes.url}
+                />
               );
             })
           }
-        </div>
+        </ul>
         <div class="flex flex-1 justify-center pt-48">
           <Mission
             client:load

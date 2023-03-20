@@ -7,6 +7,7 @@ interface Props {
   header: string;
   description: string;
   buttonText: string;
+  href: string;
   color?: string;
 }
 
@@ -15,6 +16,7 @@ const AboutItem: React.FC<Props> = ({
   header,
   description,
   buttonText,
+  href,
   color = "green",
 }) => {
   return (
@@ -49,13 +51,14 @@ const AboutItem: React.FC<Props> = ({
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
           viewport={{ once: true }}
-          className="aspect-[4/5] w-52 flex-none rounded-lg object-cover"
+          className="aspect-[4/5] w-52 flex-none rounded-lg object-cover shadow-lg"
           src={imageUrl}
           alt=""
         />
       </div>
       <motion.a
-        href="/info"
+        href={href}
+        data-turbo="false"
         initial={{ x: -16, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{
@@ -79,19 +82,6 @@ const AboutItem: React.FC<Props> = ({
           <ChevronRightIcon className="h-5 w-5 stroke-2 text-inherit" />
         </button>
       </motion.a>
-
-      {/* <motion.div
-        initial={{ x: -16, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
-        viewport={{ once: true }}
-        className={clsx(
-          'absolute z-0 bottom-12 left-1/2 !transform -translate-x-1/2 w-72 h-72 rotate-45 border-b-[6px] border-r-[6px] border-t-[6px] rounded-lg',
-          color === 'green' && 'border-emerald-600/10',
-          color === 'cyan' && 'border-cyan-600/10',
-          color === 'rose' && 'border-rose-600/10',
-        )}
-      /> */}
     </motion.li>
   );
 };

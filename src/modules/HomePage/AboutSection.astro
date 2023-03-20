@@ -105,6 +105,7 @@ const portraitImage = data.find(
   >
     <ul role="list" class="flex flex-col gap-12 pt-8">
       <AboutItem
+        href="/info"
         client:visible
         color="cyan"
         header="Seltsist"
@@ -113,6 +114,7 @@ const portraitImage = data.find(
         imageUrl={portraitImage.attributes.image.data.attributes.url}
       />
       <AboutItem
+        href="/info/teams"
         client:visible
         color="green"
         header="Juhatus ja meeskonnad"
@@ -121,6 +123,7 @@ const portraitImage = data.find(
         imageUrl={smallLandscapeImage.attributes.image.data.attributes.url}
       />
       <AboutItem
+        href="/info/documents"
         client:visible
         color="rose"
         header="Dokumendid"

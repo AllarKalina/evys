@@ -33,6 +33,8 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
         return "Seltsist";
       case "documents":
         return "Dokumendid";
+      case "teams":
+        return "Meeskonnad";
 
       default:
         return "Seltsist";
@@ -40,8 +42,6 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
   };
 
   const isInfo = currentPath.split("/")[1] === "info";
-
-  console.log(currentPath);
 
   const pages = currentPath
     .split("/")
@@ -57,15 +57,15 @@ const Navbar: React.FC<Props> = ({ currentPath }) => {
   return (
     <section
       className={clsx(
-        "fixed z-50 flex max-w-screen-xl justify-between",
+        "page-header fixed left-1/2 z-50 flex max-w-screen-xl -translate-x-1/2 transform justify-between",
         isMobileMenuOpen && "top-0 mx-0 w-full bg-emerald-600 px-7 pt-7",
         !isMobileMenuOpen &&
-          "top-3 mx-3 w-[calc(100%-1.5rem)] rounded-xl bg-emerald-600/80 p-4 backdrop-blur md:mx-6 md:w-[calc(100%-3rem)] lg:py-3"
+          "top-3 w-[calc(100%-1.5rem)] rounded-xl bg-emerald-600/80 p-4 backdrop-blur md:w-[calc(100%-3rem)] lg:py-3"
       )}
     >
       <div className="flex w-full flex-col md:w-fit">
         <div className="flex w-full justify-between">
-          <a href="/">
+          <a href="/" data-turbo="false">
             <img
               src="/images/Logo.png"
               width={90}

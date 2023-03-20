@@ -1,11 +1,8 @@
 ---
-import Footer from "../../components/Footer/Footer.astro";
-import Navbar from "../../components/Navbar/Navbar";
-import SideNav from "../../components/pages/Info/SideNav";
+import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
+import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
-
-const { pathname } = Astro.url;
 
 const DOCUMENTS = [
   { id: 0, name: "EVÜS kodukord", href: "#" },
@@ -17,33 +14,28 @@ const DOCUMENTS = [
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex min-h-screen flex-col items-center">
-    <Navbar client:load currentPath={pathname} />
     <SectionWrapper>
       <div
-        class="mx-auto flex max-w-3xl flex-col gap-3 px-4 pt-6 lg:pt-0 2xl:max-w-5xl"
+        class="relative mx-auto max-w-3xl px-4 pt-24 sm:pt-12 md:pt-0 2xl:max-w-5xl"
       >
-        <h1
-          class="mb-6 text-5xl font-semibold leading-tight text-zinc-700 lg:text-5xl"
-        >
-          Dokumentdid
-        </h1>
-
-        {
-          DOCUMENTS.map((document) => {
-            return (
-              <a
-                href={document.href}
-                class="mb-3 text-sm leading-6 text-emerald-600 underline hover:text-emerald-700 lg:text-base"
-              >
-                {document.name}
-              </a>
-            );
-          })
-        }
-
-        <SideNav client:load currentPath={pathname} />
+        <AnimatedHeader client:load delay={0.24}>Dokumendid</AnimatedHeader>
+        <AnimatedBlock client:load delay={0.42}>
+          <ul class="mt-8 flex flex-col gap-4">
+            {
+              DOCUMENTS.map((document) => {
+                return (
+                  <a
+                    href={document.href}
+                    class="mb-3 text-sm leading-6 text-emerald-600 underline hover:text-emerald-700 lg:text-base"
+                  >
+                    {document.name}
+                  </a>
+                );
+              })
+            }
+          </ul>
+        </AnimatedBlock>
       </div>
     </SectionWrapper>
-    <Footer />
   </main>
 </Layout>

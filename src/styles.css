@@ -1,3 +1,42 @@
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.72s;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left {
+  to {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+}
+
+::view-transition-old(root) {
+  animation: 0.72s slide-left ease;
+}
+
+::view-transition-new(root) {
+  animation: 0.72s slide-right ease;
+}
+
+.page-header {
+  view-transition-name: header;
+}
+
+.side-nav {
+  view-transition-name: side;
+}
+
+.footer {
+  view-transition-name: footer;
+}
+
 #nav-icon3 {
   width: 26px;
   height: 19px;
