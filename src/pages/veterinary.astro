@@ -1,30 +1,81 @@
 ---
+import AnimatedBlock from "../components/UI/Animated/AnimatedBlock";
+import AnimatedHeader from "../components/UI/Animated/AnimatedHeader";
+import SectionWrapper from "../components/UI/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main
-    class="grid min-h-full place-items-center bg-white py-24 px-6 sm:py-32 lg:px-8"
-  >
-    <div class="text-center">
-      <p class="text-base font-semibold text-emerald-600">404</p>
-      <h1
-        class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-      >
-        Lehekülg on valmimisel
-      </h1>
-      <p class="mt-6 text-base leading-7 text-gray-600">
-        Ehitame enda veebilehte ning oleme peatselt valmis
-      </p>
-      <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a
-          href="/"
-          data-turbo="false"
-          class="rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+  <main class="flex min-h-screen flex-col items-center">
+    <SectionWrapper>
+      <div class="relative mx-auto max-w-screen-xl px-4 pt-20 sm:pt-12 md:pt-0">
+        {/* Content section */}
+        <div
+          class="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8"
         >
-          Tagasi avalehele
-        </a>
+          <div class="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+            <AnimatedHeader client:load delay={0.24}>
+              Loomaarsti õpe
+            </AnimatedHeader>
+            <AnimatedBlock client:load delay={0.42}>
+              <p class="my-5 text-xl leading-7 text-zinc-600 lg:text-lg">
+                Quasi est quaerat. Sit molestiae et. Provident ad dolorem
+                occaecati eos iste. Soluta rerum quidem minus ut molestiae velit
+                error quod. Excepturi quidem expedita molestias quas.
+              </p>
+              <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
+                fugiat. Quasi aperiam sit non sit neque reprehenderit.
+              </p>
+            </AnimatedBlock>
+          </div>
+          <div
+            class="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents"
+          >
+            <div
+              class="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end"
+            >
+              <img
+                src="/images/Vet4.webp"
+                alt=""
+                class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover shadow-lg"
+              />
+            </div>
+            <div
+              class="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8"
+            >
+              <div
+                class="order-first flex w-64 flex-none justify-end self-end lg:w-auto"
+              >
+                <img
+                  src="/images/Vet1.webp"
+                  alt=""
+                  class="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover shadow-lg"
+                />
+              </div>
+              <div
+                class="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none"
+              >
+                <img
+                  src="/images/Vet2.webp"
+                  alt=""
+                  class="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover shadow-lg"
+                />
+              </div>
+              <div
+                class="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none"
+              >
+                <img
+                  src="/images/Vet3.webp"
+                  alt=""
+                  class="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </SectionWrapper>
   </main>
 </Layout>

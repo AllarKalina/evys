@@ -41,8 +41,6 @@ const Navbar = () => {
     }
   };
 
-  console.log($urlPathname);
-
   const isInfo = $urlPathname.split("/")[1] === "info";
 
   const pages = $urlPathname

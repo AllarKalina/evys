@@ -18,7 +18,7 @@ const MobileMenu: React.FC<Props> = ({
   const $urlPathname = useStore(urlPathname);
 
   return (
-    <div className="flex items-center bg-white md:hidden">
+    <div className="flex items-center md:hidden">
       <button
         id="nav-icon3"
         className={clsx(isMenuOpen && "open", "m-2")}
