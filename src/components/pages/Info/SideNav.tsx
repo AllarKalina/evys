@@ -1,10 +1,10 @@
-import { useStore } from "@nanostores/react";
 import clsx from "clsx";
-import { urlPathname } from "../../../stores/urlStore";
 
-const SideNav = () => {
-  const $urlPathname = useStore(urlPathname);
+interface Props {
+  url: string;
+}
 
+const SideNav: React.FC<Props> = ({ url }) => {
   const MENU_ITEMS = [
     {
       id: 0,
@@ -18,7 +18,7 @@ const SideNav = () => {
     },
     {
       id: 2,
-      title: "Kuusepuud",
+      title: "Kuusepuude projekt",
       href: "/info/work",
     },
     {
@@ -36,23 +36,18 @@ const SideNav = () => {
             <li key={item.id}>
               <a
                 href={item.href}
-                onClick={() => urlPathname.set(item.href)}
                 className="group flex cursor-pointer items-center gap-2"
               >
                 <div
                   className={clsx(
                     "h-[1px] w-6 rounded-full transition-all group-hover:w-12 group-hover:bg-emerald-600",
-                    item.href === $urlPathname
-                      ? "w-12 bg-emerald-600"
-                      : "bg-zinc-600"
+                    item.href === url ? "w-12 bg-emerald-600" : "bg-zinc-600"
                   )}
                 ></div>
                 <p
                   className={clsx(
                     " font-medium group-hover:text-emerald-600",
-                    item.href === $urlPathname
-                      ? "text-emerald-600"
-                      : "text-zinc-600"
+                    item.href === url ? "text-emerald-600" : "text-zinc-600"
                   )}
                 >
                   {item.title}

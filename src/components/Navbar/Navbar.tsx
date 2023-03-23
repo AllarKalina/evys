@@ -1,13 +1,14 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
-import { useStore } from "@nanostores/react";
 import clsx from "clsx";
 import { useState } from "react";
-import { urlPathname } from "../../stores/urlStore";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 
-const Navbar = () => {
-  const $urlPathname = useStore(urlPathname);
+interface Props {
+  url: string;
+}
+
+const Navbar: React.FC<Props> = ({ url }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItemArray = [
@@ -18,7 +19,7 @@ const Navbar = () => {
       subItems: [
         { id: 4, title: "Seltsist", href: "/info" },
         { id: 5, title: "Juhatus ja meeskonnad", href: "/info/teams" },
-        { id: 6, title: "Kuusepuud", href: "/info/work" },
+        { id: 6, title: "Kuusepuude projekt", href: "/info/work" },
         { id: 7, title: "Dokumendid", href: "/info/documents" },
       ],
     },
@@ -41,9 +42,9 @@ const Navbar = () => {
     }
   };
 
-  const isInfo = $urlPathname.split("/")[1] === "info";
+  const isInfo = url.split("/")[1] === "info";
 
-  const pages = $urlPathname
+  const pages = url
     .split("/")
     .slice(1)
     .map((value, idx) => {
@@ -129,7 +130,7 @@ const Navbar = () => {
           </>
         )}
       </div>
-      <DesktopMenu menuItems={menuItemArray} />
+      <DesktopMenu menuItems={menuItemArray} url={url} />
     </section>
   );
 };

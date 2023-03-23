@@ -20,18 +20,14 @@ const isInfo = url.pathname.split("/")[1] == "info";
     <title>{title}</title>
   </head>
   <body class="relative h-full antialiased">
-    <div data-turbo-permanent id="header">
-      <Navbar client:load />
+    <div id="header">
+      <Navbar client:load url={url.pathname} />
     </div>
     <slot />
     {
       isInfo && (
-        <div
-          id="side"
-          data-turbo-permanent
-          class="absolute top-64 left-0 h-full w-[300px]"
-        >
-          <SideNav client:load />
+        <div class="absolute top-64 left-0 h-full w-[300px]">
+          <SideNav client:load url={url.pathname} />
         </div>
       )
     }

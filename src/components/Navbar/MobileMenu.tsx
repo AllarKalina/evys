@@ -1,6 +1,4 @@
-import { useStore } from "@nanostores/react";
 import clsx from "clsx";
-import { urlPathname } from "../../stores/urlStore";
 import NavItem from "./NavItem";
 import type { MenuItem } from "./types";
 
@@ -15,8 +13,6 @@ const MobileMenu: React.FC<Props> = ({
   onMenuChange,
   menuItems,
 }) => {
-  const $urlPathname = useStore(urlPathname);
-
   return (
     <div className="flex items-center md:hidden">
       <button

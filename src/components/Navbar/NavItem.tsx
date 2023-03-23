@@ -1,6 +1,5 @@
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
-import { urlPathname } from "../../stores/urlStore";
 
 interface Props {
   title: string;
@@ -31,7 +30,6 @@ const NavItem: React.FC<Props> = ({
             active && "underline underline-offset-8",
             className
           )}
-          onClick={() => urlPathname.set(href)}
         >
           <span>{title}</span>
         </a>
@@ -45,7 +43,6 @@ const NavItem: React.FC<Props> = ({
                     <a
                       href={item.href}
                       className="block whitespace-nowrap py-2 px-4 text-emerald-600 hover:bg-zinc-200 hover:text-emerald-700"
-                      onClick={() => urlPathname.set(item.href)}
                     >
                       {item.title}
                     </a>
@@ -64,7 +61,6 @@ const NavItem: React.FC<Props> = ({
                 <a
                   href={item.href}
                   className="block whitespace-nowrap rounded-lg py-2 px-4 text-lg font-semibold tracking-wide text-white"
-                  onClick={() => urlPathname.set(item.href)}
                 >
                   {item.title}
                 </a>
