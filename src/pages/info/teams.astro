@@ -1,5 +1,11 @@
 ---
+import { Image } from "@astrojs/image/components";
 import clsx from "clsx";
+import AnetteImage from "../../assets/Anette.webp";
+import ElisImage from "../../assets/Elis.webp";
+import KellyImage from "../../assets/Kelly.webp";
+import LiisaImage from "../../assets/Liisa.webp";
+import SädeImage from "../../assets/Säde.webp";
 import Teams from "../../components/pages/Info/Teams";
 import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
@@ -10,35 +16,35 @@ const people = [
   {
     name: "Elis-Anett Urbmets",
     role: "Juhatuse esimees",
-    imageUrl: "/images/Elis.webp",
+    imageUrl: ElisImage,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Anette Aavekukk",
     role: "Haridusjuht",
-    imageUrl: "/images/Anette.webp",
+    imageUrl: AnetteImage,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Kelly Hiietamm",
     role: "Turundus- ja kommunikatsioonijuht",
-    imageUrl: "/images/Kelly.webp",
+    imageUrl: KellyImage,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Liisa Tiin Sei",
     role: "Partnerlus- ja sponsorlusjuht",
-    imageUrl: "/images/Liisa.webp",
+    imageUrl: LiisaImage,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Säde Järvekülg",
     role: "Personalijuht",
-    imageUrl: "/images/Säde.webp",
+    imageUrl: SädeImage,
     twitterUrl: "#",
     linkedinUrl: "#",
   },
@@ -76,10 +82,10 @@ const people = [
                 <li>
                   <div class="space-y-3">
                     <div class="h-56 w-full overflow-hidden rounded-lg">
-                      <img
+                      <Image
                         class="object-cover shadow-lg"
                         src={person.imageUrl}
-                        alt=""
+                        alt="Tre"
                       />
                     </div>
 

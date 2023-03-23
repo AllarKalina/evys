@@ -56,8 +56,8 @@ const portraitImage = data.find(
         client:visible
         color="cyan"
         subTitle="Kes me oleme"
-        header="Toredad tudengid ja meeldejäävad elamused"
-        text="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid."
+        header="Selts, mis koondab enda alla kõik Eesti veterinaaria eriala tudengid"
+        text="Seltsi eesmärk on pakkuda tudengitele erinevaid võimalusi enesearenguks, erialaseks täiendamiseks ning üksteise toetamiseks ja koostööks."
       />
     </header>
   </section>
@@ -103,7 +103,7 @@ const portraitImage = data.find(
   <section
     class="relative col-span-1 overflow-hidden pt-12 lg:col-span-3 lg:pt-80"
   >
-    <ul role="list" class="flex flex-col gap-12 pt-8">
+    <ul role="list" class="flex flex-col gap-16 pt-8">
       <AboutItem
         href="/info"
         client:visible
@@ -119,6 +119,15 @@ const portraitImage = data.find(
         color="green"
         header="Juhatus ja meeskonnad"
         buttonText="Tutvu meeskondadega"
+        description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
+        imageUrl={smallLandscapeImage.attributes.image.data.attributes.url}
+      />
+      <AboutItem
+        href="/info/work"
+        client:visible
+        color="amber"
+        header="Kuusepuude projekt"
+        buttonText="Vaata projekti"
         description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
         imageUrl={smallLandscapeImage.attributes.image.data.attributes.url}
       />

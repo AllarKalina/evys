@@ -7,25 +7,28 @@ interface Props {
   delay?: number;
 }
 
-const AnimatedHeader: React.FC<Props> = ({ children, delay, className }) => {
+const NegativeAnimatedText: React.FC<Props> = ({
+  children,
+  delay,
+  className,
+}) => {
   return (
-    <motion.h1
-      initial={{ x: 24, opacity: 0 }}
+    <motion.p
+      initial={{ x: -24, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       transition={{
         ease: [0.74, 0.07, 0.38, 0.99],
         duration: 0.72,
         delay,
       }}
-      viewport={{ once: true }}
       className={clsx(
-        "text-4xl font-bold tracking-tight text-zinc-700 sm:text-6xl",
+        "my-5 text-base leading-7 text-zinc-600 lg:text-lg",
         className
       )}
     >
       {children}
-    </motion.h1>
+    </motion.p>
   );
 };
 
-export default AnimatedHeader;
+export default NegativeAnimatedText;

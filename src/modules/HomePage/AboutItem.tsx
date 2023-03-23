@@ -34,7 +34,8 @@ const AboutItem: React.FC<Props> = ({
               "h-1 w-12 rounded-full",
               color === "green" && "bg-emerald-600",
               color === "cyan" && "bg-cyan-600",
-              color === "rose" && "bg-rose-600"
+              color === "rose" && "bg-rose-600",
+              color === "amber" && "bg-amber-600"
             )}
           />
           <h3 className="mt-3 text-3xl font-bold tracking-tight text-zinc-700">
@@ -73,7 +74,8 @@ const AboutItem: React.FC<Props> = ({
             "flex items-center gap-0.5 transition-all hover:gap-2",
             color === "green" && "text-emerald-600 hover:text-emerald-700",
             color === "cyan" && "text-cyan-600 hover:text-cyan-700",
-            color === "rose" && "text-rose-600 hover:text-rose-700"
+            color === "rose" && "text-rose-600 hover:text-rose-700",
+            color === "amber" && "text-amber-600 hover:text-amber-700"
           )}
         >
           <span className="text-base font-semibold lg:text-lg">
