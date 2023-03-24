@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 interface Props {
   subTitle: string;
   header: string;
-  text: string;
+  text?: string;
   color?: string;
 }
 
@@ -36,9 +36,11 @@ const Mission: React.FC<Props> = ({
           {header}
         </h2>
       </div>
-      <div className="mt-4">
-        <p className="text-base leading-7 text-zinc-600 lg:text-lg">{text}</p>
-      </div>
+      {text && (
+        <div className="mt-4">
+          <p className="text-base leading-7 text-zinc-600 lg:text-lg">{text}</p>
+        </div>
+      )}
     </motion.div>
   );
 };

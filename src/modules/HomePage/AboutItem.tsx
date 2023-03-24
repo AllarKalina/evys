@@ -29,15 +29,6 @@ const AboutItem: React.FC<Props> = ({
     >
       <div className="relative z-10 flex flex-col gap-10 sm:flex-row">
         <div className="max-w-xl flex-auto">
-          <div
-            className={clsx(
-              "h-1 w-12 rounded-full",
-              color === "green" && "bg-emerald-600",
-              color === "cyan" && "bg-cyan-600",
-              color === "rose" && "bg-rose-600",
-              color === "amber" && "bg-amber-600"
-            )}
-          />
           <h3 className="mt-3 text-3xl font-bold tracking-tight text-zinc-700">
             {header}
           </h3>

@@ -35,7 +35,7 @@ const NavItem: React.FC<Props> = ({
         </a>
         {subItems !== undefined && (
           <>
-            <ChevronDownIcon className="hidden h-5 w-5 md:block" />
+            <ChevronDownIcon className="hidden h-5 w-5 cursor-pointer md:block" />
             <ul className="absolute top-10 hidden rounded-lg border border-emerald-600/50 bg-zinc-100 py-2 md:group-hover:block">
               {subItems.map((item) => {
                 return (
