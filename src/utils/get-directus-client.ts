@@ -5,6 +5,8 @@ export const getDirectusClient = async () => {
 
   if (await directus.auth.token) return directus;
 
+  console.log("wtf");
+
   if (import.meta.env.DIRECTUS_EMAIL && import.meta.env.DIRECTUS_PASSWORD) {
     await directus.auth.login({
       email: import.meta.env.DIRECTUS_EMAIL,

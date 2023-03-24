@@ -1,9 +1,9 @@
 ---
-import { Directus } from "@directus/sdk";
 import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getDirectusClient } from "../../utils/get-directus-client";
 
 const posts = [
   {
@@ -28,9 +28,7 @@ type BlogPost = {
   body: string;
 };
 
-const directus = new Directus(
-  "https://directus-production-c88f.up.railway.app"
-);
+const directus = await getDirectusClient();
 
 const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
 const highlightBlog = blogs[0];
