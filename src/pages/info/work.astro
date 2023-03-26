@@ -3,6 +3,16 @@ import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getAssetURL } from "../../utils/get-asset-url";
+import { getDirectusClient } from "../../utils/get-directus-client";
+
+type KuusepuudGallery = {
+  image: string;
+};
+
+const directus = await getDirectusClient();
+const kuusepuud = (await directus.items("kuusepuud_gallery").readByQuery())
+  .data as KuusepuudGallery[];
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
@@ -11,7 +21,9 @@ import Layout from "../../layouts/Layout.astro";
       <div
         class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
       >
-        <AnimatedHeader client:load delay={0.24}>Kuusepuud</AnimatedHeader>
+        <AnimatedHeader client:load delay={0.24}>
+          Kuusepuude projekt
+        </AnimatedHeader>
         <AnimatedBlock client:load delay={0.42}>
           <h2
             class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
@@ -55,6 +67,29 @@ import Layout from "../../layouts/Layout.astro";
             Hill’s.
           </p>
         </AnimatedBlock>
+      </div>
+      <div
+        class="mx-auto mt-8 max-w-3xl overflow-hidden rounded-lg border border-zinc-100 bg-slate-50 p-8 lg:max-w-5xl 2xl:max-w-7xl"
+      >
+        <ul role="list" class="columns-2 gap-4 sm:columns-3">
+          {
+            kuusepuud.map((kuusepuu) => (
+              <li class="relative mb-4">
+                <div class="aspect-w-10 aspect-h-7 group block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                  <img
+                    src={getAssetURL({
+                      id: kuusepuu.image,
+                      width: 310,
+                      fit: "cover",
+                      quality: 80,
+                    })}
+                    class="pointer-events-none object-cover transition-transform group-hover:scale-[102%]"
+                  />
+                </div>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </SectionWrapper>
   </main>
