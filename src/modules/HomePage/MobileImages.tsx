@@ -14,13 +14,13 @@ const MobileImages: React.FC<Props> = ({ imageUrls }) => {
       viewport={{ once: true }}
       className="flex shrink-0 justify-center gap-5 sm:gap-7 md:gap-9"
     >
-      {imageUrls.map((item, idx) => {
+      {imageUrls.map((item) => {
         return (
           <li className="aspect-[4/5] w-[180px] flex-none -rotate-2 overflow-hidden rounded-lg shadow-xl">
             <img
-              src={getAssetURL(item) as string}
-              alt={`Hero_mobile_img${idx}`}
+              loading="lazy"
               className="h-full w-full object-cover"
+              src={getAssetURL({ id: item, width: 188 }) as string}
             />
           </li>
         );

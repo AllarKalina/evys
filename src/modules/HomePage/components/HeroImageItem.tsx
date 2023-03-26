@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import LoadedImage from "../../../components/LoadedImage";
+import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
   imageId: string;
@@ -13,9 +13,21 @@ const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72, delay }}
       viewport={{ once: true }}
-      className="h-[330px] w-[260px] overflow-hidden rounded-tl-lg rounded-br-lg shadow-lg"
+      className="h-[330px] w-[300px] overflow-hidden rounded-lg shadow-lg lg:w-[260px]"
     >
-      <LoadedImage src={imageId} className="h-full w-full object-cover" />
+      <img
+        loading="lazy"
+        className="h-full w-full object-cover"
+        src={
+          getAssetURL({
+            id: imageId,
+            width: 300,
+            height: 330,
+            fit: "cover",
+            quality: 80,
+          }) as string
+        }
+      />
     </motion.li>
   );
 };
