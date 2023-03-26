@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
-  imageUrl: string;
+  imageId: string;
 }
 
-const SponsorItem: React.FC<Props> = ({ imageUrl }) => {
+const SponsorItem: React.FC<Props> = ({ imageId }) => {
   return (
     <motion.li
       initial={{ y: 16, opacity: 0 }}
@@ -13,9 +14,19 @@ const SponsorItem: React.FC<Props> = ({ imageUrl }) => {
       viewport={{ once: true }}
       className="flex w-full justify-center"
     >
-      <div className="relative bg-slate-200/30 border border-slate-200/40 backdrop-blur p-4 rounded-lg h-full flex items-center justify-center w-[60%] lg:w-full">
+      <div className="relative flex h-full w-[60%] items-center justify-center rounded-lg border border-slate-200/40 bg-slate-200/30 p-4 backdrop-blur lg:w-full">
         <div className="noise" />
-        <img src={imageUrl} alt="image" className="w-full" />
+        <img
+          src={
+            getAssetURL({
+              id: imageId,
+              fit: "contain",
+              width: 290,
+            }) as string
+          }
+          alt="image"
+          className="w-full"
+        />
       </div>
     </motion.li>
   );

@@ -23,10 +23,6 @@ const heroGallery = (
 const organization = (await directus
   .singleton("organization")
   .read()) as Organization;
-
-const formatHeader = (header: string) => {
-  const beginning = header.split(" ").slice(0, 1).join(" ");
-};
 ---
 
 <main

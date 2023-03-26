@@ -1,35 +1,17 @@
 ---
+import { getDirectusClient } from "../../utils/get-directus-client";
 import SponsorItem from "./components/SponsorItem";
 
-const sponsorResponse = await fetch(
-  "https://evys-api-production.up.railway.app/graphql",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `
-        query {
-          sponsors {
-            data {
-              attributes {
-                logo {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
-    }),
-  }
-);
+const directus = await getDirectusClient();
 
-const json2 = await sponsorResponse.json();
-const data2 = json2.data.sponsors.data;
+type Sponsor = {
+  id: string;
+  name: string;
+  logo: string;
+};
+
+const sponsors = (await directus.items("sponsor").readByQuery())
+  .data as Sponsor[];
 ---
 
 <main
@@ -46,13 +28,8 @@ const data2 = json2.data.sponsors.data;
       class="mt-8 grid grid-rows-2 gap-4 lg:grid-cols-2 lg:grid-rows-1 lg:gap-8"
     >
       {
-        data2.map((sponsor: any) => {
-          return (
-            <SponsorItem
-              client:visible
-              imageUrl={sponsor.attributes.logo.data.attributes.url}
-            />
-          );
+        sponsors.map((sponsor) => {
+          return <SponsorItem client:visible imageId={sponsor.logo} />;
         })
       }
     </ul>

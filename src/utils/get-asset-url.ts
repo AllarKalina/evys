@@ -20,7 +20,7 @@ export function getAssetURL({
     `fit=${fit}`,
     "format=webp",
     `quality=${quality ?? 75}`,
-    `height=${height}`,
+    height ? `height=${height}` : "",
   ];
   const paramsString = params.join("&");
 
