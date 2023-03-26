@@ -40,14 +40,18 @@ const SideNav: React.FC<Props> = ({ url }) => {
               >
                 <div
                   className={clsx(
-                    "h-[1px] w-6 rounded-full transition-all group-hover:w-12 group-hover:bg-emerald-600",
-                    item.href === url ? "w-12 bg-emerald-600" : "bg-zinc-600"
+                    "h-[1px] rounded-full transition-all",
+                    item.href === url
+                      ? "w-12 bg-emerald-600"
+                      : "w-6 bg-zinc-600 group-hover:w-12 group-hover:bg-emerald-600"
                   )}
                 ></div>
                 <p
                   className={clsx(
-                    " font-medium group-hover:text-emerald-600",
-                    item.href === url ? "text-emerald-600" : "text-zinc-600"
+                    "font-medium",
+                    item.href === url
+                      ? "text-emerald-600"
+                      : "text-zinc-600 group-hover:text-emerald-600"
                   )}
                 >
                   {item.title}

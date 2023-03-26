@@ -1,9 +1,10 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
-  imageUrl: string;
+  imageId: string;
   header: string;
   description: string;
   buttonText: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const AboutItem: React.FC<Props> = ({
-  imageUrl,
+  imageId,
   header,
   description,
   buttonText,
@@ -44,7 +45,15 @@ const AboutItem: React.FC<Props> = ({
           transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
           viewport={{ once: true }}
           className="aspect-[4/5] w-52 flex-none rounded-lg object-cover shadow-lg"
-          src={imageUrl}
+          src={
+            getAssetURL({
+              id: imageId,
+              width: 208,
+              height: 260,
+              fit: "cover",
+              quality: 90,
+            }) as string
+          }
           alt=""
         />
       </div>

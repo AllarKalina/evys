@@ -2,14 +2,13 @@
 import { getDirectusClient } from "../../utils/get-directus-client";
 import SponsorItem from "./components/SponsorItem";
 
-const directus = await getDirectusClient();
-
 type Sponsor = {
   id: string;
   name: string;
   logo: string;
 };
 
+const directus = await getDirectusClient();
 const sponsors = (await directus.items("sponsor").readByQuery())
   .data as Sponsor[];
 ---

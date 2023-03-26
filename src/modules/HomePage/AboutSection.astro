@@ -1,49 +1,34 @@
 ---
+import SectionHeader from "../../components/SectionHeader";
+import { getDirectusClient } from "../../utils/get-directus-client";
 import AboutItem from "./components/AboutItem";
-import Mission from "./Mission";
 
-const aboutUsResponse = await fetch(
-  "https://evys-api-production.up.railway.app/graphql",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `
-      query {
-        aboutUsImages {
-          data {
-            attributes {
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-              location
-            }
-          }
-        }
-      }
-    `,
-    }),
-  }
-);
+type AboutUs = {
+  description: string;
+  goal: string;
+};
 
-const json = await aboutUsResponse.json();
-const data = json.data.aboutUsImages.data;
+type AboutUsTopic = {
+  header: string;
+  description: string;
+  image: string;
+  action: string;
+};
 
-const smallLandscapeImage = data.find(
-  (item: any) => item.attributes.location === "small_landscape"
-);
+const directus = await getDirectusClient();
+const aboutUs = (await directus.singleton("about_us").read()) as AboutUs;
+const aboutUsTopics = (
+  await directus
+    .items("about_us_topic")
+    .readByQuery({ sort: ["order" as never] })
+).data as AboutUsTopic[];
 
-const largeLandscapeImage = data.find(
-  (item: any) => item.attributes.location === "large_landscape"
-);
-
-const portraitImage = data.find(
-  (item: any) => item.attributes.location === "portrait"
-);
+const aboutUsTopicExtra = [
+  { href: "/info", color: "cyan" },
+  { href: "/info/teams", color: "green" },
+  { href: "/info/work", color: "amber" },
+  { href: "/info/documents", color: "rose" },
+];
 ---
 
 <main
@@ -52,12 +37,12 @@ const portraitImage = data.find(
   {/* Left column */}
   <section class="z-10 col-span-1 max-w-lg lg:col-span-2">
     <header class="sticky top-36">
-      <Mission
+      <SectionHeader
         client:visible
         color="cyan"
-        subTitle="Kes me oleme"
-        header="Selts, mis koondab enda alla kõik Eesti veterinaaria eriala tudengid"
-        text="Seltsi eesmärk on pakkuda tudengitele erinevaid võimalusi enesearenguks, erialaseks täiendamiseks ning üksteise toetamiseks ja koostööks."
+        smallHeader="Kes me oleme"
+        header={aboutUs.description}
+        text={aboutUs.goal}
       />
     </header>
   </section>
@@ -104,7 +89,22 @@ const portraitImage = data.find(
     class="relative col-span-1 overflow-hidden pt-12 lg:col-span-3 lg:pt-80"
   >
     <ul role="list" class="flex flex-col gap-16 pt-8">
-      <AboutItem
+      {
+        aboutUsTopics.map((topic, idx) => {
+          return (
+            <AboutItem
+              client:visible
+              href={aboutUsTopicExtra[idx].href}
+              color={aboutUsTopicExtra[idx].color}
+              header={topic.header}
+              imageId={topic.image}
+              description={topic.description}
+              buttonText={topic.action}
+            />
+          );
+        })
+      }
+      <!-- <AboutItem
         href="/info"
         client:visible
         color="cyan"
@@ -142,7 +142,7 @@ const portraitImage = data.find(
         buttonText="Vaata dokumente"
         description="Eesti Veterinaarmeditsiini Üliõpilaste Selts (EVÜS) asutati Tartus 2013. aastal, et ühendada enda alla veterinaarmeditsiini õppivad Eesti tudengid. Seltsisiseselt korraldatakse erialaseid loenguid, õpitubasid ja väljasõite ning vabaajaüritusi, et tuua erinevate kursuste üliõpilased teineteisele lähemale."
         imageUrl={largeLandscapeImage.attributes.image.data.attributes.url}
-      />
+      /> -->
     </ul>
   </section>
 </main>

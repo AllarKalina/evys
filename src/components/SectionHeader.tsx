@@ -23,7 +23,7 @@ const SectionHeader: React.FC<Props> = ({
     >
       <p
         className={clsx(
-          "text-base font-semibold leading-7 text-emerald-600",
+          "text-base font-semibold leading-7",
           color === "green" && "text-emerald-600",
           color === "cyan" && "text-cyan-600",
           color === "rose" && "text-rose-600"
