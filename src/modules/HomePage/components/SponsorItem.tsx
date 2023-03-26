@@ -17,6 +17,7 @@ const SponsorItem: React.FC<Props> = ({ imageId }) => {
       <div className="relative flex h-full w-[60%] items-center justify-center rounded-lg border border-slate-200/40 bg-slate-200/30 p-4 backdrop-blur lg:w-full">
         <div className="noise" />
         <img
+          loading="lazy"
           src={
             getAssetURL({
               id: imageId,

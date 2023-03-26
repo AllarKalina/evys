@@ -40,6 +40,7 @@ const AboutItem: React.FC<Props> = ({
           </div>
         </div>
         <motion.img
+          loading="lazy"
           initial={{ y: 16, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
