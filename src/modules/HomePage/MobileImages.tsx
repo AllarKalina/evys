@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { getAssetURL } from "../../utils/get-asset-url";
 
 interface Props {
   imageUrls: string[];
@@ -11,15 +12,15 @@ const MobileImages: React.FC<Props> = ({ imageUrls }) => {
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
-      className="flex shrink-0 gap-5 justify-center sm:gap-7 md:gap-9"
+      className="flex shrink-0 justify-center gap-5 sm:gap-7 md:gap-9"
     >
       {imageUrls.map((item, idx) => {
         return (
-          <li className="overflow-hidden flex-none rounded-lg -rotate-2 shadow-xl w-[180px] aspect-[4/5]">
+          <li className="aspect-[4/5] w-[180px] flex-none -rotate-2 overflow-hidden rounded-lg shadow-xl">
             <img
-              src={item}
+              src={getAssetURL(item) as string}
               alt={`Hero_mobile_img${idx}`}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </li>
         );

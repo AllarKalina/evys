@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import LoadedImage from "../../../components/LoadedImage";
 
 interface Props {
-  imageUrl: string;
+  imageId: string;
   delay?: number;
 }
 
-const HeroImageItem: React.FC<Props> = ({ imageUrl, delay }) => {
+const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
   return (
     <motion.li
       initial={{ y: 16, opacity: 0 }}
@@ -14,7 +15,7 @@ const HeroImageItem: React.FC<Props> = ({ imageUrl, delay }) => {
       viewport={{ once: true }}
       className="h-[330px] w-[260px] overflow-hidden rounded-tl-lg rounded-br-lg shadow-lg"
     >
-      <img src={imageUrl} alt="image" className="h-full w-full object-cover" />
+      <LoadedImage src={imageId} className="h-full w-full object-cover" />
     </motion.li>
   );
 };

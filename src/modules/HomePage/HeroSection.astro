@@ -1,35 +1,22 @@
 ---
-import HeroImageItem from "./HeroImageItem";
+import { getDirectusClient } from "../../utils/get-directus-client";
+import HeroImageItem from "./components/HeroImageItem";
 import Mission from "./Mission";
-import MobileImages from "./MobileImages";
 
-const galleryResponse = await fetch(
-  "https://evys-api-production.up.railway.app/graphql",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `
-      query {
-        galleries (sort: "order") {
-          data {
-            id 
-            attributes {
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-    }),
-  }
-);
+type HeroGalleryResponse = {
+  image: string;
+  order: number;
+};
+
+type HeroGallery = {
+  imageId: string;
+  order: number;
+};
+
+const directus = await getDirectusClient();
+const heroGallery = (
+  await directus.items("hero_gallery").readByQuery({ sort: ["order" as never] })
+).data as HeroGalleryResponse[];
 
 const contentResponse = await fetch(
   "https://evys-api-production.up.railway.app/graphql",
@@ -55,15 +42,8 @@ const contentResponse = await fetch(
   }
 );
 
-const json = await galleryResponse.json();
-const data: Array<any> = json.data.galleries.data;
-
 const json1 = await contentResponse.json();
 const data1 = json1.data.homePageTexts.data;
-
-const imageUrls = data.map(
-  (item: any) => item.attributes.image.data.attributes.url as string
-);
 
 const heroTexts = data1.find(
   (content: any) => content.attributes.location === "hero"
@@ -86,12 +66,12 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
     <article class="hidden lg:block">
       <ul class="flex flex-grow-0 flex-col gap-16">
         {
-          data.slice(0, 3).map((item: any, idx) => {
+          heroGallery.slice(0, 3).map((item, idx) => {
             return (
               <HeroImageItem
                 client:load
                 delay={idx < 2 ? idx * 0.36 : 0}
-                imageUrl={item.attributes.image.data.attributes.url}
+                imageId={item.image}
               />
             );
           })
@@ -109,12 +89,12 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
       <article class="mt-12 hidden w-full items-start lg:flex lg:gap-16">
         <ul class="hidden flex-col gap-16 lg:flex">
           {
-            data.slice(3).map((item: any, idx) => {
+            heroGallery.slice(3).map((item, idx) => {
               return (
                 <HeroImageItem
                   client:load
                   delay={idx === 0 ? 0.18 : 0}
-                  imageUrl={item.attributes.image.data.attributes.url}
+                  imageId={item.image}
                 />
               );
             })
@@ -133,7 +113,10 @@ const typedHeroText: { title: string; subTitle: string; description: string } =
   </section>
   {/* Mobile images */}
   <section class="mt-6 lg:hidden">
-    <MobileImages client:load imageUrls={imageUrls} />
+    <!-- <MobileImages
+      client:load
+      imageUrls={heroGallery.map((item) => item.image)}
+    /> -->
   </section>
   {/* Mobile mission section */}
   <section class="max-w-md lg:hidden">
