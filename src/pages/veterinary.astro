@@ -34,37 +34,6 @@ const features = [
     icon: ServerIcon,
   },
 ];
-
-const galleryResponse = await fetch(
-  "https://evys-api-production.up.railway.app/graphql",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `
-      query {
-        galleries (sort: "order") {
-          data {
-            id 
-            attributes {
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-    }),
-  }
-);
-
-const json = await galleryResponse.json();
-const data: Array<any> = json.data.galleries.data;
 // const imageUrls = data.map(
 //   (item: any) => item.attributes.image.data.attributes.url as string
 // );
