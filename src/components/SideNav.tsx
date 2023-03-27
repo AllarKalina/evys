@@ -9,22 +9,22 @@ const SideNav: React.FC<Props> = ({ url }) => {
     {
       id: 0,
       title: "Seltsist",
-      href: "/info",
+      href: "/info/",
     },
     {
       id: 1,
       title: "Juhatus ja meeskonnad",
-      href: "/info/teams",
+      href: "/info/teams/",
     },
     {
       id: 2,
       title: "Kuusepuude projekt",
-      href: "/info/work",
+      href: "/info/work/",
     },
     {
       id: 3,
       title: "Dokumendid",
-      href: "/info/documents",
+      href: "/info/documents/",
     },
   ];
 

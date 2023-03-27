@@ -15,17 +15,17 @@ const Navbar: React.FC<Props> = ({ url }) => {
     {
       id: 0,
       title: "Seltsist",
-      href: "/info",
+      href: "/info/",
       subItems: [
-        { id: 4, title: "Seltsist", href: "/info" },
-        { id: 5, title: "Juhatus ja meeskonnad", href: "/info/teams" },
-        { id: 6, title: "Kuusepuude projekt", href: "/info/work" },
-        { id: 7, title: "Dokumendid", href: "/info/documents" },
+        { id: 4, title: "Seltsist", href: "/info/" },
+        { id: 5, title: "Juhatus ja meeskonnad", href: "/info/teams/" },
+        { id: 6, title: "Kuusepuude projekt", href: "/info/work/" },
+        { id: 7, title: "Dokumendid", href: "/info/documents/" },
       ],
     },
-    { id: 1, title: "Loomaarsti õpe", href: "/veterinary" },
-    { id: 2, title: "Blogi", href: "/blog" },
-    { id: 3, title: "Toetajad", href: "/sponsors" },
+    { id: 1, title: "Loomaarsti õpe", href: "/veterinary/" },
+    { id: 2, title: "Blogi", href: "/blog/" },
+    { id: 3, title: "Toetajad", href: "/sponsors/" },
   ];
 
   const formatPageName = (page: string) => {
@@ -50,7 +50,7 @@ const Navbar: React.FC<Props> = ({ url }) => {
     .map((value, idx) => {
       return {
         name: value,
-        href: idx < 1 ? value : "info/" + value,
+        href: idx < 1 ? value : "/info/" + value,
         current: value,
       };
     });
