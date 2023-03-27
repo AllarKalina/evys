@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Teams: React.FC<Props> = ({ teams }) => {
-  const [activeTeamId, setActiveTeamId] = useState("");
+  const [activeTeamId, setActiveTeamId] = useState(teams[0].id);
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { Fragment, useState } from "react";
 import { getAssetURL } from "../../utils/get-asset-url";
@@ -7,6 +6,9 @@ import { getAssetURL } from "../../utils/get-asset-url";
 interface Props {
   kuusepuud: {
     image: string;
+    author: {
+      name: string;
+    };
   }[];
 }
 
@@ -14,33 +16,35 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
   const [open, setOpen] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isPlaceholderLoaded, setIsPlaceholderLoaded] = useState(false);
-  const [activeImage, setActiveImage] = useState<{ image: string } | undefined>(
-    undefined
-  );
+  const [activeImage, setActiveImage] = useState<
+    { image: string; author: string } | undefined
+  >(undefined);
 
   return (
     <>
-      <ul role="list" className="columns-2 gap-4 sm:columns-3">
+      <ul role="list" className="columns-2 gap-4 sm:columns-3 2xl:columns-4">
         {kuusepuud.map((kuusepuu) => (
           <li className="relative mb-4">
             <div
               onClick={() => {
-                setActiveImage({ image: kuusepuu.image });
+                setActiveImage({
+                  image: kuusepuu.image,
+                  author: kuusepuu.author.name,
+                });
                 setOpen(true);
               }}
-              className="aspect-w-10 aspect-h-7 group block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100"
+              className="aspect-w-10 aspect-h-7 group block w-full cursor-pointer overflow-hidden rounded-lg bg-gray-100 transition-transform focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:scale-[102%]"
             >
               <img
                 loading="lazy"
                 src={
                   getAssetURL({
                     id: kuusepuu.image,
-                    width: 310,
+                    width: 400,
                     fit: "cover",
                     quality: 80,
                   }) as string
                 }
-                className="pointer-events-none object-cover transition-transform group-hover:scale-[102%]"
               />
             </div>
           </li>
@@ -64,6 +68,7 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
             leaveTo="opacity-0"
             afterLeave={() => {
               setIsImageLoaded(false);
+              setActiveImage(undefined);
             }}
           >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
@@ -80,22 +85,10 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-8">
-                  <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
-                    <button
-                      type="button"
-                      className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                    >
-                      <span className="sr-only">Close</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-4">
                   <div
                     className={clsx(
-                      "rounded-lg bg-slate-200 sm:flex sm:max-h-[464px] sm:min-h-[464px] sm:min-w-[464px] sm:max-w-[464px] sm:items-start",
+                      "rounded-lg bg-slate-200 sm:flex sm:max-h-[480px] sm:min-h-[480px] sm:min-w-[480px] sm:max-w-[480px] sm:items-start",
                       isPlaceholderLoaded ? "" : "animate-pulse"
                     )}
                   >
@@ -143,6 +136,14 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
                         )}
                       </div>
                     )}
+                  </div>
+                  <div>
+                    <p className="mt-4 text-base font-semibold leading-7 text-emerald-600 lg:text-lg">
+                      Pildi autor:
+                    </p>
+                    <p className="text-base font-medium leading-7 text-zinc-600 lg:text-lg">
+                      {activeImage?.author}
+                    </p>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -12,6 +12,7 @@ type Leader = {
   name: string;
   team: string;
   image: string;
+  order: number;
 };
 
 type Team = {
@@ -19,19 +20,22 @@ type Team = {
   name: string;
   description: string;
   image: string;
+  order: number;
 };
 
 const directus = await getDirectusClient();
-const leaders = (await directus.items("leader").readByQuery()).data as Leader[];
-const teams = (await directus.items("team").readByQuery()).data as Team[];
+const leaders = (
+  await directus.items("leader").readByQuery({ sort: ["order" as never] })
+).data as Leader[];
+const teams = (
+  await directus.items("team").readByQuery({ sort: ["order" as never] })
+).data as Team[];
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <SectionWrapper>
-      <div
-        class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-      >
+      <div class="relative mx-auto max-w-3xl px-4 pt-20 lg:pt-0 2xl:max-w-5xl">
         <AnimatedHeader client:load delay={0.24}>
           Juhatus ja meeskonnad
         </AnimatedHeader>
@@ -71,11 +75,13 @@ const teams = (await directus.items("team").readByQuery()).data as Team[];
                     </div>
 
                     <div class="space-y-3">
-                      <div class="space-y-1 font-semibold leading-6 text-zinc-700">
-                        <h3 class="text-lg lg:text-xl">{leader.name}</h3>
+                      <div class="space-y-1 leading-6 text-zinc-700">
+                        <h3 class="text-lg font-semibold  lg:text-xl">
+                          {leader.name}
+                        </h3>
                         <p
                           class={clsx(
-                            "text-md !leading-6 lg:text-lg",
+                            "text-md font-medium !leading-6 lg:text-lg",
                             idx === 0 && "text-emerald-600 ",
                             idx === 1 && "text-cyan-600",
                             idx === 2 && "text-amber-600",

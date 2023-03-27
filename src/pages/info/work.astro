@@ -8,19 +8,23 @@ import { getDirectusClient } from "../../utils/get-directus-client";
 
 type KuusepuudGallery = {
   image: string;
+  author: {
+    name: string;
+  };
 };
 
 const directus = await getDirectusClient();
-const kuusepuud = (await directus.items("kuusepuud_gallery").readByQuery())
-  .data as KuusepuudGallery[];
+const kuusepuud = (
+  await directus
+    .items("kuusepuud_gallery")
+    .readByQuery({ fields: ["image", "author.name"] })
+).data as KuusepuudGallery[];
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <main class="flex flex-col items-center">
     <SectionWrapper>
-      <div
-        class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-      >
+      <div class="relative mx-auto max-w-3xl px-4 pt-20 lg:pt-0 2xl:max-w-5xl">
         <AnimatedHeader client:load delay={0.24}>
           Kuusepuude projekt
         </AnimatedHeader>

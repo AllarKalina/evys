@@ -26,7 +26,7 @@ const AboutItem: React.FC<Props> = ({
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
-      className="relative flex flex-col gap-6"
+      className="relative flex flex-col gap-6 xl:gap-0"
     >
       <div className="relative z-10 flex flex-col gap-10 sm:flex-row">
         <div className="max-w-xl flex-auto">

@@ -29,7 +29,7 @@ const SideNav: React.FC<Props> = ({ url }) => {
   ];
 
   return (
-    <div className="side-nav sticky top-40 hidden xl:block">
+    <div className="side-nav sticky top-40">
       <ul className="space-y-5">
         {MENU_ITEMS.map((item) => {
           return (
