@@ -17,12 +17,10 @@
     "@directus/sdk": "^10.3.2",
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.14",
-    "@hotwired/turbo": "^7.3.0",
-    "@nanostores/react": "^0.4.1",
+    "@swup/preload-plugin": "^2.1.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
-    "@vercel/analytics": "^0.1.6",
     "astro": "^1.9.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.2.4",
@@ -30,8 +28,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "sharp": "^0.31.3",
-    "tailwindcss": "^3.2.4",
-    "web-vitals": "^3.1.1"
+    "swup": "^3.0.5",
+    "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
     "prettier": "^2.8.4",

@@ -57,6 +57,7 @@ const Navbar: React.FC<Props> = ({ url }) => {
 
   return (
     <section
+      id="nav"
       className={clsx(
         "page-header fixed left-1/2 z-50 flex max-w-screen-xl -translate-x-1/2 transform justify-between",
         isMobileMenuOpen && "top-0 mx-0 w-full bg-emerald-600 px-7 pt-7",

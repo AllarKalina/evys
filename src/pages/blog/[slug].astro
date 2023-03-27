@@ -1,5 +1,8 @@
 ---
+import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
+import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import Layout from "../../layouts/Layout.astro";
+import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
 
 type BlogPost = {
@@ -8,6 +11,7 @@ type BlogPost = {
   description: string;
   body: string;
   slug: string;
+  cover_photo: string;
 };
 
 export async function getStaticPaths() {
@@ -24,26 +28,30 @@ const { blog } = Astro.props;
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main class="flex flex-col items-center">
-    <div class="bg-white py-32 px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl text-base leading-7 text-gray-700">
-        <p class="text-base font-semibold leading-7 text-indigo-600">
-          Introducing
-        </p>
-        <h1
-          class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-        >
-          {blog.title}
-        </h1>
-        <p class="mt-6 text-xl leading-8">
+  <div class="bg-white py-32 px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-base leading-7">
+      <p class="mb-2 text-base font-semibold leading-7 text-emerald-600">
+        Kool
+      </p>
+      <AnimatedHeader client:load delay={0.24}>{blog.title}</AnimatedHeader>
+      <AnimatedBlock client:load delay={0.42}>
+        <p class="my-5 text-base leading-7 text-zinc-700 lg:text-lg">
           {blog.description}
         </p>
-        <div class="mt-10 max-w-2xl">
-          <p>
-            {blog.body}
-          </p>
-        </div>
-      </div>
+        <img
+          class="h-64 w-full rounded-lg object-cover shadow-lg sm:h-96"
+          src={getAssetURL({
+            id: blog.cover_photo,
+            width: 900,
+            quality: 90,
+            fit: "cover",
+          })}
+        />
+        <div
+          set:html={blog.body}
+          class="lg:mt-12 [&>h2]:mt-8 [&>h2]:mb-4 [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:leading-6 [&>h2]:text-emerald-600 [&>h2]:lg:text-2xl [&>p]:my-5 [&>p]:text-base [&>p]:leading-7 [&>p]:text-zinc-600 [&>p]:lg:text-lg"
+        />
+      </AnimatedBlock>
     </div>
-  </main>
+  </div>
 </Layout>

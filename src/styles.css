@@ -1,4 +1,4 @@
-::view-transition-old(root),
+/* ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.72s;
 }
@@ -35,6 +35,27 @@
 
 .footer {
   view-transition-name: footer;
+} */
+
+.blog-body .h2 {
+  font-size: 1.25rem /* 20px */;
+  line-height: 1.75rem /* 28px */;
+}
+
+@keyframes slide-left {
+  to {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+}
+
+.transition-fade {
+  opacity: 1;
+  transition: 500ms;
+}
+
+html.is-animating .transition-fade {
+  animation: 0.72s slide-left ease;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -40,28 +40,26 @@ const DOCUMENTS = [
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main class="flex min-h-screen flex-col items-center">
-    <SectionWrapper>
-      <div class="relative mx-auto max-w-3xl px-4 pt-20 lg:pt-0 2xl:max-w-5xl">
-        <AnimatedHeader client:load delay={0.24}>Dokumendid</AnimatedHeader>
-        <AnimatedBlock client:load delay={0.42}>
-          <ul class="mt-8 flex flex-col gap-4">
-            {
-              DOCUMENTS.map((document) => {
-                return (
-                  <a
-                    href={document.href}
-                    target="_blank"
-                    class="mb-3 text-sm leading-6 text-emerald-600 underline hover:text-emerald-700 lg:text-base"
-                  >
-                    {document.name}
-                  </a>
-                );
-              })
-            }
-          </ul>
-        </AnimatedBlock>
-      </div>
-    </SectionWrapper>
-  </main>
+  <SectionWrapper>
+    <div class="relative mx-auto max-w-3xl px-4 pt-20 lg:pt-0 2xl:max-w-5xl">
+      <AnimatedHeader client:load delay={0.24}>Dokumendid</AnimatedHeader>
+      <AnimatedBlock client:load delay={0.42}>
+        <ul class="mt-8 flex flex-col gap-4">
+          {
+            DOCUMENTS.map((document) => {
+              return (
+                <a
+                  href={document.href}
+                  target="_blank"
+                  class="mb-3 text-sm leading-6 text-emerald-600 underline hover:text-emerald-700 lg:text-base"
+                >
+                  {document.name}
+                </a>
+              );
+            })
+          }
+        </ul>
+      </AnimatedBlock>
+    </div>
+  </SectionWrapper>
 </Layout>

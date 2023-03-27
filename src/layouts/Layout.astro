@@ -20,10 +20,13 @@ const isInfo = url.pathname.split("/")[1] == "info";
     <title>{title}</title>
   </head>
   <body class="relative h-full antialiased">
-    <div id="header">
-      <Navbar client:load url={url.pathname} />
-    </div>
-    <slot />
+    <Navbar client:load url={url.pathname} />
+    <main
+      id="swup"
+      class="transition-fade flex min-h-screen flex-col items-center"
+    >
+      <slot />
+    </main>
     {
       isInfo && (
         <div class="absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block">
@@ -31,9 +34,7 @@ const isInfo = url.pathname.split("/")[1] == "info";
         </div>
       )
     }
-    <div data-turbo-permanent id="footer">
-      <Footer />
-    </div>
+    <Footer />
   </body>
 </html>
 

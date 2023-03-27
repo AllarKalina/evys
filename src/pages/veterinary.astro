@@ -40,386 +40,377 @@ const features = [
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <main class="flex min-h-screen flex-col items-center overflow-x-hidden">
-    <div
-      class="no-scrollbar h-screen w-screen snap-y snap-mandatory overflow-y-auto"
-    >
-      <SectionWrapper className="flex h-screen snap-start">
-        <div
-          class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <AnimatedHeader client:load delay={0.24}>
-            Loomaarsti õpe
-          </AnimatedHeader>
-          <AnimatedBlock client:load delay={0.42}>
-            <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-              Veterinaarharidus keskendub loomade tervisele, haigustele,
-              hooldusele ja ennetamisele. Veterinaarharidus hõlmab laia valikut
-              teemasid, sealhulgas anatoomiat, füsioloogiat, farmakoloogiat,
-              patoloogiat, nakkushaigusi, kirurgiat, bioohutust, toiduhügieeni
-              ja loomakasvatust.
-            </p>
-            <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-              Veterinaarharidus on seotud nii lemmikloomade kui ka
-              põllumajandusloomade ja pidamisega seotud tööstusharudega.
-              Veterinaarmeditsiin on oluline valdkond, mis aitab tagada loomade
-              heaolu ja tervise ning ka rahvatervise ja toiduohutuse.
-            </p>
-          </AnimatedBlock>
-        </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:px-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Sissejuhatus veterinaariasse
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Sissejuhatus alusteadustesse ja veterinaaria anatoomiasse,
-              füsioloogiasse ja biokeemiasse. Õpilased õpivad loomakasvatust,
-              käitlemist ja põhilisi veterinaar-kliinilisi oskusi.
-            </NegativeAnimatedText>
-            <div class="overflow-hidden">
-              <Motion
-                client:load
-                initial={{ width: "0%" }}
-                whileInView={{ width: "90%" }}
-                duration={0.72}
-                delay={0.5}
-                client:load
-              >
-                <div class="mb-6 h-0.5 rounded-full bg-zinc-200"></div>
-              </Motion>
-            </div>
+  <div
+    class="no-scrollbar h-screen w-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden pt-20 lg:pt-0"
+  >
+    <SectionWrapper className="flex h-screen snap-start">
+      <div
+        class="relative mx-auto max-w-3xl px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <AnimatedHeader client:load delay={0.24}>Loomaarsti õpe</AnimatedHeader>
+        <AnimatedBlock client:load delay={0.42}>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Veterinaarharidus keskendub loomade tervisele, haigustele,
+            hooldusele ja ennetamisele. Veterinaarharidus hõlmab laia valikut
+            teemasid, sealhulgas anatoomiat, füsioloogiat, farmakoloogiat,
+            patoloogiat, nakkushaigusi, kirurgiat, bioohutust, toiduhügieeni ja
+            loomakasvatust.
+          </p>
+          <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+            Veterinaarharidus on seotud nii lemmikloomade kui ka
+            põllumajandusloomade ja pidamisega seotud tööstusharudega.
+            Veterinaarmeditsiin on oluline valdkond, mis aitab tagada loomade
+            heaolu ja tervise ning ka rahvatervise ja toiduohutuse.
+          </p>
+        </AnimatedBlock>
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:px-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Sissejuhatus veterinaariasse
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Sissejuhatus alusteadustesse ja veterinaaria anatoomiasse,
+            füsioloogiasse ja biokeemiasse. Õpilased õpivad loomakasvatust,
+            käitlemist ja põhilisi veterinaar-kliinilisi oskusi.
+          </NegativeAnimatedText>
+          <div class="overflow-hidden">
             <Motion
               client:load
-              initial={{ y: 24, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              initial={{ width: "0%" }}
+              whileInView={{ width: "90%" }}
               duration={0.72}
               delay={0.5}
               client:load
             >
-              <dl
-                class="max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none"
-              >
-                {
-                  features.map((feature) => (
-                    <div class="relative">
-                      <dt class="ml-9 inline-block text-base font-semibold leading-7 text-zinc-600">
-                        <feature.icon
-                          className="absolute top-1 left-1 h-5 w-5 text-emerald-600"
-                          aria-hidden="true"
-                        />
-                        {feature.name}
-                      </dt>{" "}
-                      <dd class="inline text-zinc-600">
-                        {feature.description}
-                      </dd>
-                    </div>
-                  ))
-                }
-              </dl>
+              <div class="mb-6 h-0.5 rounded-full bg-zinc-200"></div>
             </Motion>
           </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
+          <Motion
+            client:load
+            initial={{ y: 24, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            duration={0.72}
+            delay={0.5}
+            client:load
+          >
+            <dl
+              class="max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none"
             >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+              {
+                features.map((feature) => (
+                  <div class="relative">
+                    <dt class="ml-9 inline-block text-base font-semibold leading-7 text-zinc-600">
+                      <feature.icon
+                        className="absolute top-1 left-1 h-5 w-5 text-emerald-600"
+                        aria-hidden="true"
+                      />
+                      {feature.name}
+                    </dt>{" "}
+                    <dd class="inline text-zinc-600">{feature.description}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </Motion>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[0]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
-        </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Sissejuhatus veterinaariasse
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Sissejuhatus alusteadustesse ja veterinaaria anatoomiasse,
-              füsioloogiasse ja biokeemiasse. Õpilased õpivad loomakasvatust,
-              käitlemist ja põhilisi veterinaar-kliinilisi oskusi.
-            </NegativeAnimatedText>
-            <div class="overflow-hidden">
-              <Motion
-                client:load
-                initial={{ width: "0%" }}
-                whileInView={{ width: "90%" }}
-                duration={0.72}
-                delay={0.5}
-                client:load
-              >
-                <div class="mb-6 h-0.5 rounded-full bg-zinc-200"></div>
-              </Motion>
+              <ImageCover client:load />
             </div>
+          </Motion>
+        </div>
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Sissejuhatus veterinaariasse
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Sissejuhatus alusteadustesse ja veterinaaria anatoomiasse,
+            füsioloogiasse ja biokeemiasse. Õpilased õpivad loomakasvatust,
+            käitlemist ja põhilisi veterinaar-kliinilisi oskusi.
+          </NegativeAnimatedText>
+          <div class="overflow-hidden">
             <Motion
               client:load
-              initial={{ y: 24, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              initial={{ width: "0%" }}
+              whileInView={{ width: "90%" }}
               duration={0.72}
               delay={0.5}
               client:load
             >
-              <dl
-                class="max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none"
-              >
-                {
-                  features.map((feature) => (
-                    <div class="relative">
-                      <dt class="ml-9 inline-block text-base font-semibold leading-7 text-zinc-600">
-                        <feature.icon
-                          className="absolute top-1 left-1 h-5 w-5 text-emerald-600"
-                          aria-hidden="true"
-                        />
-                        {feature.name}
-                      </dt>{" "}
-                      <dd class="inline text-zinc-600">
-                        {feature.description}
-                      </dd>
-                    </div>
-                  ))
-                }
-              </dl>
+              <div class="mb-6 h-0.5 rounded-full bg-zinc-200"></div>
             </Motion>
           </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
+          <Motion
+            client:load
+            initial={{ y: 24, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            duration={0.72}
+            delay={0.5}
+            client:load
+          >
+            <dl
+              class="max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none"
             >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+              {
+                features.map((feature) => (
+                  <div class="relative">
+                    <dt class="ml-9 inline-block text-base font-semibold leading-7 text-zinc-600">
+                      <feature.icon
+                        className="absolute top-1 left-1 h-5 w-5 text-emerald-600"
+                        aria-hidden="true"
+                      />
+                      {feature.name}
+                    </dt>{" "}
+                    <dd class="inline text-zinc-600">{feature.description}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </Motion>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[1]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
+              <ImageCover client:load />
+            </div>
+          </Motion>
         </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Katsed kliinilises keskkonnas
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Kolmandal aastal algavad esimesed kliinilised ained ning saame
-              õpitud oskusi ka päris loomade peal harjutada. Nii sügis- kui ka
-              kevadsemestril õpime kliinilis-laboratoorse diagnostika kursuse
-              käigus veistel, hobustel, koertel ja kassidel kliinilist
-              ülevaatust läbi viima.
-            </NegativeAnimatedText>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Kolmanda aasta kevadel algavad ka sellised põnevad ained nagu
-              lahanguõpetus, kirurgia ja anestesioloogia. Parasitoloogia
-              kursusel saab aimu nii loomi kui inimesi kimbutavatest sise- ja
-              välisparasiitidest ning loomade infektsioonhaigustes õpime
-              kõikvõimalike bakterite ja viiruste poolt põhjustatud haiguseid.
-              Lisaks õpime endokrinoloogias ka organismi enda hormoonide mõju
-              ning nende kõrvalekalletest tingitud haiguseid.
-            </NegativeAnimatedText>
-            <!-- <VeterinaryTab client:visible /> -->
-          </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
-            >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Katsed kliinilises keskkonnas
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Kolmandal aastal algavad esimesed kliinilised ained ning saame
+            õpitud oskusi ka päris loomade peal harjutada. Nii sügis- kui ka
+            kevadsemestril õpime kliinilis-laboratoorse diagnostika kursuse
+            käigus veistel, hobustel, koertel ja kassidel kliinilist ülevaatust
+            läbi viima.
+          </NegativeAnimatedText>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Kolmanda aasta kevadel algavad ka sellised põnevad ained nagu
+            lahanguõpetus, kirurgia ja anestesioloogia. Parasitoloogia kursusel
+            saab aimu nii loomi kui inimesi kimbutavatest sise- ja
+            välisparasiitidest ning loomade infektsioonhaigustes õpime
+            kõikvõimalike bakterite ja viiruste poolt põhjustatud haiguseid.
+            Lisaks õpime endokrinoloogias ka organismi enda hormoonide mõju ning
+            nende kõrvalekalletest tingitud haiguseid.
+          </NegativeAnimatedText>
+          <!-- <VeterinaryTab client:visible /> -->
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[2]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
+              <ImageCover client:load />
+            </div>
+          </Motion>
         </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Katsed kliinilises keskkonnas
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Kolmandal aastal algavad esimesed kliinilised ained ning saame
-              õpitud oskusi ka päris loomade peal harjutada. Nii sügis- kui ka
-              kevadsemestril õpime kliinilis-laboratoorse diagnostika kursuse
-              käigus veistel, hobustel, koertel ja kassidel kliinilist
-              ülevaatust läbi viima.
-            </NegativeAnimatedText>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Kolmanda aasta kevadel algavad ka sellised põnevad ained nagu
-              lahanguõpetus, kirurgia ja anestesioloogia. Parasitoloogia
-              kursusel saab aimu nii loomi kui inimesi kimbutavatest sise- ja
-              välisparasiitidest ning loomade infektsioonhaigustes õpime
-              kõikvõimalike bakterite ja viiruste poolt põhjustatud haiguseid.
-              Lisaks õpime endokrinoloogias ka organismi enda hormoonide mõju
-              ning nende kõrvalekalletest tingitud haiguseid.
-            </NegativeAnimatedText>
-          </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
-            >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Katsed kliinilises keskkonnas
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Kolmandal aastal algavad esimesed kliinilised ained ning saame
+            õpitud oskusi ka päris loomade peal harjutada. Nii sügis- kui ka
+            kevadsemestril õpime kliinilis-laboratoorse diagnostika kursuse
+            käigus veistel, hobustel, koertel ja kassidel kliinilist ülevaatust
+            läbi viima.
+          </NegativeAnimatedText>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Kolmanda aasta kevadel algavad ka sellised põnevad ained nagu
+            lahanguõpetus, kirurgia ja anestesioloogia. Parasitoloogia kursusel
+            saab aimu nii loomi kui inimesi kimbutavatest sise- ja
+            välisparasiitidest ning loomade infektsioonhaigustes õpime
+            kõikvõimalike bakterite ja viiruste poolt põhjustatud haiguseid.
+            Lisaks õpime endokrinoloogias ka organismi enda hormoonide mõju ning
+            nende kõrvalekalletest tingitud haiguseid.
+          </NegativeAnimatedText>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[3]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
+              <ImageCover client:load />
+            </div>
+          </Motion>
         </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Toiduhügeen ja rahvatervis
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Viienda aasta sügis keskendub rohkem toiduhügeeni valdkonnale.
-              Õpitakse, kuidas peaks rahvatervisele ohutult töötama liha- ja
-              piimatööstus ning kuidas teostada toodetele kvaliteedi kontrolli.
-              Lihainspektsiooni õppeaines saab ülevaate valdkonda
-              reguleerivatest seadusandlikest aktidest ning õpitakse hindama
-              seadusandlusest tulenevaid nõudeid põllumajandusloomade
-              transpordile.
-            </NegativeAnimatedText>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Samuti selgitatakse kuidas teostatakse tapaeelset ja tapajärgset
-              kontrolli. Saadakse baasteadmised ja oskused töötamiseks riikliku
-              veterinaararstina lihatööstusettevõttes. Kohtuveterinaaria
-              õppeaines õpitakse teostama surmajärgset ekspertiisi surmapõhjuse
-              kinnitamiseks. Kevadsemesteril saab täiendada praktilisi oskusi
-              ning on vajalik läbida praktika neljas osas. Praktika teostatakse
-              Eesti Maaülikooli kliinikus väikelooma meditsiinis, hobuse
-              meditsiinis, produktiivlooma meditsiinis, veterinaarjärelevalves
-              ja lihainspektsioonis.
-            </NegativeAnimatedText>
-          </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
-            >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Toiduhügeen ja rahvatervis
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Viienda aasta sügis keskendub rohkem toiduhügeeni valdkonnale.
+            Õpitakse, kuidas peaks rahvatervisele ohutult töötama liha- ja
+            piimatööstus ning kuidas teostada toodetele kvaliteedi kontrolli.
+            Lihainspektsiooni õppeaines saab ülevaate valdkonda reguleerivatest
+            seadusandlikest aktidest ning õpitakse hindama seadusandlusest
+            tulenevaid nõudeid põllumajandusloomade transpordile.
+          </NegativeAnimatedText>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Samuti selgitatakse kuidas teostatakse tapaeelset ja tapajärgset
+            kontrolli. Saadakse baasteadmised ja oskused töötamiseks riikliku
+            veterinaararstina lihatööstusettevõttes. Kohtuveterinaaria õppeaines
+            õpitakse teostama surmajärgset ekspertiisi surmapõhjuse
+            kinnitamiseks. Kevadsemesteril saab täiendada praktilisi oskusi ning
+            on vajalik läbida praktika neljas osas. Praktika teostatakse Eesti
+            Maaülikooli kliinikus väikelooma meditsiinis, hobuse meditsiinis,
+            produktiivlooma meditsiinis, veterinaarjärelevalves ja
+            lihainspektsioonis.
+          </NegativeAnimatedText>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[4]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
+              <ImageCover client:load />
+            </div>
+          </Motion>
         </div>
-      </SectionWrapper>
-      <SectionWrapper className="h-screen snap-start">
-        <div
-          class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
-        >
-          <div class="col-span-6">
-            <NegativeAnimatedHeader client:load>
-              Spetsialiseerumine
-            </NegativeAnimatedHeader>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Kuuendaks aastaks oleme saanud valida omale suunaks väikelooma
-              meditsiini või põllumajandusloomade ja hobuste meditsiini. Valik
-              tuleb kinnitada 5.kursuse kevadsemestri lõpuks. Vastavalt valikule
-              toimub varem õpitud väikeloomade või suurloomade haiguste üle
-              kordamine ja praktika. Lektoriteks on enamasti Eesti Maaülikooli
-              loomakliiniku arstid.
-            </NegativeAnimatedText>
-            <NegativeAnimatedText client:load delay={0.32}>
-              Praktikat saab teostada ise valitud loomakliinikus. Viimasel
-              õppeaastal tuleb kooli lõpetamiseks kirjutada magistritöö. Selleks
-              on sügissemestril lühike ettevalmistav kursus, kuid aktiivselt
-              lõputöö kirjutamisega tuleb tegeleda terve õppeaasta vältel.
-              Lõputöö kaitsmine toimub kevadsemestri lõpus.
-            </NegativeAnimatedText>
-          </div>
-          <div class="col-span-1"></div>
-          <div class="col-span-5 flex w-full items-center overflow-hidden">
-            <Motion
-              initial={{ scale: 0.85 }}
-              whileInView={{ scale: 1 }}
-              duration={1}
-              delay={0.4}
-              client:load
-            >
-              <div class="relative overflow-hidden">
-                <!-- <Image
+      </div>
+    </SectionWrapper>
+    <SectionWrapper className="h-screen snap-start">
+      <div
+        class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+      >
+        <div class="col-span-6">
+          <NegativeAnimatedHeader client:load>
+            Spetsialiseerumine
+          </NegativeAnimatedHeader>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Kuuendaks aastaks oleme saanud valida omale suunaks väikelooma
+            meditsiini või põllumajandusloomade ja hobuste meditsiini. Valik
+            tuleb kinnitada 5.kursuse kevadsemestri lõpuks. Vastavalt valikule
+            toimub varem õpitud väikeloomade või suurloomade haiguste üle
+            kordamine ja praktika. Lektoriteks on enamasti Eesti Maaülikooli
+            loomakliiniku arstid.
+          </NegativeAnimatedText>
+          <NegativeAnimatedText client:load delay={0.32}>
+            Praktikat saab teostada ise valitud loomakliinikus. Viimasel
+            õppeaastal tuleb kooli lõpetamiseks kirjutada magistritöö. Selleks
+            on sügissemestril lühike ettevalmistav kursus, kuid aktiivselt
+            lõputöö kirjutamisega tuleb tegeleda terve õppeaasta vältel. Lõputöö
+            kaitsmine toimub kevadsemestri lõpus.
+          </NegativeAnimatedText>
+        </div>
+        <div class="col-span-1"></div>
+        <div class="col-span-5 flex w-full items-center overflow-hidden">
+          <Motion
+            initial={{ scale: 0.85 }}
+            whileInView={{ scale: 1 }}
+            duration={1}
+            delay={0.4}
+            client:load
+          >
+            <div class="relative overflow-hidden">
+              <!-- <Image
                   class="relative z-0 rounded-lg object-cover before:absolute before:inset-0 before:bg-zinc-600"
                   width={500}
                   aspectRatio="9:10"
                   src={imageUrls[4]}
                   alt="Tre"
                 /> -->
-                <ImageCover client:load />
-              </div>
-            </Motion>
-          </div>
+              <ImageCover client:load />
+            </div>
+          </Motion>
         </div>
-      </SectionWrapper>
-    </div>
-  </main>
+      </div>
+    </SectionWrapper>
+  </div>
 </Layout>
