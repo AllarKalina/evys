@@ -31,11 +31,11 @@ const highlightBlog = blogs[0];
         <AnimatedBlock client:load delay={0.42}>
           <a
             href={`/blog/${highlightBlog.slug}`}
-            class="mt-8 flex flex-col items-start justify-between"
+            class="mt-8 flex max-w-[370px] flex-col items-start justify-between"
           >
             <div class="relative w-full">
               <img
-                class="h-64 w-full rounded-lg object-cover shadow-lg"
+                class="h-96 w-full rounded-lg object-cover shadow-lg"
                 src={getAssetURL({
                   id: highlightBlog.cover_photo,
                   width: 400,

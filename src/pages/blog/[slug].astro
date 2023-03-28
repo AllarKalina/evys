@@ -30,16 +30,14 @@ const { blog } = Astro.props;
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <div class="bg-white py-32 px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-base leading-7">
-      <p class="mb-2 text-base font-semibold leading-7 text-emerald-600">
-        Kool
-      </p>
+      <p class="text-base font-semibold leading-7 text-emerald-600">Kool</p>
       <AnimatedHeader client:load delay={0.24}>{blog.title}</AnimatedHeader>
       <AnimatedBlock client:load delay={0.42}>
         <p class="my-5 text-base leading-7 text-zinc-700 lg:text-lg">
           {blog.description}
         </p>
         <img
-          class="h-64 w-full rounded-lg object-cover shadow-lg sm:h-96"
+          class="h-64 w-full rounded-lg object-cover shadow-lg sm:h-[400px]"
           src={getAssetURL({
             id: blog.cover_photo,
             width: 900,

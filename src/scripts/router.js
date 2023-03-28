@@ -1,9 +1,16 @@
 import SwupPreloadPlugin from "@swup/preload-plugin";
+import SwupScrollPlugin from "@swup/scroll-plugin";
 import Swup from "swup";
 
 const swup = new Swup({
   /* options */
-  plugins: [new SwupPreloadPlugin()],
+  plugins: [
+    new SwupPreloadPlugin(),
+    new SwupScrollPlugin({
+      doScrollingRightAway: true,
+      scrollAcceleration: 0.1,
+    }),
+  ],
   containers: ["#swup", "#header", "#side-nav"],
 });
 
