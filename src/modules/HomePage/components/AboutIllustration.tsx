@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const AboutIllustration = () => {
   const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [2200, 3500], [0, 400]);
+  const y1 = useTransform(scrollY, [2200, 4000], [0, 500]);
 
   return (
     <div className="pointer-events-none absolute top-0 left-0 h-full w-1/2 overflow-hidden">

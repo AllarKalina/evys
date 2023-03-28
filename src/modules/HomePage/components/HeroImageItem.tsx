@@ -3,10 +3,15 @@ import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
   imageId: string;
+  parallaxModifier?: number;
   delay?: number;
 }
 
-const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
+const HeroImageItem: React.FC<Props> = ({
+  imageId,
+  delay,
+  parallaxModifier,
+}) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 600], [0, -35]);
 
