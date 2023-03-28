@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface Props {
   smallHeader: string;
   header: string;
+  enableParallax?: boolean;
   text?: string;
   color?: string;
 }
@@ -11,15 +12,20 @@ interface Props {
 const SectionHeader: React.FC<Props> = ({
   smallHeader,
   header,
+  enableParallax,
   text,
   color = "green",
 }) => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 800], [0, 40]);
+
   return (
     <motion.div
       initial={{ x: -16, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
       viewport={{ once: true }}
+      style={{ y: enableParallax ? y1 : 0 }}
     >
       <p
         className={clsx(

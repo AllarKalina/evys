@@ -30,7 +30,7 @@ const socials = [
     <div class="lg:grid lg:grid-cols-4 lg:gap-8">
       <div class="space-y-8">
         <img src="/images/Logo.png" width={90} height={43} alt="Mobile logo" />
-        <p class="text-zinc-200">
+        <p class="text-base leading-7 text-zinc-200">
           Tutvustame ja arendame veterinaarmeditsiini eriala üliõpilaste õppe-
           ja teadustööd.
         </p>
@@ -52,14 +52,14 @@ const socials = [
         class="col-span-2 mt-10 flex flex-col lg:mt-0 lg:w-full lg:flex-row lg:justify-around"
       >
         <div>
-          <h3 class="text-lg font-medium text-white">EVÜS</h3>
+          <h3 class="text-lg font-medium text-zinc-200">EVÜS</h3>
           <ul role="list" class="mt-4 space-y-3">
             {
               menu.map((item) => (
                 <li>
                   <a
                     href={item.href}
-                    class="text-zinc-300 transition-colors hover:text-white"
+                    class="text-zinc-200 transition-colors hover:text-white"
                   >
                     {item.name}
                   </a>
@@ -69,7 +69,7 @@ const socials = [
           </ul>
         </div>
         <div class="mt-10 lg:mt-0">
-          <h3 class="text-lg font-medium text-white">KONTAKT</h3>
+          <h3 class="text-lg font-medium text-zinc-200">KONTAKT</h3>
           <ul role="list" class="mt-4 space-y-3">
             {
               contact.map((item) => (
