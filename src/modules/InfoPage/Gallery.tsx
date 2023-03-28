@@ -17,24 +17,24 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isPlaceholderLoaded, setIsPlaceholderLoaded] = useState(false);
   const [activeImage, setActiveImage] = useState<
-    { image: string; author: string } | undefined
+    { image: string; author?: string } | undefined
   >(undefined);
 
   return (
     <>
       <ul role="list" className="columns-2 gap-4 sm:columns-3 2xl:columns-4">
         {kuusepuud.map((kuusepuu) => (
-          <li className="relative mb-4">
-            <div
-              onClick={() => {
-                setActiveImage({
-                  image: kuusepuu.image,
-                  author: kuusepuu.author.name,
-                });
-                setOpen(true);
-              }}
-              className="aspect-w-10 aspect-h-7 group block w-full cursor-pointer overflow-hidden rounded-lg bg-gray-100 transition-transform focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:scale-[102%]"
-            >
+          <li
+            onClick={() => {
+              setActiveImage({
+                image: kuusepuu.image,
+                author: kuusepuu.author?.name,
+              });
+              setOpen(true);
+            }}
+            className="relative mb-4"
+          >
+            <div className="aspect-w-10 aspect-h-7 group block w-full cursor-pointer overflow-hidden rounded-lg bg-gray-100 transition-transform focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 hover:scale-[102%]">
               <img
                 loading="lazy"
                 src={
@@ -137,14 +137,16 @@ const Gallery: React.FC<Props> = ({ kuusepuud }) => {
                       </div>
                     )}
                   </div>
-                  <div>
-                    <p className="mt-4 text-base font-semibold leading-7 text-emerald-600 lg:text-lg">
-                      Pildi autor:
-                    </p>
-                    <p className="text-base font-medium leading-7 text-zinc-600 lg:text-lg">
-                      {activeImage?.author}
-                    </p>
-                  </div>
+                  {activeImage?.author && (
+                    <div>
+                      <p className="mt-4 text-base font-semibold leading-7 text-emerald-600 lg:text-lg">
+                        Pildi autor:
+                      </p>
+                      <p className="text-base font-medium leading-7 text-zinc-600 lg:text-lg">
+                        {activeImage?.author}
+                      </p>
+                    </div>
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

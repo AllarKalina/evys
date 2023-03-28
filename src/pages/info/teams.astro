@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-import Teams from "../../components/pages/Info/Teams";
+import Teams from "../../components/Teams";
 import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
@@ -43,7 +43,15 @@ const teams = (
           Seltsil on viieliikmeline juhatus, mis koosneb esimehest ja neljast
           juhatuse liikmest, kellest viimased vastutavad oma toimkonna tegevuse
           eest. Juhatuse ja meeskonddade ülesannete kohta saate täpsemalt lugeda
-          seltsi põhikirjast, kodukorrast või toimkondade lingi alt.
+          <a
+            href="/info/documents/"
+            class="cursor-pointer font-medium text-emerald-600 underline hover:text-emerald-700"
+            >seltsi põhikirjast</a
+          > või <a
+            href="/info/teams/#teams"
+            class="cursor-pointer font-medium text-emerald-600 underline hover:text-emerald-700"
+            >meeskondade kirjeldustest</a
+          >.
         </p>
         <h2
           class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
@@ -97,8 +105,9 @@ const teams = (
           }
         </ul>
         <h2
-          class="mt-8 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
+          class="relative mt-8 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
         >
+          <span id="teams" class="absolute left-0 -top-24"></span>
           Meeskonnad
         </h2>
         <p class="mt-5 text-base leading-7 text-zinc-600 lg:text-lg">

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { getAssetURL } from "../../../utils/get-asset-url";
+import { getAssetURL } from "../utils/get-asset-url";
 
 type Team = {
   id: string;
