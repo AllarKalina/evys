@@ -37,6 +37,15 @@
   view-transition-name: footer;
 } */
 
+nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.side-nav[aria-current="page"] {
+  display: block;
+}
+
 .blog-body .h2 {
   font-size: 1.25rem /* 20px */;
   line-height: 1.75rem /* 28px */;

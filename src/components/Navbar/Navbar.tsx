@@ -67,7 +67,7 @@ const Navbar: React.FC<Props> = ({ url }) => {
     >
       <div className="flex w-full flex-col md:w-fit">
         <div className="flex w-full justify-between">
-          <a href="/" data-turbo="false">
+          <a href="/">
             <img
               src="/images/Logo.png"
               width={90}
@@ -95,11 +95,7 @@ const Navbar: React.FC<Props> = ({ url }) => {
                 >
                   <li>
                     <div>
-                      <a
-                        href="/"
-                        data-turbo="false"
-                        className="text-white hover:text-zinc-300"
-                      >
+                      <a href="/" className="text-white hover:text-zinc-300">
                         <HomeIcon
                           className="h-5 w-5 flex-shrink-0"
                           aria-hidden="true"

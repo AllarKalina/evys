@@ -28,8 +28,13 @@ const SideNav: React.FC<Props> = ({ url }) => {
     },
   ];
 
+  const isUrl = url.split("/")[1] === "info";
+  if (!isUrl) {
+    return null;
+  }
+
   return (
-    <div className="side-nav sticky top-40">
+    <div className="sticky top-40">
       <ul className="space-y-5">
         {MENU_ITEMS.map((item) => {
           return (

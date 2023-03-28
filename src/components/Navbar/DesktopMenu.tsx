@@ -10,10 +10,7 @@ interface Props {
 const DesktopMenu: React.FC<Props> = ({ menuItems, url }) => {
   return (
     <>
-      <nav
-        data-turbo={url === "/" ? "false" : "true"}
-        className="flex gap-8 max-[768px]:hidden lg:gap-12 xl:gap-16"
-      >
+      <nav className="flex gap-8 max-[768px]:hidden lg:gap-12 xl:gap-16">
         {menuItems.map((item) => {
           return (
             <NavItem

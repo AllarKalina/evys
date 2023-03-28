@@ -28,10 +28,7 @@ const MobileMenu: React.FC<Props> = ({
         <span />
       </button>
       {isMenuOpen && (
-        <nav
-          data-turbo="false"
-          className="absolute top-[71px] left-0 flex h-[calc(100vh-63px)] w-full flex-col justify-end gap-8 bg-emerald-600 px-7 pb-40"
-        >
+        <nav className="absolute top-[71px] left-0 flex h-[calc(100vh-63px)] w-full flex-col justify-end gap-8 bg-emerald-600 px-7 pb-40">
           {menuItems.map((item) => (
             <NavItem
               {...item}

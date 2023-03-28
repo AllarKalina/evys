@@ -60,7 +60,6 @@ const AboutItem: React.FC<Props> = ({
       </div>
       <motion.a
         href={href}
-        data-turbo="false"
         initial={{ x: -16, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{

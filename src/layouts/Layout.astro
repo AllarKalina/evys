@@ -27,13 +27,12 @@ const isInfo = url.pathname.split("/")[1] == "info";
     >
       <slot />
     </main>
-    {
-      isInfo && (
-        <div class="absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block">
-          <SideNav client:load url={url.pathname} />
-        </div>
-      )
-    }
+    <div
+      id="side-nav"
+      class="side-nav absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block"
+    >
+      <SideNav client:load url={url.pathname} />
+    </div>
     <Footer />
   </body>
 </html>
