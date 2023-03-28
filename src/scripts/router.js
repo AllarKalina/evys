@@ -8,8 +8,9 @@ const swup = new Swup({
 });
 
 const swupActiveLinks = () => {
+  let currentPath = swup.transition.to ?? window.location.pathname;
+
   const header = document.getElementById("header");
-  let currentPath = swup.transition.to;
   let links = header.querySelectorAll("nav a"); // <- put your link selector here
   for (const link of links) {
     let linkPath = new URL(link.href).pathname;
@@ -20,9 +21,8 @@ const swupActiveLinks = () => {
 const swupActiveSidenav = () => {
   const sidenav = document.getElementById("side-nav");
   const links = sidenav.querySelectorAll("nav ul li a");
-  let currentPath = swup.transition.to;
-  sidenav.ariaCurrent =
-    swup.transition.to?.split("/")[1] === "info" ? "page" : "none";
+  let currentPath = swup.transition.to ?? window.location.pathname;
+  sidenav.ariaCurrent = currentPath.split("/")[1] === "info" ? "page" : "none";
 
   for (const link of links) {
     let linkPath = new URL(link.href).pathname;
@@ -38,10 +38,6 @@ swup.on("animationOutStart", () => {
 swup.on("contentReplaced", () => {
   swupActiveLinks();
   swupActiveSidenav();
-});
-
-swup.on("pageView", () => {
-  console.log("New page loaded");
 });
 
 swupActiveLinks();
