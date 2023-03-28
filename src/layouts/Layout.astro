@@ -1,12 +1,11 @@
 ---
 import Footer from "../components/Footer/Footer.astro";
 import Navbar from "../components/Navbar/Navbar";
-import SideNav from "../components/SideNav";
+import SideNav from "../components/SideNav.astro";
 import "../styles.css";
 
 const { title } = Astro.props;
 const url = Astro.url;
-const isInfo = url.pathname.split("/")[1] == "info";
 ---
 
 <!DOCTYPE html>
@@ -27,11 +26,10 @@ const isInfo = url.pathname.split("/")[1] == "info";
     >
       <slot />
     </main>
-    <div
-      id="side-nav"
-      class="side-nav absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block"
-    >
-      <SideNav client:load url={url.pathname} />
+    <div id="side-nav">
+      <div class="absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block">
+        <SideNav />
+      </div>
     </div>
     <Footer />
   </body>

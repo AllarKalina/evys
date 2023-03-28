@@ -22,7 +22,7 @@ const NavItem: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <div className="group relative flex items-center gap-0.5 text-sm font-semibold tracking-wide text-white hover:text-zinc-300">
+      <li className="group relative flex items-center gap-0.5 text-sm font-semibold tracking-wide text-white hover:text-zinc-300">
         <a
           href={href}
           className={clsx(
@@ -39,7 +39,7 @@ const NavItem: React.FC<Props> = ({
             <ul className="absolute top-10 hidden rounded-lg border border-emerald-600/50 bg-zinc-100 py-2 md:group-hover:block">
               {subItems.map((item) => {
                 return (
-                  <li>
+                  <li key={item.id}>
                     <a
                       href={item.href}
                       className="block whitespace-nowrap py-2 px-4 text-emerald-600 hover:bg-zinc-200 hover:text-emerald-700"
@@ -52,12 +52,12 @@ const NavItem: React.FC<Props> = ({
             </ul>
           </>
         )}
-      </div>
+      </li>
       {subItems !== undefined && (
         <ul className="-my-4 pl-6 md:hidden">
           {subItems.map((item) => {
             return (
-              <li>
+              <li key={item.id}>
                 <a
                   href={item.href}
                   className="block whitespace-nowrap rounded-lg py-2 px-4 text-lg font-semibold tracking-wide text-white"

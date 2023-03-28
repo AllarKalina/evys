@@ -42,13 +42,35 @@ nav a[aria-current="page"] {
   text-underline-offset: 8px;
 }
 
-.side-nav[aria-current="page"] {
+nav a[aria-current="none"] {
+  text-decoration: none;
+  text-underline-offset: 00px;
+}
+
+nav a[aria-current="side-page"] div {
+  width: 48px;
+  background-color: rgba(5, 150, 105, 1);
+}
+
+nav a[aria-current="no-side-page"] div {
+  width: 24px;
+  background-color: rgba(82, 82, 91, 1);
+}
+
+nav a[aria-current="side-page"] p {
+  color: rgba(5, 150, 105, 1);
+}
+
+nav a[aria-current="no-side-page"] p {
+  color: rgba(82, 82, 91, 1);
+}
+
+#side-nav[aria-current="page"] {
   display: block;
 }
 
-.blog-body .h2 {
-  font-size: 1.25rem /* 20px */;
-  line-height: 1.75rem /* 28px */;
+#side-nav[aria-current="none"] {
+  display: none;
 }
 
 @keyframes slide-left {

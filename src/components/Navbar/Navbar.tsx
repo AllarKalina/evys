@@ -56,8 +56,8 @@ const Navbar: React.FC<Props> = ({ url }) => {
     });
 
   return (
-    <section
-      id="nav"
+    <header
+      id="header"
       className={clsx(
         "page-header fixed left-1/2 z-50 flex max-w-screen-xl -translate-x-1/2 transform justify-between",
         isMobileMenuOpen && "top-0 mx-0 w-full bg-emerald-600 px-7 pt-7",
@@ -65,16 +65,18 @@ const Navbar: React.FC<Props> = ({ url }) => {
           "top-3 w-[calc(100%-1.5rem)] rounded-xl bg-emerald-600/80 p-4 backdrop-blur md:w-[calc(100%-3rem)] lg:py-3"
       )}
     >
-      <div className="flex w-full flex-col md:w-fit">
+      <section className="flex w-full flex-col md:w-fit">
         <div className="flex w-full justify-between">
-          <a href="/">
-            <img
-              src="/images/Logo.png"
-              width={90}
-              height={43}
-              alt="Mobile logo"
-            />
-          </a>
+          <nav>
+            <a href="/">
+              <img
+                src="/images/Logo.png"
+                width={90}
+                height={43}
+                alt="Mobile logo"
+              />
+            </a>
+          </nav>
           <MobileMenu
             isMenuOpen={isMobileMenuOpen}
             onMenuChange={() => {
@@ -126,9 +128,9 @@ const Navbar: React.FC<Props> = ({ url }) => {
             </div>
           </>
         )}
-      </div>
+      </section>
       <DesktopMenu menuItems={menuItemArray} url={url} />
-    </section>
+    </header>
   );
 };
 

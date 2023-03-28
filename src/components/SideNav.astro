@@ -1,0 +1,44 @@
+---
+const MENU_ITEMS = [
+  {
+    id: 0,
+    title: "Seltsist",
+    href: "/info/",
+  },
+  {
+    id: 1,
+    title: "Juhatus ja meeskonnad",
+    href: "/info/teams/",
+  },
+  {
+    id: 2,
+    title: "Kuusepuude projekt",
+    href: "/info/work/",
+  },
+  {
+    id: 3,
+    title: "Dokumendid",
+    href: "/info/documents/",
+  },
+];
+---
+
+<nav class="sticky top-40">
+  <ul class="space-y-5">
+    {
+      MENU_ITEMS.map((item) => {
+        return (
+          <li>
+            <a
+              href={item.href}
+              class="group flex cursor-pointer items-center gap-2"
+            >
+              <div class="h-[1px] rounded-full transition-all" />
+              <p class="font-medium">{item.title}</p>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
