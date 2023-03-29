@@ -7,17 +7,25 @@ const menu = [
   { name: "Seltsi info", href: "/info" },
   { name: "Loomaarsti õpe", href: "/" },
   { name: "Blogi", href: "/blog" },
-  { name: "Toetajad", href: "/" },
+  { name: "Toetajad", href: "/sponsors" },
 ];
 
 const contact = [
   { text: "mtu.evus@gmail.com", icon: EnvelopeIcon },
-  { text: "Kreutzwaldi 62, Tartu", icon: MapPinIcon },
+  { text: "Fr. R. Kreutzwaldi 62, Tartu", icon: MapPinIcon },
 ];
 
 const socials = [
-  { name: "Facebook", href: "/", icon: BsFacebook },
-  { name: "Instagram", href: "/", icon: BsInstagram },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/vetselts",
+    icon: BsFacebook,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/evus_vetmed/",
+    icon: BsInstagram,
+  },
 ];
 ---
 
@@ -39,6 +47,7 @@ const socials = [
             socials.map((item) => (
               <a
                 href={item.href}
+                rel="noreferrer"
                 class="text-zinc-200 transition-colors hover:text-white"
               >
                 <span class="sr-only">{item.name}</span>

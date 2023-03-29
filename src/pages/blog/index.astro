@@ -21,11 +21,9 @@ const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
 const highlightBlog = blogs[0];
 ---
 
-<Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
+<Layout title="Blogi * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <SectionWrapper>
-    <div
-      class="relative mx-auto max-w-3xl px-4 pt-20 md:pt-8 lg:pt-0 2xl:max-w-5xl"
-    >
+    <div class="relative mx-auto max-w-3xl px-4 pt-8 lg:pt-0 2xl:max-w-5xl">
       <div class="flex w-full max-w-sm grow flex-col lg:max-w-md 2xl:max-w-xl">
         <AnimatedHeader client:load delay={0.24}>Blogi</AnimatedHeader>
         <AnimatedBlock client:load delay={0.42}>

@@ -36,9 +36,11 @@ const Navbar: React.FC<Props> = ({ url }) => {
         return "Dokumendid";
       case "teams":
         return "Meeskonnad";
+      case "work":
+        return "Kuusepuude projekt";
 
       default:
-        return "Seltsist";
+        return null;
     }
   };
 
@@ -48,12 +50,16 @@ const Navbar: React.FC<Props> = ({ url }) => {
     .split("/")
     .slice(1)
     .map((value, idx) => {
+      if (value === "") return;
       return {
         name: value,
         href: idx < 1 ? value : "/info/" + value,
         current: value,
       };
-    });
+    })
+    .filter((page) => page !== undefined);
+
+  console.log(pages);
 
   return (
     <header
@@ -80,7 +86,9 @@ const Navbar: React.FC<Props> = ({ url }) => {
           <MobileMenu
             isMenuOpen={isMobileMenuOpen}
             onMenuChange={() => {
-              document.body.style.overflow = !isMobileMenuOpen ? "hidden" : "";
+              document.body.style.overflow = !isMobileMenuOpen
+                ? "hidden"
+                : "auto";
               setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
             menuItems={menuItemArray}
@@ -106,23 +114,24 @@ const Navbar: React.FC<Props> = ({ url }) => {
                       </a>
                     </div>
                   </li>
-                  {pages.map((page) => (
-                    <li key={page.name}>
-                      <div className="flex items-center">
-                        <ChevronRightIcon
-                          className="h-5 w-5 flex-shrink-0 text-white"
-                          aria-hidden="true"
-                        />
-                        <a
-                          href={"/" + page.href}
-                          className="ml-4 text-sm font-semibold text-white hover:text-zinc-300"
-                          aria-current={page.current ? "page" : undefined}
-                        >
-                          {formatPageName(page.name)}
-                        </a>
-                      </div>
-                    </li>
-                  ))}
+                  {pages.length > 0 &&
+                    pages.map((page) => (
+                      <li key={page?.name}>
+                        <div className="flex items-center">
+                          <ChevronRightIcon
+                            className="h-5 w-5 flex-shrink-0 text-white"
+                            aria-hidden="true"
+                          />
+                          <a
+                            href={"/" + page?.href}
+                            className="ml-4 text-sm font-semibold text-white !no-underline hover:text-zinc-300"
+                            aria-current={page?.current ? "page" : undefined}
+                          >
+                            {formatPageName(page?.name!)}
+                          </a>
+                        </div>
+                      </li>
+                    ))}
                 </ol>
               </nav>
             </div>

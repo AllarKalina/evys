@@ -382,10 +382,8 @@ const features = [
 ---
 
 <Layout title="Loomaarsti õpe * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <SectionWrapper className="flex h-screen snap-start">
-    <div
-      class="relative mx-auto max-w-3xl px-4 pt-20 md:pt-8 lg:pt-0 2xl:max-w-5xl"
-    >
+  <SectionWrapper className="flex min-h-screen snap-start">
+    <div class="relative mx-auto max-w-3xl px-4 pt-8 lg:pt-0 2xl:max-w-5xl">
       <AnimatedHeader client:load>Loomaarsti õpe</AnimatedHeader>
       <AnimatedBlock client:load delay={0.12}>
         <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
@@ -400,9 +398,11 @@ const features = [
           Veterinaarmeditsiin on oluline valdkond, mis aitab tagada loomade
           heaolu ja tervise ning ka rahvatervise ja toiduohutuse.
         </p>
-        <div class="mt-48">
-          <h1 class="mt-4 text-3xl font-semibold tracking-tight text-zinc-300">
-            Lehekülg on valmimisel...
+        <div class="mt-20 sm:mt-36">
+          <h1
+            class="mt-4 text-3xl font-semibold tracking-tight text-zinc-400/80"
+          >
+            Lehekülg on täienemisel
           </h1>
         </div>
       </AnimatedBlock>

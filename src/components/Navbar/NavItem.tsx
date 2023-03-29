@@ -11,6 +11,7 @@ interface Props {
     title: string;
     href: string;
   }[];
+  onClick?: () => void;
 }
 
 const NavItem: React.FC<Props> = ({
@@ -19,10 +20,14 @@ const NavItem: React.FC<Props> = ({
   className,
   active,
   subItems,
+  onClick,
 }) => {
   return (
     <>
-      <li className="group relative flex items-center gap-0.5 text-sm font-semibold tracking-wide text-white hover:text-zinc-300">
+      <li
+        onClick={onClick}
+        className="group relative flex items-center gap-0.5 text-sm font-semibold tracking-wide text-white hover:text-zinc-300"
+      >
         <a
           href={href}
           className={clsx(
@@ -33,6 +38,7 @@ const NavItem: React.FC<Props> = ({
         >
           <span>{title}</span>
         </a>
+        {/* Desktop drop down menu */}
         {subItems !== undefined && (
           <>
             <ChevronDownIcon className="hidden h-5 w-5 cursor-pointer md:block" />
@@ -53,8 +59,9 @@ const NavItem: React.FC<Props> = ({
           </>
         )}
       </li>
+      {/* Mobile sub navigation list */}
       {subItems !== undefined && (
-        <ul className="-my-4 pl-6 md:hidden">
+        <ul onClick={onClick} className="-my-4 pl-6 md:hidden">
           {subItems.map((item) => {
             return (
               <li key={item.id}>
