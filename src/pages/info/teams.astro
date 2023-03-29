@@ -68,12 +68,12 @@ const teams = (
             leaders.map((leader, idx) => (
               <li>
                 <div class="space-y-3">
-                  <div class="h-56 w-full overflow-hidden rounded-lg">
+                  <div class="h-56 w-full max-w-[360px] overflow-hidden rounded-lg">
                     <img
                       loading="lazy"
                       src={getAssetURL({
                         id: leader.image,
-                        width: 350,
+                        width: 360,
                         height: 300,
                         fit: "cover",
                         quality: 90,

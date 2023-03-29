@@ -59,8 +59,6 @@ const Navbar: React.FC<Props> = ({ url }) => {
     })
     .filter((page) => page !== undefined);
 
-  console.log(pages);
-
   return (
     <header
       id="header"
