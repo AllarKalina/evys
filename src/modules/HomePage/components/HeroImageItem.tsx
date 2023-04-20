@@ -1,3 +1,4 @@
+import { Picture } from "@astrojs/image/components";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { getAssetURL } from "../../../utils/get-asset-url";
 
@@ -18,9 +19,7 @@ const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
       viewport={{ once: true }}
       className="h-[330px] w-[300px] overflow-hidden rounded-lg shadow-lg lg:w-[260px]"
     >
-      <img
-        loading="lazy"
-        className="h-full w-full object-cover"
+      <Picture
         src={
           getAssetURL({
             id: imageId,
@@ -30,6 +29,9 @@ const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
             quality: 90,
           }) as string
         }
+        widths={[300]}
+        aspectRatio="3:4"
+        className="h-full w-full object-cover"
       />
     </motion.li>
   );
