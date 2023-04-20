@@ -1,5 +1,7 @@
 ---
+import { Picture } from "@astrojs/image/components";
 import SectionHeader from "../../components/SectionHeader";
+import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
 import HeroImageItem from "./components/HeroImageItem";
 
@@ -40,7 +42,24 @@ const organization = (await directus
                 client:load
                 delay={idx < 2 ? idx * 0.36 : 0}
                 imageId={item.image}
-              />
+              >
+                <Picture
+                  src={
+                    getAssetURL({
+                      id: item.image,
+                      width: 300,
+                      height: 330,
+                      fit: "cover",
+                      quality: 90,
+                    }) as string
+                  }
+                  alt="Hero image"
+                  widths={[300]}
+                  aspectRatio="3:4"
+                  sizes="300px"
+                  className="h-full w-full object-cover"
+                />
+              </HeroImageItem>
             );
           })
         }
@@ -64,7 +83,24 @@ const organization = (await directus
                   client:load
                   delay={idx === 0 ? 0.18 : 0}
                   imageId={item.image}
-                />
+                >
+                  <Picture
+                    src={
+                      getAssetURL({
+                        id: item.image,
+                        width: 300,
+                        height: 330,
+                        fit: "cover",
+                        quality: 90,
+                      }) as string
+                    }
+                    alt="Hero image"
+                    widths={[300]}
+                    aspectRatio="3:4"
+                    sizes="300px"
+                    className="h-full w-full object-cover"
+                  />
+                </HeroImageItem>
               );
             })
           }

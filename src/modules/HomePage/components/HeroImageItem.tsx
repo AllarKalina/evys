@@ -1,13 +1,12 @@
-import { Picture } from "@astrojs/image/components";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
   imageId: string;
   delay?: number;
+  children: React.ReactNode;
 }
 
-const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
+const HeroImageItem: React.FC<Props> = ({ imageId, delay, children }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, -35]);
 
@@ -19,20 +18,7 @@ const HeroImageItem: React.FC<Props> = ({ imageId, delay }) => {
       viewport={{ once: true }}
       className="h-[330px] w-[300px] overflow-hidden rounded-lg shadow-lg lg:w-[260px]"
     >
-      <Picture
-        src={
-          getAssetURL({
-            id: imageId,
-            width: 300,
-            height: 330,
-            fit: "cover",
-            quality: 90,
-          }) as string
-        }
-        widths={[300]}
-        aspectRatio="3:4"
-        className="h-full w-full object-cover"
-      />
+      {children}
     </motion.li>
   );
 };
