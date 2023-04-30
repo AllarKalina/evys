@@ -25,7 +25,7 @@ const SponsorItem: React.FC<Props> = ({ imageId }) => {
               width: 290,
             }) as string
           }
-          alt="image"
+          alt="Sponsor logo"
           className="w-full"
         />
       </div>

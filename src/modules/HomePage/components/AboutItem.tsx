@@ -67,7 +67,7 @@ const AboutItem: React.FC<Props> = ({
           duration: 0.72,
         }}
         viewport={{ once: true }}
-        className="w-fit"
+        className="mt-2 w-fit"
       >
         <button
           className={clsx(

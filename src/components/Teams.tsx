@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { getAssetURL } from "../utils/get-asset-url";
 
 type Team = {
   id: string;
@@ -11,9 +10,10 @@ type Team = {
 
 interface Props {
   teams: Team[];
+  children: React.ReactNode;
 }
 
-const Teams: React.FC<Props> = ({ teams }) => {
+const Teams: React.FC<Props> = ({ teams, children }) => {
   const [activeTeamId, setActiveTeamId] = useState(teams[0].id);
 
   return (
@@ -104,33 +104,7 @@ const Teams: React.FC<Props> = ({ teams }) => {
           activeTeamId === teams[3].id && "-translate-x-[300%]"
         )}
       >
-        {teams.map((team) => {
-          return (
-            <div className="mt-6 w-full flex-none lg:mt-8 lg:grid lg:grid-cols-5">
-              <p className="mx-6 text-base leading-7 text-zinc-600 lg:col-span-3 lg:text-lg">
-                {team.description}
-              </p>
-              <div className="relative mt-4 flex h-fit w-full justify-center overflow-hidden rounded-lg pl-2 pr-6 lg:col-span-2 lg:mt-0">
-                <img
-                  loading="lazy"
-                  src={
-                    getAssetURL({
-                      id: team.image,
-                      width: 370,
-                      height: 280,
-                      fit: "cover",
-                      quality: 80,
-                    }) as string
-                  }
-                  alt="image"
-                  width={400}
-                  height={300}
-                  className="rounded-lg object-contain"
-                />
-              </div>
-            </div>
-          );
-        })}
+        {children}
       </div>
     </>
   );

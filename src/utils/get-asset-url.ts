@@ -1,4 +1,4 @@
-export function getAssetURL({
+export const getAssetURL = ({
   id,
   key,
   fit,
@@ -12,9 +12,7 @@ export function getAssetURL({
   width: number;
   height?: number;
   quality?: number;
-}) {
-  if (!id) return null;
-
+}): string => {
   const params = [
     `width=${width}`,
     `fit=${fit}`,
@@ -27,4 +25,4 @@ export function getAssetURL({
   return `${import.meta.env.PUBLIC_DIRECTUS_URL}/assets/${id}?${
     key ? `key=${key}` : ""
   }${paramsString}`;
-}
+};

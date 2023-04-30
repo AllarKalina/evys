@@ -1,10 +1,11 @@
 ---
-import clsx from "clsx";
+import { Picture } from "@astrojs/image/components";
 import Teams from "../../components/Teams";
 import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
+import Board from "../../modules/InfoPage/Board";
 import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
 
@@ -13,6 +14,8 @@ type Leader = {
   team: string;
   image: string;
   order: number;
+  currently_active: boolean;
+  active_date: string;
 };
 
 type Team = {
@@ -42,9 +45,11 @@ const teams = (
       <AnimatedHeader client:load>Juhatus ja meeskonnad</AnimatedHeader>
       <AnimatedBlock client:load delay={0.12}>
         <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
-          Seltsil on viieliikmeline juhatus, mis koosneb esimehest ja neljast
+          Seltsil on viieliikmeline juhatus, mis koosneb esinaisest ja neljast
           juhatuse liikmest, kellest viimased vastutavad oma toimkonna tegevuse
-          eest. Juhatuse ja meeskonddade ülesannete kohta saate täpsemalt lugeda
+          eest. Kõik töötavad ühise eesmärgi nimel - muuta veterinaariaõpe
+          huvitavamaks ja tulemuslikumaks. Juhatuse ja meeskonddade ülesannete
+          kohta saate täpsemalt lugeda
           <a
             href="/info/documents/"
             class="cursor-pointer font-medium text-emerald-600 underline hover:text-emerald-700"
@@ -58,54 +63,19 @@ const teams = (
         <h2
           class="mt-8 mb-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
         >
-          Juhatuse liikmed 2022/2023
+          Juhatuse liikmed
         </h2>
-        <ul
-          role="list"
-          class="mt-8 mb-5 space-y-8 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
-        >
-          {
-            leaders.map((leader, idx) => (
-              <li>
-                <div class="space-y-3">
-                  <div class="h-56 w-full max-w-[360px] overflow-hidden rounded-lg">
-                    <img
-                      loading="lazy"
-                      src={getAssetURL({
-                        id: leader.image,
-                        width: 360,
-                        height: 300,
-                        fit: "cover",
-                        quality: 90,
-                      })}
-                      class="shadow-lg"
-                    />
-                  </div>
-
-                  <div class="space-y-3">
-                    <div class="space-y-1 leading-6 text-zinc-700">
-                      <h3 class="text-lg font-semibold  lg:text-xl">
-                        {leader.name}
-                      </h3>
-                      <p
-                        class={clsx(
-                          "text-md font-medium !leading-6 lg:text-lg",
-                          idx === 0 && "text-emerald-600 ",
-                          idx === 1 && "text-cyan-600",
-                          idx === 2 && "text-amber-600",
-                          idx === 3 && "text-violet-800",
-                          idx === 4 && "text-rose-600"
-                        )}
-                      >
-                        {leader.team}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+        <p class="mt-5 text-base leading-7 text-zinc-600 lg:text-lg">
+          Juhatuse liikmed vastutavad seltsi üldise juhtimise ja oma toimkonna
+          siseste protsesside eest. Kõik juhatuse liikmed on pühendunud ja
+          entusiastlikud veterinaariaõppe edendamisele ning üliõpilaste
+          toetamisele, olles ise samuti veterinaaria eriala tudengid.
+        </p>
+        <p class="mt-3 text-base leading-7 text-zinc-600 lg:text-lg">
+          Alates 2023/24 õppeaastast lisandus juhatusse uus meeskond -
+          sisekommunikatsioon.
+        </p>
+        <Board boardMembers={leaders} client:visible />
         <h2
           class="relative mt-8 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
         >
@@ -113,17 +83,49 @@ const teams = (
           Meeskonnad
         </h2>
         <p class="mt-5 text-base leading-7 text-zinc-600 lg:text-lg">
-          Seltsil on viieliikmeline juhatus, mis koosneb esimehest ja neljast
-          meeskonna juhist. Juhatuse ja meeskondade ülesannete kohta saab
-          täpsemalt lugeda seltsi põhikirjast, kodukorrast või meeskondade lingi
-          alt.
+          Meeskonnad vastutavad erinevate projektide ja ürituste korraldamise
+          eest. Meil on mitmeid meeskondi, mis tegelevad erinevate
+          valdkondadega, nagu haridus- ja karjääriüritused, suhtlus ja turundus,
+          ning sotsiaalsed ja heategevuslikud ettevõtmised. Meie meeskonnad
+          koosnevad tudengitest, kes soovivad anda oma panuse EVUSi ja Eesti
+          veterinaariaõppe arengusse.
         </p>
       </AnimatedBlock>
     </div>
     <div
       class="mx-auto mt-8 max-w-3xl overflow-hidden rounded-lg border border-zinc-100 bg-slate-50 p-8 lg:max-w-5xl 2xl:max-w-7xl"
     >
-      <Teams client:visible teams={teams} />
+      <Teams client:visible teams={teams}>
+        {
+          teams.map((team) => {
+            return (
+              <div class="mt-6 w-full flex-none lg:mt-8 lg:grid lg:grid-cols-5">
+                <p class="mx-6 text-base leading-7 text-zinc-600 lg:col-span-3 lg:text-lg">
+                  {team.description}
+                </p>
+                <div class="relative mt-4 flex h-fit w-full justify-center overflow-hidden rounded-lg pl-2 pr-6 lg:col-span-2 lg:mt-0">
+                  <Picture
+                    src={
+                      getAssetURL({
+                        id: team.image,
+                        width: 350,
+                        height: 350,
+                        fit: "cover",
+                        quality: 100,
+                      }) as string
+                    }
+                    alt="Team image"
+                    widths={[350]}
+                    aspectRatio="1:1"
+                    sizes="350px"
+                    class="rounded-lg"
+                  />
+                </div>
+              </div>
+            );
+          })
+        }
+      </Teams>
     </div>
   </SectionWrapper>
 </Layout>

@@ -52,19 +52,24 @@ const aboutUsTopicExtra = [
   <section
     class="relative col-span-1 overflow-hidden pt-12 lg:col-span-3 lg:pt-80"
   >
-    <ul role="list" class="flex flex-col gap-16 pt-8">
+    <ul role="list" class="flex flex-col gap-12 pt-8">
       {
         aboutUsTopics.map((topic, idx) => {
           return (
-            <AboutItem
-              client:visible
-              href={aboutUsTopicExtra[idx].href}
-              color={aboutUsTopicExtra[idx].color}
-              header={topic.header}
-              imageId={topic.image}
-              description={topic.description}
-              buttonText={topic.action}
-            />
+            <>
+              {idx !== 0 && (
+                <div class="h-0.5 w-full rounded-full bg-slate-100 shadow-sm" />
+              )}
+              <AboutItem
+                client:visible
+                href={aboutUsTopicExtra[idx].href}
+                color={aboutUsTopicExtra[idx].color}
+                header={topic.header}
+                imageId={topic.image}
+                description={topic.description}
+                buttonText={topic.action}
+              />
+            </>
           );
         })
       }
