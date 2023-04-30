@@ -18,7 +18,7 @@ type BlogPost = {
 const directus = await getDirectusClient();
 
 const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
-const highlightBlog = blogs[0];
+const highlightBlog = blogs[1];
 ---
 
 <Layout title="Blogi * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
@@ -53,7 +53,7 @@ const highlightBlog = blogs[0];
                 >
                   {highlightBlog.title}
                 </h2>
-                <p class="text-sm leading-7 text-zinc-600 lg:text-base">
+                <p class="leading-7 text-zinc-600">
                   {highlightBlog.description}
                 </p>
               </div>

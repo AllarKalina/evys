@@ -11,6 +11,7 @@ type BlogPost = {
   description: string;
   body: string;
   slug: string;
+  category?: string;
   cover_photo: string;
 };
 
@@ -34,7 +35,13 @@ const { blog } = Astro.props;
 >
   <div class="bg-white py-32 px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-base leading-7">
-      <p class="text-base font-semibold leading-7 text-emerald-600">Kool</p>
+      {
+        blog.category && (
+          <p class="text-base font-semibold leading-7 text-emerald-600">
+            {blog.category}
+          </p>
+        )
+      }
       <AnimatedHeader client:load delay={0.24}>{blog.title}</AnimatedHeader>
       <AnimatedBlock client:load delay={0.42}>
         <p class="my-5 text-base leading-7 text-zinc-700 lg:text-lg">
