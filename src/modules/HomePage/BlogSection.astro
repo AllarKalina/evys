@@ -46,6 +46,9 @@ const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
                 alt=""
                 class="absolute inset-0 -z-10 h-full w-full object-cover"
               />
+              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-zinc-900 via-zinc-900/40" />
+              <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-zinc-900/10" />
+
               <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-zinc-200">
                 <time date-time={new Date(post.date_created)} class="mr-8">
                   {new Date(post.date_created).toLocaleDateString("et", {
