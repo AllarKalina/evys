@@ -1,10 +1,12 @@
 import SwupPreloadPlugin from "@swup/preload-plugin";
+import SwupScriptsPlugin from "@swup/scripts-plugin";
 import SwupScrollPlugin from "@swup/scroll-plugin";
 import Swup from "swup";
 
 const swup = new Swup({
   /* options */
   plugins: [
+    new SwupScriptsPlugin(),
     new SwupPreloadPlugin(),
     new SwupScrollPlugin({
       doScrollingRightAway: true,
