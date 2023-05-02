@@ -20,23 +20,18 @@ const url = Astro.url;
   </head>
   <body class="relative h-full antialiased">
     <Navbar client:load url={url.pathname} />
-
     <main
       id="swup"
       class="transition-fade flex min-h-screen flex-col items-center"
     >
       <slot />
     </main>
-
     <div id="side-nav" class="hidden">
       <div class="absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block">
         <SideNav />
       </div>
     </div>
-
     <Footer />
-
-    <script type="module" src="/router.js"></script>
   </body>
 </html>
 
@@ -45,3 +40,7 @@ const url = Astro.url;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
   }
 </style>
+
+<script>
+  import "../scripts/router.js";
+</script>
