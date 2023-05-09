@@ -13,18 +13,26 @@ const swup = new Swup({
       scrollAcceleration: 0.1,
     }),
   ],
-  containers: ["#swup", "#header", "#side-nav"],
+  containers: ["#swup"],
 });
 
 const swupActiveLinks = () => {
   let currentPath = swup.transition.to ?? window.location.pathname;
-
   const header = document.getElementById("header");
-  let links = header.querySelectorAll("nav a"); // <- put your link selector here
+
+  let links = header.querySelectorAll("nav ol li a"); // <- put your link selector here
   for (const link of links) {
     let linkPath = new URL(link.href).pathname;
     link.ariaCurrent = linkPath === currentPath ? "page" : "none";
   }
+};
+
+const swupInfoNav = () => {
+  let currentPath = swup.transition.to ?? window.location.pathname;
+  const infoNav = document.getElementById("info-nav");
+
+  const isInfo = currentPath.split("/")[1] === "info";
+  infoNav.ariaCurrent = isInfo ? "active" : "notActive";
 };
 
 const swupActiveSidenav = () => {
@@ -42,12 +50,23 @@ const swupActiveSidenav = () => {
 swup.on("animationOutStart", () => {
   swupActiveLinks(); // trigger after swup
   swupActiveSidenav();
+  swupInfoNav();
 });
 
 swup.on("contentReplaced", () => {
   swupActiveLinks();
   swupActiveSidenav();
+  swupInfoNav();
 });
 
-swupActiveLinks();
-swupActiveSidenav();
+if (document.readyState === "complete") {
+  swupActiveLinks();
+  swupActiveSidenav();
+  swupInfoNav();
+} else {
+  document.addEventListener("DOMContentLoaded", () => {
+    swupActiveLinks();
+    swupActiveSidenav();
+    swupInfoNav();
+  });
+}

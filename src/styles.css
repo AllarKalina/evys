@@ -73,6 +73,14 @@ nav a[aria-current="no-side-page"] p {
   display: none;
 }
 
+#info-nav[aria-current="active"] {
+  display: flex;
+}
+
+#info-nav[aria-current="notActive"] {
+  display: none;
+}
+
 @keyframes slide-left {
   to {
     transform: translateX(-10%);

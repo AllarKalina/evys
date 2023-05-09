@@ -44,8 +44,6 @@ const Navbar: React.FC<Props> = ({ url }) => {
     }
   };
 
-  const isInfo = url.split("/")[1] === "info";
-
   const pages = url
     .split("/")
     .slice(1)
@@ -92,8 +90,8 @@ const Navbar: React.FC<Props> = ({ url }) => {
             menuItems={menuItemArray}
           />
         </div>
-        {isInfo && !isMobileMenuOpen && (
-          <>
+        {!isMobileMenuOpen && (
+          <div id="info-nav" className="hidden w-full flex-col">
             <div className="my-4 h-[1px] w-full bg-white/60 md:hidden" />
             <div className="w-full md:hidden">
               <nav className="flex" aria-label="Breadcrumb">
@@ -133,7 +131,7 @@ const Navbar: React.FC<Props> = ({ url }) => {
                 </ol>
               </nav>
             </div>
-          </>
+          </div>
         )}
       </section>
       <DesktopMenu menuItems={menuItemArray} url={url} />
