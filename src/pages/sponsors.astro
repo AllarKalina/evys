@@ -1,23 +1,122 @@
 ---
+import { Image } from "@astrojs/image/components";
+import {
+  CloudArrowUpIcon,
+  LockClosedIcon,
+  ServerIcon,
+} from "@heroicons/react/20/solid";
+import ImageCover from "../components/UI/Animated/ImageCover";
+import Motion from "../components/UI/Animated/Motion";
+import NegativeAnimatedHeader from "../components/UI/Animated/NegativeAnimatedHeader";
+import NegativeAnimatedText from "../components/UI/Animated/NegativeAnimatedText";
+import SectionWrapper from "../components/UI/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
+import { getAssetURL } from "../utils/get-asset-url";
+import { getDirectusClient } from "../utils/get-directus-client";
+
+type Sponsor = {
+  showcase_text: string;
+  name: string;
+  showcase_image: string;
+  logo: string;
+};
+
+const features = [
+  {
+    description:
+      "Meie unikaalsed väärtused - we care, we dare, we share annavad aimu meie pühendumisest loomade ning nende perede aitamisele ning samal ajal oma praeguste ja tulevaste kolleegide toetamisele. ",
+    icon: CloudArrowUpIcon,
+  },
+  {
+    description:
+      "Meie globaalne võrk hõlmab peaaegu 36 000 veterinaarprofessionaali ja enam kui 2600 loomakliinikut ja haiglat 21 riigis, kus ravitakse aastas üle 7,5 miljoni patsiendi. ",
+    icon: LockClosedIcon,
+  },
+  {
+    description:
+      "IVC Evidensias hoolitseme igapäevaselt loomade, klientide, kolleegide ja parema keskkonna eest. Meie moto on - töötame südamega, ravime teadmistega.",
+    icon: ServerIcon,
+  },
+];
+
+const directus = await getDirectusClient();
+const sponsorQuery = await directus.items("sponsor").readByQuery();
+const sponsors = sponsorQuery.data as Sponsor[];
+
+console.log(sponsors);
 ---
 
 <Layout title="Toetajad * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <div class="flex h-screen items-center">
-    <div class="text-center">
-      <h1
-        class="mt-4 text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl"
-      >
-        Lehekülg on valmimisel
-      </h1>
-      <div class="mt-10 flex items-center justify-center gap-x-6">
-        <a
-          href="/"
-          class="rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+  <SectionWrapper className="h-screen snap-start">
+    <div
+      class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:px-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
+    >
+      <div class="col-span-6">
+        <NegativeAnimatedHeader client:load>Evidensia</NegativeAnimatedHeader>
+        <NegativeAnimatedText client:load delay={0.32}>
+          {sponsors[0].showcase_text}
+        </NegativeAnimatedText>
+        <div class="overflow-hidden">
+          <Motion
+            client:load
+            initial={{ width: "0%" }}
+            whileInView={{ width: "90%" }}
+            duration={0.72}
+            delay={0.5}
+            client:load
+          >
+            <div class="mb-5 h-0.5 rounded-full bg-zinc-200"></div>
+          </Motion>
+        </div>
+        <Motion
+          client:load
+          initial={{ y: 24, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          duration={0.72}
+          delay={0.5}
+          client:load
         >
-          Tagasi avalehele
-        </a>
+          <dl
+            class="max-w-xl space-y-2 text-base leading-7 text-gray-300 lg:max-w-none"
+          >
+            {
+              features.map((feature) => (
+                <div class="relative">
+                  <dd class="inline text-sm text-zinc-600">
+                    {feature.description}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </Motion>
+      </div>
+      <div class="col-span-1"></div>
+      <div class="col-span-5 flex w-full items-center">
+        <Motion
+          initial={{ scale: 0.85 }}
+          whileInView={{ scale: 1 }}
+          duration={1}
+          delay={0.64}
+          client:load
+        >
+          <div class="relative overflow-hidden shadow-lg">
+            <Image
+              class="relative z-0 rounded-lg before:absolute before:inset-0 before:bg-zinc-600"
+              height={800}
+              width={1200}
+              src={getAssetURL({
+                id: sponsors[0].showcase_image,
+                fit: "cover",
+                width: 1200,
+                quality: 100,
+              })}
+              alt="Tre"
+            />
+            <ImageCover client:load />
+          </div>
+        </Motion>
       </div>
     </div>
-  </div>
+  </SectionWrapper>
 </Layout>

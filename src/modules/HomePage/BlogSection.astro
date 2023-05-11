@@ -17,7 +17,9 @@ type BlogPost = {
 };
 
 const directus = await getDirectusClient();
-const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
+const blogs = (
+  await directus.items("blog").readByQuery()
+).data?.reverse() as BlogPost[];
 ---
 
 <main class="relative z-20">
@@ -34,7 +36,7 @@ const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
       >
         {
           blogs.map((post) => (
-            <article class="group relative isolate flex flex-col justify-end overflow-hidden rounded-lg bg-zinc-900 px-8 pb-8 pt-80 transition-transform hover:scale-[102%] sm:pt-48 lg:pt-60">
+            <article class="group relative isolate flex flex-col justify-end overflow-hidden rounded-lg bg-zinc-900 px-8 pb-8 pt-32 transition-transform hover:scale-[102%] sm:pt-48">
               <img
                 loading="lazy"
                 src={getAssetURL({
@@ -46,8 +48,8 @@ const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
                 alt=""
                 class="absolute inset-0 -z-10 h-full w-full object-cover"
               />
-              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-zinc-900 via-zinc-900/40" />
-              <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-zinc-900/10" />
+              <div class="absolute inset-0 -z-10 bg-gradient-to-t from-zinc-900 via-zinc-900/50" />
+              <div class="absolute inset-0 -z-10 rounded-lg ring-1 ring-inset ring-zinc-900/20" />
 
               <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-zinc-200">
                 <time date-time={new Date(post.date_created)} class="mr-8">
@@ -78,7 +80,7 @@ const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
               <p class="mt-3 font-medium leading-7 text-zinc-200">
                 <a href={`/blog/${post.slug}`}>
                   <span class="absolute inset-0" />
-                  {post.description.split(" ").slice(0, 10).join(" ") + "..."}
+                  {post.description.split(" ").slice(0, 8).join(" ") + "..."}
                 </a>
               </p>
               <button class="mt-3 flex items-center gap-0.5 text-white transition-all hover:text-zinc-200 group-hover:gap-2">

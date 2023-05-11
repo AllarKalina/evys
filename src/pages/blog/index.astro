@@ -1,4 +1,5 @@
 ---
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
@@ -13,54 +14,96 @@ type BlogPost = {
   description: string;
   body: string;
   cover_photo: string;
+  author: string;
+  date_created: string;
 };
 
 const directus = await getDirectusClient();
 
-const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
-const highlightBlog = blogs[1];
+const blogs = (
+  await directus.items("blog").readByQuery()
+).data?.reverse() as BlogPost[];
+const featuredBlog = blogs[0];
 ---
 
 <Layout title="Blogi * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
   <SectionWrapper>
     <div class="relative mx-auto max-w-3xl px-4 pt-8 lg:pt-0 2xl:max-w-5xl">
-      <div class="flex w-full max-w-sm grow flex-col lg:max-w-md 2xl:max-w-xl">
-        <AnimatedHeader client:load delay={0.24}>Blogi</AnimatedHeader>
-        <AnimatedBlock client:load delay={0.42}>
-          <a
-            href={`/blog/${highlightBlog.slug}`}
-            class="mt-8 flex max-w-[370px] flex-col items-start justify-between"
+      <AnimatedHeader client:load delay={0.24}>Blogi</AnimatedHeader>
+      <AnimatedBlock client:load delay={0.42}>
+        <p class="my-5 text-base leading-7 text-zinc-600 lg:text-lg">
+          Veterinaarharidus keskendub loomade tervisele, haigustele, hooldusele
+          ja ennetamisele. Veterinaarharidus hõlmab laia valikut teemasid,
+          sealhulgas anatoomiat, füsioloogiat, farmakoloogiat, patoloogiat,
+          nakkushaigusi, kirurgiat, bioohutust, toiduhügieeni ja loomakasvatust.
+        </p>
+        <a
+          href={`/blog/${featuredBlog.slug}`}
+          class="-mx-4 mt-7 flex flex-col items-start justify-between bg-green-500/10 px-4 py-12 md:mx-0 md:rounded-lg md:px-8"
+        >
+          <p
+            class="text-base font-semibold leading-7 text-emerald-600 lg:text-lg"
           >
-            <div class="relative w-full">
-              <img
-                class="h-96 w-full rounded-lg object-cover shadow-lg"
-                src={getAssetURL({
-                  id: highlightBlog.cover_photo,
-                  width: 400,
-                  quality: 90,
-                  fit: "cover",
-                })}
-              />
-              <div
-                class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
-              >
+            Esiletõstetud blogi
+          </p>
+          <h2
+            class="mb-2 mt-8 text-2xl font-semibold text-emerald-600 lg:text-2xl"
+          >
+            {featuredBlog.title}
+          </h2>
+          {
+            featuredBlog.author && (
+              <div class="mt-2 flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-zinc-600">
+                <p class="mr-7 font-medium">{featuredBlog.author}</p>
+                <div class="-ml-4 flex items-center gap-x-2 fill-zinc-500/70">
+                  <svg viewBox="0 0 4 4" class="-ml-0.5 h-1 w-1 flex-none">
+                    <circle cx={2} cy={2} r={2} />
+                  </svg>
+                  <time
+                    date-time={new Date(featuredBlog.date_created)}
+                    class=""
+                  >
+                    {new Date(featuredBlog.date_created).toLocaleDateString(
+                      "et",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
+                  </time>
+                </div>
               </div>
+            )
+          }
+          <div class="relative mt-9 w-full">
+            <img
+              class="h-64 w-full rounded-lg object-cover shadow-lg md:h-80"
+              src={getAssetURL({
+                id: featuredBlog.cover_photo,
+                width: 400,
+                quality: 90,
+                fit: "cover",
+              })}
+            />
+            <div
+              class="absolute inset-0 rounded-lg ring-1 ring-inset ring-gray-900/10"
+            >
             </div>
-            <div class="max-w-xl">
-              <div class="group relative">
-                <h2
-                  class="mb-2 mt-4 text-xl font-semibold leading-6 text-emerald-600 lg:text-2xl"
-                >
-                  {highlightBlog.title}
-                </h2>
-                <p class="leading-7 text-zinc-600">
-                  {highlightBlog.description}
-                </p>
-              </div>
-            </div>
-          </a>
-        </AnimatedBlock>
-      </div>
+          </div>
+          <p class="mt-5 leading-7 text-zinc-600">
+            {featuredBlog.description.split(" ").slice(0, 26).join(" ") + "..."}
+          </p>
+          <button
+            class="mt-5 flex items-center gap-0.5 text-emerald-600 transition-all hover:gap-2 hover:text-emerald-700"
+          >
+            <span class="text-base font-semibold lg:text-lg">
+              Loe kogu postitust
+            </span>
+            <ChevronRightIcon className="h-5 w-5 stroke-2 text-inherit" />
+          </button>
+        </a>
+      </AnimatedBlock>
     </div>
   </SectionWrapper>
 </Layout>
