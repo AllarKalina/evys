@@ -1,17 +1,10 @@
 ---
-import { Image } from "@astrojs/image/components";
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
-import ImageCover from "../components/UI/Animated/ImageCover";
-import Motion from "../components/UI/Animated/Motion";
-import NegativeAnimatedHeader from "../components/UI/Animated/NegativeAnimatedHeader";
-import NegativeAnimatedText from "../components/UI/Animated/NegativeAnimatedText";
-import SectionWrapper from "../components/UI/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
-import { getAssetURL } from "../utils/get-asset-url";
 import { getDirectusClient } from "../utils/get-directus-client";
 
 type Sponsor = {
@@ -42,12 +35,27 @@ const features = [
 const directus = await getDirectusClient();
 const sponsorQuery = await directus.items("sponsor").readByQuery();
 const sponsors = sponsorQuery.data as Sponsor[];
-
-console.log(sponsors);
 ---
 
 <Layout title="Toetajad * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
-  <SectionWrapper className="h-screen snap-start">
+  <div class="flex h-screen items-center">
+    <div class="text-center">
+      <h1
+        class="mt-4 text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl"
+      >
+        Lehekülg on valmimisel
+      </h1>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a
+          href="/"
+          class="rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+        >
+          Tagasi avalehele
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- <SectionWrapper className="h-screen snap-start">
     <div
       class="relative mx-auto grid max-w-screen-xl grid-cols-12 gap-12 px-4 pt-20 sm:px-20 sm:pt-12 md:pt-0 2xl:max-w-5xl"
     >
@@ -118,5 +126,5 @@ console.log(sponsors);
         </Motion>
       </div>
     </div>
-  </SectionWrapper>
+  </SectionWrapper> -->
 </Layout>
