@@ -16,6 +16,7 @@ type BlogPost = {
   cover_photo: string;
   author: string;
   date_created: string;
+  feature?: boolean;
 };
 
 const directus = await getDirectusClient();
@@ -23,7 +24,7 @@ const directus = await getDirectusClient();
 const blogs = (
   await directus.items("blog").readByQuery()
 ).data?.reverse() as BlogPost[];
-const featuredBlog = blogs[0];
+const featuredBlog = blogs.find((blog) => blog.feature);
 ---
 
 <Layout title="Blogi * Eesti Veterinaarmeditsiini Üliõpilaste Selts">
@@ -37,25 +38,25 @@ const featuredBlog = blogs[0];
           sealhulgas anatoomiat, füsioloogiat, farmakoloogiat, patoloogiat,
           nakkushaigusi, kirurgiat, bioohutust, toiduhügieeni ja loomakasvatust.
         </p>
-        <a
-          href={`/blog/${featuredBlog.slug}`}
-          class="-mx-4 mt-7 flex flex-col items-start justify-between bg-green-500/10 px-4 py-12 md:mx-0 md:rounded-lg md:px-8"
-        >
-          <p
-            class="text-base font-semibold leading-7 text-emerald-600 lg:text-lg"
-          >
-            Esiletõstetud blogi
-          </p>
-          <h2
-            class="mb-2 mt-8 text-2xl font-semibold text-emerald-600 lg:text-2xl"
-          >
-            {featuredBlog.title}
-          </h2>
-          {
-            featuredBlog.author && (
+        {
+          featuredBlog && (
+            <a
+              href={`/blog/${featuredBlog.slug}`}
+              class="group -mx-4 mt-7 flex flex-col items-start justify-between bg-green-500/10 px-4 py-12 ring-emerald-600 ring-offset-4 transition-all hover:ring-2 md:mx-0 md:rounded-lg md:px-12"
+            >
+              <p class="text-base font-semibold leading-7 text-emerald-600 lg:text-lg">
+                Esiletõstetud blogi
+              </p>
+              <h2 class="mb-2 mt-8 text-2xl font-semibold text-emerald-600 lg:text-2xl">
+                {featuredBlog.title}
+              </h2>
               <div class="mt-2 flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-zinc-600">
-                <p class="mr-7 font-medium">{featuredBlog.author}</p>
-                <div class="-ml-4 flex items-center gap-x-2 fill-zinc-500/70">
+                {featuredBlog.author ? (
+                  <p class="mr-7 font-medium">{featuredBlog.author}</p>
+                ) : (
+                  <p class="mr-7 font-medium">EVÜS</p>
+                )}
+                <div class="-ml-4 flex items-center gap-x-2 fill-zinc-500/80">
                   <svg viewBox="0 0 4 4" class="-ml-0.5 h-1 w-1 flex-none">
                     <circle cx={2} cy={2} r={2} />
                   </svg>
@@ -74,35 +75,92 @@ const featuredBlog = blogs[0];
                   </time>
                 </div>
               </div>
-            )
+              <div class="relative mt-9 w-full">
+                <img
+                  class="h-64 w-full rounded-lg object-cover shadow-lg md:h-80"
+                  src={getAssetURL({
+                    id: featuredBlog.cover_photo,
+                    width: 400,
+                    quality: 90,
+                    fit: "cover",
+                  })}
+                />
+                <div class="absolute inset-0 rounded-lg ring-1 ring-inset ring-gray-900/10"></div>
+              </div>
+              <p class="mt-5 leading-7 text-zinc-600">
+                {featuredBlog.description.split(" ").slice(0, 26).join(" ") +
+                  "..."}
+              </p>
+              <button class="group mt-5 flex items-center gap-0.5 text-emerald-600 transition-all group-hover:gap-2 group-hover:text-emerald-700">
+                <span class="text-base font-semibold lg:text-lg">
+                  Loe kogu postitust
+                </span>
+                <ChevronRightIcon className="h-5 w-5 stroke-2 text-inherit" />
+              </button>
+            </a>
+          )
+        }
+        <section
+          class="relative mx-auto mt-12 -mb-12 grid max-w-7xl grid-cols-4 gap-x-4 md:grid-cols-8 lg:gap-x-8"
+        >
+          {
+            blogs.slice(1).map((blog) => {
+              return (
+                <div class="group col-span-4 mb-12">
+                  <a href={`/blog/${blog.slug}`}>
+                    <h2 class="mb-2 text-2xl font-semibold text-emerald-600 lg:text-2xl">
+                      {blog.title}
+                    </h2>
+                    <div class="mt-2 flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-zinc-600">
+                      {blog.author ? (
+                        <p class="mr-7 font-medium">{blog.author}</p>
+                      ) : (
+                        <p class="mr-7 font-medium">EVÜS</p>
+                      )}
+                      <div class="-ml-4 flex items-center gap-x-2 fill-zinc-500/80">
+                        <svg
+                          viewBox="0 0 4 4"
+                          class="-ml-0.5 h-1 w-1 flex-none"
+                        >
+                          <circle cx={2} cy={2} r={2} />
+                        </svg>
+                        <time date-time={new Date(blog.date_created)} class="">
+                          {new Date(blog.date_created).toLocaleDateString(
+                            "et",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
+                        </time>
+                      </div>
+                    </div>
+                    <div class="relative mt-6 w-full">
+                      <img
+                        class="group h-96 w-full rounded-lg object-cover shadow-lg ring-emerald-600 ring-offset-4 transition-all group-hover:ring-2 md:h-80"
+                        src={getAssetURL({
+                          id: blog.cover_photo,
+                          width: 400,
+                          quality: 90,
+                          fit: "cover",
+                        })}
+                      />
+                      <div class="group absolute top-6 left-6 rounded-lg border border-emerald-600 bg-white p-2 shadow transition-all group-hover:scale-105 group-hover:border-2">
+                        <ChevronRightIcon className="h-7 w-7 stroke-2 text-emerald-600 transition-all group-hover:h-8 group-hover:w-8" />
+                      </div>
+                      <div class="absolute inset-0 rounded-lg ring-1 ring-inset ring-gray-900/10" />
+                    </div>
+                    <p class="mt-5 leading-7 text-zinc-600">
+                      {blog.description.split(" ").slice(0, 18).join(" ") +
+                        "..."}
+                    </p>
+                  </a>
+                </div>
+              );
+            })
           }
-          <div class="relative mt-9 w-full">
-            <img
-              class="h-64 w-full rounded-lg object-cover shadow-lg md:h-80"
-              src={getAssetURL({
-                id: featuredBlog.cover_photo,
-                width: 400,
-                quality: 90,
-                fit: "cover",
-              })}
-            />
-            <div
-              class="absolute inset-0 rounded-lg ring-1 ring-inset ring-gray-900/10"
-            >
-            </div>
-          </div>
-          <p class="mt-5 leading-7 text-zinc-600">
-            {featuredBlog.description.split(" ").slice(0, 26).join(" ") + "..."}
-          </p>
-          <button
-            class="mt-5 flex items-center gap-0.5 text-emerald-600 transition-all hover:gap-2 hover:text-emerald-700"
-          >
-            <span class="text-base font-semibold lg:text-lg">
-              Loe kogu postitust
-            </span>
-            <ChevronRightIcon className="h-5 w-5 stroke-2 text-inherit" />
-          </button>
-        </a>
+        </section>
       </AnimatedBlock>
     </div>
   </SectionWrapper>
