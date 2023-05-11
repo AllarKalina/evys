@@ -21,10 +21,7 @@ const NegativeAnimatedText: React.FC<Props> = ({
         duration: 0.72,
         delay,
       }}
-      className={clsx(
-        "my-5 text-base leading-7 text-zinc-600 lg:text-lg",
-        className
-      )}
+      className={clsx("my-5 text-base leading-7 text-zinc-600", className)}
     >
       {children}
     </motion.p>
