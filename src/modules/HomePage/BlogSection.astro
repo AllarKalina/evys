@@ -17,9 +17,7 @@ type BlogPost = {
 };
 
 const directus = await getDirectusClient();
-const blogs = (
-  await directus.items("blog").readByQuery()
-).data?.reverse() as BlogPost[];
+const blogs = (await directus.items("blog").readByQuery()).data as BlogPost[];
 ---
 
 <main class="relative z-20">
