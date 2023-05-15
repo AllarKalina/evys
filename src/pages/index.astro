@@ -6,6 +6,11 @@ import BlogSection from "../modules/HomePage/BlogSection.astro";
 import HeroIllustration from "../modules/HomePage/HeroIllustration.astro";
 import HeroSection from "../modules/HomePage/HeroSection.astro";
 import SponsorSection from "../modules/HomePage/SponsorSection.astro";
+import { getSegment } from "../utils/get-segment";
+
+const analytics = getSegment();
+
+analytics?.track("Hello, world!");
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">
