@@ -2,6 +2,7 @@
 import Footer from "../components/Footer/Footer.astro";
 import Navbar from "../components/Navbar/Navbar";
 import SideNav from "../components/SideNav.astro";
+import Hotjar from "../scripts/Hotjar.astro";
 import "../styles.css";
 
 const { title } = Astro.props;
@@ -17,6 +18,7 @@ const url = Astro.url;
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <Hotjar />
   </head>
   <body class="relative h-full antialiased">
     <Navbar client:load url={url.pathname} />
@@ -37,11 +39,10 @@ const url = Astro.url;
     <Footer />
 
     <script src="../scripts/router.js"></script>
-  </body>
+    <!-- Hotjar Tracking Code for https://evus.vet/ -->
+  </body><style is:global>
+    html {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
+    }
+  </style>
 </html>
-
-<style is:global>
-  html {
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;
-  }
-</style>
