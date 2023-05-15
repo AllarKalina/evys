@@ -8,6 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 import Board from "../../modules/InfoPage/Board";
 import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
+import { getSegment } from "../../utils/get-segment";
 
 type Leader = {
   name: string;
@@ -25,6 +26,13 @@ type Team = {
   image: string;
   order: number;
 };
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/info/teams",
+  });
+}
 
 const directus = await getDirectusClient();
 const leaders = (

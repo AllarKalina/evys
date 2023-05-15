@@ -8,9 +8,12 @@ import HeroSection from "../modules/HomePage/HeroSection.astro";
 import SponsorSection from "../modules/HomePage/SponsorSection.astro";
 import { getSegment } from "../utils/get-segment";
 
-const analytics = getSegment();
-
-analytics?.track("Hello, world!");
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/",
+  });
+}
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">

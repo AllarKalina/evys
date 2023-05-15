@@ -5,6 +5,7 @@ import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
 import Gallery from "../../modules/InfoPage/Gallery";
 import { getDirectusClient } from "../../utils/get-directus-client";
+import { getSegment } from "../../utils/get-segment";
 
 type KuusepuudGallery = {
   image: string;
@@ -19,6 +20,13 @@ const kuusepuud = (
     .items("kuusepuud_gallery")
     .readByQuery({ fields: ["image", "author.name"] })
 ).data as KuusepuudGallery[];
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/info/work",
+  });
+}
 ---
 
 <Layout

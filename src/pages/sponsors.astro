@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Layout from "../layouts/Layout.astro";
 import { getDirectusClient } from "../utils/get-directus-client";
+import { getSegment } from "../utils/get-segment";
 
 type Sponsor = {
   showcase_text: string;
@@ -35,6 +36,13 @@ const features = [
 const directus = await getDirectusClient();
 const sponsorQuery = await directus.items("sponsor").readByQuery();
 const sponsors = sponsorQuery.data as Sponsor[];
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/sponsors",
+  });
+}
 ---
 
 <Layout title="Toetajad * Eesti Veterinaarmeditsiini Üliõpilaste Selts">

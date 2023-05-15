@@ -8,6 +8,7 @@ import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
+import { getSegment } from "../../utils/get-segment";
 
 type BlogPost = {
   id: string;
@@ -38,6 +39,13 @@ const blogs = (
 ).data?.reverse() as BlogPost[];
 
 const { blog } = Astro.props;
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Blog page loaded", {
+    slug: blog.slug,
+  });
+}
 ---
 
 <Layout

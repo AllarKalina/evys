@@ -3,6 +3,14 @@ import AnimatedBlock from "../../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../../components/UI/SectionWrapper.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getSegment } from "../../utils/get-segment";
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/info",
+  });
+}
 ---
 
 <Layout title="Seltsist * Eesti Veterinaarmeditsiini Üliõpilaste Selts">

@@ -3,12 +3,20 @@ import AnimatedBlock from "../components/UI/Animated/AnimatedBlock";
 import AnimatedHeader from "../components/UI/Animated/AnimatedHeader";
 import SectionWrapper from "../components/UI/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
+import { getSegment } from "../utils/get-segment";
 
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
+
+if (import.meta.env.PROD) {
+  const analytics = getSegment();
+  analytics?.track("Page loaded", {
+    url: "/veterinary",
+  });
+}
 
 const features = [
   {
