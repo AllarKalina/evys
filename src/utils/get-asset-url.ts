@@ -21,5 +21,5 @@ export const getAssetURL = ({
   ];
   const paramsString = params.join(",");
 
-  return `${import.meta.env.PUBLIC_DIRECTUS_URL}/tr:${paramsString}/${id}`;
+  return `${import.meta.env.PUBLIC_DIRECTUS_URL}/${id}?tr:${paramsString}`;
 };
