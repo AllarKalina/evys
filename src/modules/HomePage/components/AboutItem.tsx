@@ -1,7 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { getAssetURL } from "../../../utils/get-asset-url";
 
 interface Props {
   imageId: string;
@@ -10,6 +9,7 @@ interface Props {
   buttonText: string;
   href: string;
   color?: string;
+  children: any;
 }
 
 const AboutItem: React.FC<Props> = ({
@@ -19,6 +19,7 @@ const AboutItem: React.FC<Props> = ({
   buttonText,
   href,
   color = "green",
+  children,
 }) => {
   return (
     <motion.li
@@ -39,24 +40,15 @@ const AboutItem: React.FC<Props> = ({
             </p>
           </div>
         </div>
-        <motion.img
-          loading="lazy"
+        <motion.div
           initial={{ y: 16, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ ease: [0.74, 0.07, 0.38, 0.99], duration: 0.72 }}
           viewport={{ once: true }}
-          className="aspect-[4/5] w-52 flex-none rounded-lg object-cover shadow-lg"
-          src={
-            getAssetURL({
-              id: imageId,
-              width: 208,
-              height: 260,
-              fit: "cover",
-              quality: 90,
-            }) as string
-          }
-          alt=""
-        />
+          className="w-52 flex-none rounded-lg object-cover shadow-lg"
+        >
+          {children}
+        </motion.div>
       </div>
       <motion.a
         href={href}

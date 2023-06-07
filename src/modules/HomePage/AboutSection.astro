@@ -1,5 +1,7 @@
 ---
+import { Picture } from "@astrojs/image/components";
 import SectionHeader from "../../components/SectionHeader";
+import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
 import AboutIllustration from "./components/AboutIllustration";
 import AboutItem from "./components/AboutItem";
@@ -68,7 +70,24 @@ const aboutUsTopicExtra = [
                 imageId={topic.image}
                 description={topic.description}
                 buttonText={topic.action}
-              />
+              >
+                <Picture
+                  loading="eager"
+                  src={
+                    getAssetURL({
+                      id: topic.image,
+                      width: 210,
+                      height: 260,
+                      fit: "cover",
+                      quality: 100,
+                    }) as string
+                  }
+                  alt="Hero image"
+                  widths={[210]}
+                  aspectRatio="3:4"
+                  class="h-full w-full rounded-lg object-cover"
+                />
+              </AboutItem>
             </>
           );
         })

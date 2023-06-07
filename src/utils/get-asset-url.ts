@@ -14,12 +14,13 @@ export const getAssetURL = ({
   quality?: number;
 }): string => {
   const params = [
-    `w-${width}`,
-    "f-webp",
-    `q-${quality ?? 80}`,
-    height ? `h-${height}` : "",
+    `width=${width}`,
+    `fit=${fit}`,
+    "format=webp",
+    `quality=${quality ?? 90}`,
+    height ? `height=${height}` : "",
   ];
-  const paramsString = params.join(",");
+  const paramsString = params.join("&");
 
-  return `${import.meta.env.PUBLIC_DIRECTUS_URL}/tr:${paramsString}/${id}`;
+  return `${import.meta.env.PUBLIC_DIRECTUS_URL}/assets/${id}`;
 };
