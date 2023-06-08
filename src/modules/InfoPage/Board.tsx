@@ -65,7 +65,7 @@ const Board: React.FC<Props> = ({ boardMembers }) => {
             <div className="space-y-3">
               <div className="w-full max-w-[360px] overflow-hidden rounded-lg lg:h-auto">
                 <img
-                  loading="lazy"
+                  loading="eager"
                   src={getAssetURL({
                     id: leader.image,
                     width: 360,
