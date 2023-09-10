@@ -7,13 +7,6 @@ import HeroIllustration from "../modules/HomePage/HeroIllustration.astro";
 import HeroSection from "../modules/HomePage/HeroSection.astro";
 import SponsorSection from "../modules/HomePage/SponsorSection.astro";
 import { getSegment } from "../utils/get-segment";
-
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/",
-  });
-}
 ---
 
 <Layout title="Eesti Veterinaarmeditsiini Üliõpilaste Selts">

@@ -39,13 +39,6 @@ const blogs = (
 ).data?.reverse() as BlogPost[];
 
 const { blog } = Astro.props;
-
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Blog page loaded", {
-    slug: blog.slug,
-  });
-}
 ---
 
 <Layout

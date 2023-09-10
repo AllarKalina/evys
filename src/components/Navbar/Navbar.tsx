@@ -69,13 +69,14 @@ const Navbar: React.FC<Props> = ({ url }) => {
     >
       <section className="flex w-full flex-col md:w-fit">
         <div className="flex w-full justify-between">
-          <nav>
+          <nav className="max-w-[80px]">
             <a href="/">
               <img
-                src="/images/Logo.png"
-                width={90}
-                height={43}
-                alt="Mobile logo"
+                  src="/images/MobileLogo.svg"
+                  width={546}
+                  height={340}
+                  alt="Mobile logo"
+                  className="object-cover"
               />
             </a>
           </nav>

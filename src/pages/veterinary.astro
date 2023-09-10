@@ -11,13 +11,6 @@ import {
   ServerIcon,
 } from "@heroicons/react/20/solid";
 
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/veterinary",
-  });
-}
-
 const features = [
   {
     name: "Push to deploy.",

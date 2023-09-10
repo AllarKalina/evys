@@ -2,7 +2,6 @@
 import Footer from "../components/Footer/Footer.astro";
 import Navbar from "../components/Navbar/Navbar";
 import SideNav from "../components/SideNav.astro";
-import Hotjar from "../scripts/Hotjar.astro";
 import "../styles.css";
 
 const { title } = Astro.props;
@@ -17,89 +16,20 @@ const url = Astro.url;
     <link rel="icon" type="webp" href="/favicon.webp" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <Hotjar />
-    <script type="module">
-      !(function () {
-        var analytics = (window.analytics = window.analytics || []);
-        if (!analytics.initialize)
-          if (analytics.invoked)
-            window.console &&
-              console.error &&
-              console.error("Segment snippet included twice.");
-          else {
-            analytics.invoked = !0;
-            analytics.methods = [
-              "trackSubmit",
-              "trackClick",
-              "trackLink",
-              "trackForm",
-              "pageview",
-              "identify",
-              "reset",
-              "group",
-              "track",
-              "ready",
-              "alias",
-              "debug",
-              "page",
-              "once",
-              "off",
-              "on",
-              "addSourceMiddleware",
-              "addIntegrationMiddleware",
-              "setAnonymousId",
-              "addDestinationMiddleware",
-            ];
-            analytics.factory = function (e) {
-              return function () {
-                var t = Array.prototype.slice.call(arguments);
-                t.unshift(e);
-                analytics.push(t);
-                return analytics;
-              };
-            };
-            for (var e = 0; e < analytics.methods.length; e++) {
-              var key = analytics.methods[e];
-              analytics[key] = analytics.factory(key);
-            }
-            analytics.load = function (key, e) {
-              var t = document.createElement("script");
-              t.type = "text/javascript";
-              t.async = !0;
-              t.src =
-                "https://cdn.segment.com/analytics.js/v1/" +
-                key +
-                "/analytics.min.js";
-              var n = document.getElementsByTagName("script")[0];
-              n.parentNode.insertBefore(t, n);
-              analytics._loadOptions = e;
-            };
-            analytics._writeKey = "PqSbzfy53G0tmm58QnZrlbD0FQLuk9RE";
-            analytics.SNIPPET_VERSION = "4.15.3";
-            analytics.load("PqSbzfy53G0tmm58QnZrlbD0FQLuk9RE");
-            analytics.page();
-          }
-      })();
-    </script>
   </head>
   <body class="relative h-full antialiased">
     <Navbar client:load url={url.pathname} />
-
     <main
-      id="swup"
-      class="transition-fade flex min-h-screen flex-col items-center"
+      class="flex min-h-screen flex-col items-center"
     >
       <slot />
     </main>
-
-    <div id="side-nav" class="hidden">
+    <div class="hidden">
       <div class="absolute top-64 left-0 hidden h-[70%] w-[300px] xl:block">
         <SideNav />
       </div>
     </div>
-
     <Footer />
-    <script src="../scripts/router.js"></script>
     <style is:global>
       html {
         font-feature-settings: "cv02", "cv03", "cv04", "cv11" !important;

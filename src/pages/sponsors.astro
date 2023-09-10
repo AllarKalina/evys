@@ -37,12 +37,12 @@ const directus = await getDirectusClient();
 const sponsorQuery = await directus.items("sponsor").readByQuery();
 const sponsors = sponsorQuery.data as Sponsor[];
 
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/sponsors",
-  });
-}
+console.log("hit");
+const analytics = getSegment();
+console.log(analytics);
+analytics?.track("Page loaded", {
+  url: "/sponsors",
+});
 ---
 
 <Layout title="Toetajad * Eesti Veterinaarmeditsiini Üliõpilaste Selts">

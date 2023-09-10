@@ -8,13 +8,6 @@ import { getAssetURL } from "../../utils/get-asset-url";
 import { getDirectusClient } from "../../utils/get-directus-client";
 import { getSegment } from "../../utils/get-segment";
 
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/blog",
-  });
-}
-
 type BlogPost = {
   id: string;
   title: string;

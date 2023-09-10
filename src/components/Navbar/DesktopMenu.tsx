@@ -18,7 +18,7 @@ const DesktopMenu: React.FC<Props> = ({ menuItems, url }) => {
         </ol>
         {/* Width is equal to logo width to keep menu items centered */}
       </nav>
-      <nav className="flex w-[90px] items-center justify-between pl-4 max-[768px]:hidden">
+      <nav className="flex w-[80px] items-center justify-end gap-6 pl-4 max-[768px]:hidden">
         <a
           target="_blank"
           href="https://www.instagram.com/evus_vetmed/"

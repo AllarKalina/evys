@@ -27,13 +27,6 @@ type Team = {
   order: number;
 };
 
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/info/teams",
-  });
-}
-
 const directus = await getDirectusClient();
 const leaders = (
   await directus.items("leader").readByQuery({ sort: ["order" as never] })

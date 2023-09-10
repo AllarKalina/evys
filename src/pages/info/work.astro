@@ -20,13 +20,6 @@ const kuusepuud = (
     .items("kuusepuud_gallery")
     .readByQuery({ fields: ["image", "author.name"] })
 ).data as KuusepuudGallery[];
-
-if (import.meta.env.PROD) {
-  const analytics = getSegment();
-  analytics?.track("Page loaded", {
-    url: "/info/work",
-  });
-}
 ---
 
 <Layout
